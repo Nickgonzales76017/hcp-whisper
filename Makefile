@@ -1,6 +1,6 @@
 # hcp-whisper
 CC      = cc
-CFLAGS  = -O2 -Wall -Wextra -std=c11
+CFLAGS  = -O3 -march=native -flto -ffast-math -Wall -Wextra -std=c11
 TARGET  = hcp-whisper
 SRC     = src/main.c
 

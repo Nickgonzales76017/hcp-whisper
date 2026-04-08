@@ -1,6 +1,6 @@
 {
   "algorithm": "Complex-Domain HCP Spectral Refinement",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "license": "MIT",
   "total_segments": 144,
   "hallucinated_segments": 1,
@@ -9,17 +9,17 @@
     "padded_fft_size": 4096,
     "flagged_tokens": 616,
     "flagged_segments": 31,
-    "elapsed_ms": 0.9,
+    "elapsed_ms": 1.3,
     "quality_base_avg": 0.8994,
     "quality_hcp_avg": 0.9960,
     "quality_uplift_pct": 10.7,
     "kiel": {
       "flagged_tokens": 0,
-      "elapsed_ms": 0.0
+      "elapsed_ms": 0.1
     },
     "et_gate": {
       "segments_gated": 2,
-      "elapsed_ms": 240.6
+      "elapsed_ms": 186.3
     },
     "semantic": {
       "low_coherence_segments": 0,
@@ -28,12 +28,12 @@
     "redecode": {
       "attempted": 1,
       "improved": 0,
-      "logit_biased": 59961,
-      "elapsed_ms": 319.8
+      "logit_biased": 60083,
+      "elapsed_ms": 385.9
     },
     "formant": {
       "segments_flagged": 0,
-      "elapsed_ms": 325.3
+      "elapsed_ms": 186.3
     }
   },
   "segments": [

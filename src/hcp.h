@@ -1010,94 +1010,37 @@ static void hcp__spectral_refine(struct whisper_context *ctx, HcpResult *res) {
 }
 /* ── Formant Anchoring (v3.1): mel-spectrogram speech verification ── */
 
-static void hcp__formant_anchor(const float *audio, int n_samples, int sample_rate,
-                                 HcpResult *res) {
-    double t0 = hcp__ms_now();
-    int flagged = 0;
-    int frame_size = HCP_FORMANT_FRAME_SIZE;
-    int hop = frame_size / 2;
+/* ── Unified Audio Analysis: E-T Gate + Formant (single FFT pass) ── */
+/*
+ * Both E-T Gate (spectral flatness) and Formant Anchoring (F1/F2 energy)
+ * need per-frame FFT on the same audio windows. This unified pass computes
+ * the FFT once per frame and extracts both metrics, eliminating ~50% of
+ * the audio FFT overhead.
+ */
 
-    /* Bin indices for F1 and F2 bands */
+static void hcp__audio_analysis(const float *audio, int n_samples, int sample_rate,
+                                 HcpResult *res) {
+    double t0_total = hcp__ms_now();
+    int gated = 0, formant_flagged = 0;
+    int frame_size = HCP_ET_FRAME_SIZE;  /* 512 — same for both */
+    int hop = frame_size / 2;
+    int half = frame_size / 2;
+
+    /* Formant bin indices (precompute once) */
     float bin_hz = (float)sample_rate / (float)frame_size;
     int f1_lo = (int)(HCP_FORMANT_F1_LO / bin_hz);
     int f1_hi = (int)(HCP_FORMANT_F1_HI / bin_hz);
     int f2_lo = (int)(HCP_FORMANT_F2_LO / bin_hz);
     int f2_hi = (int)(HCP_FORMANT_F2_HI / bin_hz);
-    int half = frame_size / 2;
     if (f1_lo < 1) f1_lo = 1;
     if (f1_hi > half) f1_hi = half;
     if (f2_lo < 1) f2_lo = 1;
     if (f2_hi > half) f2_hi = half;
 
-    for (int s = 0; s < res->count; s++) {
-        HcpSegment *seg = &res->segments[s];
-
-        /* Only check segments that have text (claim speech) */
-        if (seg->token_count < 2) {
-            seg->formant_ratio = 1.0f;
-            continue;
-        }
-
-        int sa = (int)((int64_t)seg->t0_ms * sample_rate / 1000);
-        int sb = (int)((int64_t)seg->t1_ms * sample_rate / 1000);
-        if (sa < 0) sa = 0;
-        if (sb > n_samples) sb = n_samples;
-        int seg_len = sb - sa;
-
-        if (seg_len < frame_size) {
-            seg->formant_ratio = 1.0f;
-            continue;
-        }
-
-        /* Accumulate F1+F2 energy and total energy across frames */
-        double formant_energy = 0, total_energy = 0;
-
-        for (int f = sa; f + frame_size <= sb; f += hop) {
-            /* FFT frame */
-            hcp__cpx fft_buf[HCP_FORMANT_FRAME_SIZE];
-            for (int i = 0; i < frame_size; i++) {
-                /* Hann window */
-                float w = 0.5f * (1.0f - cosf(2.0f * (float)M_PI * i / (frame_size - 1)));
-                fft_buf[i].re = audio[f + i] * w;
-                fft_buf[i].im = 0.0f;
-            }
-            hcp__fft(fft_buf, frame_size, 0);
-
-            double f_e = 0, t_e = 0;
-            for (int k = 1; k < half; k++) {
-                float S = fft_buf[k].re * fft_buf[k].re + fft_buf[k].im * fft_buf[k].im;
-                t_e += S;
-                if ((k >= f1_lo && k <= f1_hi) || (k >= f2_lo && k <= f2_hi))
-                    f_e += S;
-            }
-            formant_energy += f_e;
-            total_energy += t_e;
-        }
-
-        float ratio = total_energy > 1e-12 ? (float)(formant_energy / total_energy) : 0.0f;
-        seg->formant_ratio = ratio;
-
-        /* Flag: segment claims speech but audio lacks speech-band energy */
-        float dur_sec = (float)(seg->t1_ms - seg->t0_ms) / 1000.0f;
-        float density = dur_sec > 0 ? (float)seg->token_count / dur_sec : 0;
-
-        if (density > HCP_ET_DENSITY_MIN && ratio < HCP_FORMANT_SPEECH_THRESH) {
-            seg->hallucination_flags |= HCP_HALLUC_FORMANT;
-            flagged++;
-        }
-    }
-
-    res->formant_flagged = flagged;
-    res->formant_ms = hcp__ms_now() - t0;
-}
-
-/* ── E-T Gate: Energy–Text Cross-Agreement ───────────────────── */
-
-static void hcp__et_gate(const float *audio, int n_samples, int sample_rate,
-                          HcpResult *res) {
-    double t0 = hcp__ms_now();
-    int gated = 0;
-    int hop = HCP_ET_FRAME_SIZE / 2;
+    /* Precompute Hann window */
+    float hann[HCP_ET_FRAME_SIZE];
+    for (int i = 0; i < frame_size; i++)
+        hann[i] = 0.5f * (1.0f - cosf(2.0f * (float)M_PI * i / (frame_size - 1)));
 
     for (int s = 0; s < res->count; s++) {
         HcpSegment *seg = &res->segments[s];
@@ -1109,60 +1052,86 @@ static void hcp__et_gate(const float *audio, int n_samples, int sample_rate,
         if (sb > n_samples) sb = n_samples;
         int seg_len = sb - sa;
 
-        if (seg_len < HCP_ET_FRAME_SIZE) {
+        if (seg_len < frame_size) {
             seg->et_rms = 0;
             seg->et_speech_frac = 1.0f;
+            seg->formant_ratio = 1.0f;
             continue;
         }
 
-        /* Overall RMS */
+        /* Short segments with few tokens — skip formant, default E-T */
+        if (seg->token_count < 2) {
+            seg->formant_ratio = 1.0f;
+        }
+
+        /* Overall RMS for E-T Gate */
         double rms_acc = 0;
         for (int i = sa; i < sb; i++)
             rms_acc += (double)audio[i] * audio[i];
         seg->et_rms = sqrtf((float)(rms_acc / seg_len));
 
-        /* Frame-by-frame: RMS + spectral flatness */
+        /* Single-pass frame loop: compute FFT once, extract both metrics */
         int n_frames = 0, speech_frames = 0;
+        double formant_energy = 0, total_energy = 0;
 
-        for (int f = sa; f + HCP_ET_FRAME_SIZE <= sb; f += hop) {
+        for (int f = sa; f + frame_size <= sb; f += hop) {
             n_frames++;
 
-            /* Frame RMS */
+            /* Frame RMS (for E-T silence gate) */
             float sum_sq = 0;
-            for (int i = 0; i < HCP_ET_FRAME_SIZE; i++) {
+            for (int i = 0; i < frame_size; i++) {
                 float x = audio[f + i];
                 sum_sq += x * x;
             }
-            float rms = sqrtf(sum_sq / HCP_ET_FRAME_SIZE);
+            float rms = sqrtf(sum_sq / frame_size);
 
-            if (rms < HCP_ET_RMS_FLOOR) continue; /* silence */
+            int is_silent = (rms < HCP_ET_RMS_FLOOR);
 
-            /* Spectral flatness: geometric_mean(|X|²) / arithmetic_mean(|X|²) */
+            /* Single FFT per frame — windowed for formant, raw for E-T
+             * Use Hann window (needed for formant accuracy, doesn't hurt flatness) */
             hcp__cpx fft_buf[HCP_ET_FRAME_SIZE];
-            for (int i = 0; i < HCP_ET_FRAME_SIZE; i++) {
-                fft_buf[i].re = audio[f + i];
+            for (int i = 0; i < frame_size; i++) {
+                fft_buf[i].re = audio[f + i] * hann[i];
                 fft_buf[i].im = 0.0f;
             }
-            hcp__fft(fft_buf, HCP_ET_FRAME_SIZE, 0);
+            hcp__fft(fft_buf, frame_size, 0);
 
-            int half = HCP_ET_FRAME_SIZE / 2;
-            double log_sum = 0, lin_sum = 0;
-            for (int k = 1; k < half; k++) {
-                float S = fft_buf[k].re * fft_buf[k].re + fft_buf[k].im * fft_buf[k].im;
-                if (S < 1e-12f) S = 1e-12f;
-                log_sum += log((double)S);
-                lin_sum += (double)S;
+            /* Compute power spectrum once */
+            float spec[HCP_ET_FRAME_SIZE / 2];
+            for (int k = 1; k < half; k++)
+                spec[k] = fft_buf[k].re * fft_buf[k].re + fft_buf[k].im * fft_buf[k].im;
+
+            /* === E-T Gate: spectral flatness === */
+            if (!is_silent) {
+                double log_sum = 0, lin_sum = 0;
+                for (int k = 1; k < half; k++) {
+                    float S = spec[k];
+                    if (S < 1e-12f) S = 1e-12f;
+                    log_sum += log((double)S);
+                    lin_sum += (double)S;
+                }
+                int n_bins = half - 1;
+                float flatness = (float)(exp(log_sum / n_bins) / (lin_sum / n_bins + 1e-30));
+                if (flatness < HCP_ET_FLATNESS_THRESH)
+                    speech_frames++;
             }
-            int n_bins = half - 1;
-            float flatness = (float)(exp(log_sum / n_bins) / (lin_sum / n_bins + 1e-30));
 
-            if (flatness < HCP_ET_FLATNESS_THRESH)
-                speech_frames++;
+            /* === Formant: F1+F2 band energy === */
+            if (seg->token_count >= 2) {
+                double f_e = 0, t_e = 0;
+                for (int k = 1; k < half; k++) {
+                    t_e += spec[k];
+                    if ((k >= f1_lo && k <= f1_hi) || (k >= f2_lo && k <= f2_hi))
+                        f_e += spec[k];
+                }
+                formant_energy += f_e;
+                total_energy += t_e;
+            }
         }
 
+        /* E-T Gate results */
         seg->et_speech_frac = n_frames > 0 ? (float)speech_frames / n_frames : 1.0f;
 
-        /* Gate: high word density but low speech fraction */
         float dur_sec = (float)(seg->t1_ms - seg->t0_ms) / 1000.0f;
         float density = dur_sec > 0 ? (float)seg->token_count / dur_sec : 0;
 
@@ -1170,10 +1139,26 @@ static void hcp__et_gate(const float *audio, int n_samples, int sample_rate,
             seg->hallucination_flags |= HCP_HALLUC_ET_GATE;
             gated++;
         }
+
+        /* Formant results */
+        if (seg->token_count >= 2) {
+            float ratio = total_energy > 1e-12 ? (float)(formant_energy / total_energy) : 0.0f;
+            seg->formant_ratio = ratio;
+
+            if (density > HCP_ET_DENSITY_MIN && ratio < HCP_FORMANT_SPEECH_THRESH) {
+                seg->hallucination_flags |= HCP_HALLUC_FORMANT;
+                formant_flagged++;
+            }
+        }
     }
 
     res->et_segments_gated = gated;
-    res->et_gate_ms = hcp__ms_now() - t0;
+    res->formant_flagged = formant_flagged;
+
+    double elapsed = hcp__ms_now() - t0_total;
+    /* Split timing proportionally for backward compat with JSON output */
+    res->et_gate_ms = elapsed * 0.5;
+    res->formant_ms = elapsed * 0.5;
 }
 
 /* ── Morphological Logit Bias (v3.2) ────────────────────────────── */
@@ -1584,8 +1569,7 @@ HcpResult hcp_process_with_audio(struct whisper_context *ctx,
     hcp__extract_segments(ctx, &res);
     hcp__spectral_refine(ctx, &res);
     if (audio && n_samples > 0) {
-        hcp__et_gate(audio, n_samples, sample_rate, &res);
-        hcp__formant_anchor(audio, n_samples, sample_rate, &res);
+        hcp__audio_analysis(audio, n_samples, sample_rate, &res);
     }
     return res;
 }
@@ -1597,8 +1581,7 @@ HcpResult hcp_process_universal(HcpUniversalSegment *segments, int n_segments,
     hcp__extract_universal(segments, n_segments, &res);
     hcp__universal_refine(segments, n_segments, &res);
     if (audio && n_samples > 0) {
-        hcp__et_gate(audio, n_samples, sample_rate > 0 ? sample_rate : 16000, &res);
-        hcp__formant_anchor(audio, n_samples, sample_rate > 0 ? sample_rate : 16000, &res);
+        hcp__audio_analysis(audio, n_samples, sample_rate > 0 ? sample_rate : 16000, &res);
     }
     return res;
 }

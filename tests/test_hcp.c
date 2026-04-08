@@ -459,7 +459,7 @@ static void test_kiel_adaptive(void) {
     free(res.segments);
 }
 
-/* ─── Test: E-T Gate audio analysis ─────────────────────────────── */
+/* ─── Test: Audio analysis (unified E-T Gate + Formant) ─────────── */
 
 static void test_et_gate_silence(void) {
     printf("  test_et_gate_silence...\n");
@@ -479,7 +479,7 @@ static void test_et_gate_silence(void) {
     res.segments[0].t1_ms = 2000;
     res.segments[0].token_count = 10;   /* ~5 tokens/sec — suspicious over silence */
 
-    hcp__et_gate(audio, n_samples, sample_rate, &res);
+    hcp__audio_analysis(audio, n_samples, sample_rate, &res);
 
     /* RMS should be ~0 */
     ASSERT_FLOAT_EQ(res.segments[0].et_rms, 0.0f, 0.001f, "silence RMS should be ~0");
@@ -490,6 +490,9 @@ static void test_et_gate_silence(void) {
     ASSERT(res.segments[0].hallucination_flags & HCP_HALLUC_ET_GATE,
            "high density over silence should be flagged by E-T Gate");
     ASSERT(res.et_segments_gated == 1, "should gate 1 segment");
+    /* Formant should also be flagged (silence has no F1/F2 energy) */
+    ASSERT(res.segments[0].hallucination_flags & HCP_HALLUC_FORMANT,
+           "silence should also be flagged by formant");
 
     free(audio);
     free(res.segments);
@@ -520,7 +523,7 @@ static void test_et_gate_speech(void) {
     res.segments[0].t1_ms = 2000;
     res.segments[0].token_count = 10;
 
-    hcp__et_gate(audio, n_samples, sample_rate, &res);
+    hcp__audio_analysis(audio, n_samples, sample_rate, &res);
 
     /* RMS should be significant */
     ASSERT(res.segments[0].et_rms > 0.1f, "speech-like audio should have high RMS");
@@ -531,6 +534,9 @@ static void test_et_gate_speech(void) {
     ASSERT(!(res.segments[0].hallucination_flags & HCP_HALLUC_ET_GATE),
            "speech-like audio with tokens should NOT be gated");
     ASSERT(res.et_segments_gated == 0, "should gate 0 segments");
+    /* Formant should detect speech-band energy */
+    ASSERT(res.segments[0].formant_ratio > 0.0f,
+           "speech-like audio should have formant energy");
 
     free(audio);
     free(res.segments);
@@ -559,14 +565,14 @@ static void test_et_gate_noise(void) {
     res.segments[0].t1_ms = 2000;
     res.segments[0].token_count = 10;    /* high density over noise = suspicious */
 
-    hcp__et_gate(audio, n_samples, sample_rate, &res);
+    hcp__audio_analysis(audio, n_samples, sample_rate, &res);
 
     /* RMS should be significant (noise has energy) */
     ASSERT(res.segments[0].et_rms > 0.05f, "noise should have measurable RMS");
-    /* E-T Gate should process without crashing; speech_frac depends on noise quality */
+    /* Unified analysis should process without crashing; speech_frac depends on noise quality */
     ASSERT(res.segments[0].et_speech_frac >= 0.0f && res.segments[0].et_speech_frac <= 1.0f,
            "speech_frac should be in [0, 1]");
-    ASSERT(res.et_gate_ms >= 0, "E-T Gate timing should be non-negative");
+    ASSERT(res.et_gate_ms >= 0, "audio analysis timing should be non-negative");
 
     free(audio);
     free(res.segments);

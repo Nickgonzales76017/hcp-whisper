@@ -313,10 +313,10 @@ static const char *find_model_by_size(const char *size) {
     const char *home = getenv("HOME");
     if (!home) return NULL;
 
-    /* Try float16 first, then quantized variants (largest to smallest) */
+    /* Prefer q4_0 (best size/quality ratio), then other quants, fp16 last */
     const char *suffixes[] = {
-        ".bin", "-q8_0.bin", "-q5_k.bin", "-q5_0.bin",
-        "-q4_k.bin", "-q4_0.bin", "-q3_k.bin", "-q2_k.bin", NULL
+        "-q4_0.bin", "-q5_0.bin", "-q4_k.bin", "-q5_k.bin",
+        "-q4_1.bin", "-q8_0.bin", ".bin", "-q3_k.bin", "-q2_k.bin", NULL
     };
     const char *variants[] = { ".en", "", NULL };
 
