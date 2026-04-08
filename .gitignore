@@ -1,0 +1,26 @@
+# Build output
+hcp-whisper
+hcp-test
+gen-freq-table
+
+# Object files
+*.o
+*.a
+*.so
+*.dylib
+*.dSYM/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Large test audio (too large for git)
+tests/audio/
+
+# Model files
+*.bin
+*.pt
+
+# IDE
+.vscode/
+.idea/
