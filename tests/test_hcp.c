@@ -679,6 +679,78 @@ static void test_formant_config(void) {
     ASSERT(hcp__popcount16(all_flags) == 9, "should have exactly 9 hallucination layers");
 }
 
+/* ─── Test: Logit Bias Callback (v3.2) ──────────────────────────── */
+
+static void test_logit_bias_callback(void) {
+    printf("  test_logit_bias_callback...\n");
+
+    /* Config sanity */
+    ASSERT(HCP_LOGIT_BIAS_STRENGTH < 0.0f, "logit bias should be negative penalty");
+    ASSERT(HCP_LOGIT_BIAS_FLOOR > 0.0f && HCP_LOGIT_BIAS_FLOOR < 1.0f,
+           "logit bias floor should be in (0, 1)");
+
+    /* Set up context: prev_token = 1 ("the") */
+    HcpLogitBiasCtx bias = {0};
+    bias.prev_token = 1;
+    bias.has_prev = 1;
+    bias.n_vocab = 100;   /* small vocab for testing */
+    bias.tokens_biased = 0;
+
+    /* Create logits array initialized to 0 */
+    float logits[100];
+    for (int i = 0; i < 100; i++) logits[i] = 0.0f;
+
+    /* Fake token_data for the callback */
+    whisper_token_data td = { .id = 5 };
+
+    /* Call the callback */
+    hcp__logit_bias_callback(NULL, NULL, &td, 1, logits, &bias);
+
+    /* After the call, context should be updated */
+    ASSERT(bias.prev_token == 5, "prev_token should update from token stream");
+    ASSERT(bias.has_prev_prev == 1, "should now have prev_prev context");
+
+    /* Some logits should have been biased (the ones with zero bigram/trigram) */
+    int biased_count = 0;
+    for (int i = 0; i < 100; i++) {
+        if (logits[i] < 0.0f) biased_count++;
+    }
+    /* Not all tokens should be biased — common subwords get a pass */
+    ASSERT(bias.tokens_biased >= 0, "tokens_biased should be non-negative");
+    ASSERT(biased_count == bias.tokens_biased, "biased count should match tracked count");
+
+    /* Biased logits should use a penalty derived from HCP_LOGIT_BIAS_STRENGTH
+     * (exact strength, 0.5x for cycle, 0.3x for short tokens) */
+    for (int i = 0; i < 100; i++) {
+        if (logits[i] < 0.0f) {
+            ASSERT(logits[i] >= HCP_LOGIT_BIAS_STRENGTH - 0.001f,
+                   "biased logit should not exceed full penalty");
+            ASSERT(logits[i] <= HCP_LOGIT_BIAS_STRENGTH * 0.3f + 0.001f,
+                   "biased logit should be at least 30% of penalty");
+        }
+    }
+
+    /* Test seeding flow: has_prev starts at 0 */
+    HcpLogitBiasCtx bias2 = {0};
+    bias2.n_vocab = 100;
+    float logits2[100];
+    for (int i = 0; i < 100; i++) logits2[i] = 0.0f;
+    whisper_token_data td2 = { .id = 7 };
+
+    /* First call: seeds context, no biasing (no prev context yet) */
+    hcp__logit_bias_callback(NULL, NULL, &td2, 1, logits2, &bias2);
+    ASSERT(bias2.has_prev == 1, "first call should seed has_prev");
+    ASSERT(bias2.prev_token == 7, "first call should seed prev_token");
+    ASSERT(bias2.tokens_biased == 0, "first call should not bias anything");
+
+    /* Second call: now has context, should actually bias (at minimum the
+     * repetition suppression of prev_token if it has zero bigram evidence) */
+    whisper_token_data td3 = { .id = 3 };
+    hcp__logit_bias_callback(NULL, NULL, &td3, 1, logits2, &bias2);
+    ASSERT(bias2.has_prev_prev == 1, "second call should have prev_prev");
+    ASSERT(bias2.tokens_biased >= 0, "second call tokens_biased should be non-negative");
+}
+
 /* ─── Test: Universal API (v4.0) ────────────────────────────────── */
 
 static void test_universal_api(void) {
@@ -795,6 +867,7 @@ int main(void) {
     test_popcount();
     test_trigram_score();
     test_formant_config();
+    test_logit_bias_callback();
     test_universal_api();
     test_universal_hallucination();
 

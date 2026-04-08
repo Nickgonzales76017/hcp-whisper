@@ -187,6 +187,7 @@ static void write_json(const char *path, HcpResult *res) {
     fprintf(fp, "    \"redecode\": {\n");
     fprintf(fp, "      \"attempted\": %d,\n", res->redecode_count);
     fprintf(fp, "      \"improved\": %d,\n", res->redecode_improved);
+    fprintf(fp, "      \"logit_biased\": %d,\n", res->logit_bias_tokens);
     fprintf(fp, "      \"elapsed_ms\": %.1f\n", res->redecode_ms);
     fprintf(fp, "    },\n");
     fprintf(fp, "    \"formant\": {\n");
@@ -312,8 +313,11 @@ static const char *find_model_by_size(const char *size) {
     const char *home = getenv("HOME");
     if (!home) return NULL;
 
-    /* Try quantized first, then float16 */
-    const char *suffixes[] = { "-q5_0.bin", ".bin", NULL };
+    /* Try float16 first, then quantized variants (largest to smallest) */
+    const char *suffixes[] = {
+        ".bin", "-q8_0.bin", "-q5_k.bin", "-q5_0.bin",
+        "-q4_k.bin", "-q4_0.bin", "-q3_k.bin", "-q2_k.bin", NULL
+    };
     const char *variants[] = { ".en", "", NULL };
 
     for (int s = 0; suffixes[s]; s++) {
@@ -322,6 +326,20 @@ static const char *find_model_by_size(const char *size) {
                      home, size, variants[v], suffixes[s]);
             if (access(path, R_OK) == 0) return path;
         }
+    }
+    return NULL;
+}
+
+/* Find a specific model size + quantization combo */
+static const char *find_model_by_size_quant(const char *size, const char *quant) {
+    static char path[PATH_MAX];
+    const char *home = getenv("HOME");
+    if (!home) return NULL;
+    const char *variants[] = { ".en", "", NULL };
+    for (int v = 0; variants[v]; v++) {
+        snprintf(path, sizeof(path), "%s/.local/share/whisper/ggml-%s%s-%s.bin",
+                 home, size, variants[v], quant);
+        if (access(path, R_OK) == 0) return path;
     }
     return NULL;
 }
@@ -349,6 +367,7 @@ static void usage(const char *prog) {
         "Options:\n"
         "  --model <path>       Path to whisper GGML model\n"
         "  --model-size <size>  Model size: tiny, base, small, medium, large (default: base)\n"
+        "  --quant <type>       Quantization: q2_k, q3_k, q4_0, q4_k, q5_0, q5_k, q8_0 (default: auto)\n"
         "  --language <lang>    Language code (default: en)\n"
         "  --beam-size <n>      Beam search width (default: 5)\n"
         "  --threads <n>        CPU threads (default: 4)\n"
@@ -375,6 +394,7 @@ int main(int argc, char **argv) {
     const char *output_dir = NULL;
     const char *model_path = NULL;
     const char *model_size = NULL;
+    const char *model_quant = NULL;
     const char *language = "en";
     int beam_size = 5;
     int threads = 4;
@@ -389,6 +409,8 @@ int main(int argc, char **argv) {
             model_path = argv[++i];
         } else if (strcmp(argv[i], "--model-size") == 0 && i + 1 < argc) {
             model_size = argv[++i];
+        } else if (strcmp(argv[i], "--quant") == 0 && i + 1 < argc) {
+            model_quant = argv[++i];
         } else if (strcmp(argv[i], "--language") == 0 && i + 1 < argc) {
             language = argv[++i];
         } else if (strcmp(argv[i], "--beam-size") == 0 && i + 1 < argc) {
@@ -420,7 +442,15 @@ int main(int argc, char **argv) {
     if (!output_dir) output_dir = ".";
 
     /* Auto-detect model */
-    if (!model_path && model_size) {
+    if (!model_path && model_size && model_quant) {
+        model_path = find_model_by_size_quant(model_size, model_quant);
+        if (!model_path) {
+            fprintf(stderr, "error: no whisper model found for size '%s' quant '%s'\n"
+                            "  Expected: ~/.local/share/whisper/ggml-%s.en-%s.bin\n",
+                    model_size, model_quant, model_size, model_quant);
+            return 1;
+        }
+    } else if (!model_path && model_size) {
         model_path = find_model_by_size(model_size);
         if (!model_path) {
             fprintf(stderr, "error: no whisper model found for size '%s'\n"
@@ -505,12 +535,13 @@ int main(int argc, char **argv) {
     HcpResult result = hcp_process_with_audio(ctx, audio, audio_len, 16000);
     result.decode_ms = decode_ms;
 
-    /* Re-decode hallucinated segments (v2.1) */
+    /* Re-decode hallucinated segments (v2.1 + v3.2 logit bias) */
     if (use_hcp) {
         int redecoded = hcp_redecode(ctx, audio, audio_len, 16000, wparams, &result);
-        if (redecoded > 0) {
-            fprintf(stderr, "[hcp-whisper] re-decode: %d/%d improved, %.1f ms\n",
-                    result.redecode_improved, result.redecode_count, result.redecode_ms);
+        if (redecoded > 0 || result.redecode_count > 0) {
+            fprintf(stderr, "[hcp-whisper] re-decode: %d/%d improved, %d logit-biased, %.1f ms\n",
+                    result.redecode_improved, result.redecode_count,
+                    result.logit_bias_tokens, result.redecode_ms);
         }
     }
 
