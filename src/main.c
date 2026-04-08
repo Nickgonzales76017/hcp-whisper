@@ -158,7 +158,7 @@ static void write_json(const char *path, HcpResult *res) {
 
     fprintf(fp, "{\n");
     fprintf(fp, "  \"algorithm\": \"Complex-Domain HCP Spectral Refinement\",\n");
-    fprintf(fp, "  \"version\": \"1.0.0\",\n");
+    fprintf(fp, "  \"version\": \"2.0.0\",\n");
     fprintf(fp, "  \"license\": \"MIT\",\n");
     fprintf(fp, "  \"total_segments\": %d,\n", res->count);
     fprintf(fp, "  \"hallucinated_segments\": %d,\n", res->segments_hallucinated);
@@ -170,8 +170,16 @@ static void write_json(const char *path, HcpResult *res) {
     fprintf(fp, "    \"elapsed_ms\": %.1f,\n", res->hcp_ms);
     fprintf(fp, "    \"quality_base_avg\": %.4f,\n", res->count > 0 ? q_base_sum / res->count : 0.0f);
     fprintf(fp, "    \"quality_hcp_avg\": %.4f,\n", res->count > 0 ? q_hcp_sum / res->count : 0.0f);
-    fprintf(fp, "    \"quality_uplift_pct\": %.1f\n",
+    fprintf(fp, "    \"quality_uplift_pct\": %.1f,\n",
             res->count > 0 && q_base_sum > 0 ? ((q_hcp_sum - q_base_sum) / q_base_sum * 100.0f) : 0.0f);
+    fprintf(fp, "    \"kiel\": {\n");
+    fprintf(fp, "      \"flagged_tokens\": %d,\n", res->kiel_flagged_tokens);
+    fprintf(fp, "      \"elapsed_ms\": %.1f\n", res->kiel_ms);
+    fprintf(fp, "    },\n");
+    fprintf(fp, "    \"et_gate\": {\n");
+    fprintf(fp, "      \"segments_gated\": %d,\n", res->et_segments_gated);
+    fprintf(fp, "      \"elapsed_ms\": %.1f\n", res->et_gate_ms);
+    fprintf(fp, "    }\n");
     fprintf(fp, "  },\n");
     fprintf(fp, "  \"segments\": [\n");
 
@@ -185,6 +193,9 @@ static void write_json(const char *path, HcpResult *res) {
         fprintf(fp, "      \"hcp_quality\": %.4f,\n", s->hcp_quality);
         fprintf(fp, "      \"hallucination_flags\": %d,\n", s->hallucination_flags);
         fprintf(fp, "      \"hcp_flagged_tokens\": %d,\n", s->hcp_flagged_count);
+        fprintf(fp, "      \"et_rms\": %.4f,\n", s->et_rms);
+        fprintf(fp, "      \"et_speech_frac\": %.2f,\n", s->et_speech_frac);
+        fprintf(fp, "      \"kiel_max_innovation\": %.2f,\n", s->kiel_max_innov);
         fprintf(fp, "      \"token_count\": %d,\n", s->token_count);
         fprintf(fp, "      \"speaker_turn\": %s,\n", s->speaker_turn ? "true" : "false");
         /* JSON-safe text */
@@ -414,10 +425,9 @@ int main(int argc, char **argv) {
     int ret = whisper_full(ctx, wparams, audio, audio_len);
     double decode_ms = hcp__ms_now() - t_start;
 
-    free(audio);
-
     if (ret != 0) {
         fprintf(stderr, "error: whisper_full() failed (%d)\n", ret);
+        free(audio);
         whisper_free(ctx);
         return 1;
     }
@@ -425,9 +435,11 @@ int main(int argc, char **argv) {
     fprintf(stderr, "[hcp-whisper] decode: %.1f ms (%d segments)\n",
             decode_ms, whisper_full_n_segments(ctx));
 
-    /* Run HCP */
-    HcpResult result = hcp_process(ctx);
+    /* Run HCP (with audio for E-T Gate) */
+    HcpResult result = hcp_process_with_audio(ctx, audio, audio_len, 16000);
     result.decode_ms = decode_ms;
+
+    free(audio);
 
     if (use_hcp) {
         fprintf(stderr, "[hcp-whisper] HCP: %d tokens, %d flagged (%.1f%%), "
@@ -435,6 +447,11 @@ int main(int argc, char **argv) {
                 result.hcp_tokens, result.hcp_flagged_tokens,
                 result.hcp_tokens > 0 ? (float)result.hcp_flagged_tokens / result.hcp_tokens * 100 : 0,
                 result.hcp_flagged_segments, result.hcp_ms);
+
+        fprintf(stderr, "[hcp-whisper] KIEL-CC: %d tokens flagged, %.1f ms\n",
+                result.kiel_flagged_tokens, result.kiel_ms);
+        fprintf(stderr, "[hcp-whisper] E-T Gate: %d segments gated, %.1f ms\n",
+                result.et_segments_gated, result.et_gate_ms);
 
         /* Print quality summary */
         float q_base = 0, q_hcp = 0;

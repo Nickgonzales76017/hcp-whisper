@@ -47,12 +47,42 @@ extern "C" {
 #define HCP_DT_BUCKETS            16
 #endif
 
+/* E-T Gate configuration */
+#ifndef HCP_ET_FRAME_SIZE
+#define HCP_ET_FRAME_SIZE       512     /* samples per frame (32ms @ 16kHz, must be pow2) */
+#endif
+#ifndef HCP_ET_RMS_FLOOR
+#define HCP_ET_RMS_FLOOR        0.01f   /* -40 dBFS silence threshold */
+#endif
+#ifndef HCP_ET_FLATNESS_THRESH
+#define HCP_ET_FLATNESS_THRESH  0.7f    /* above = noise-like */
+#endif
+#ifndef HCP_ET_SPEECH_MIN
+#define HCP_ET_SPEECH_MIN       0.25f   /* need ≥25% speech-like frames */
+#endif
+#ifndef HCP_ET_DENSITY_MIN
+#define HCP_ET_DENSITY_MIN      1.5f    /* tokens/sec to trigger gate */
+#endif
+
+/* KIEL-CC configuration */
+#ifndef HCP_KIEL_INNOV_THRESH
+#define HCP_KIEL_INNOV_THRESH   3.0f    /* flag if normalized innovation > this */
+#endif
+#ifndef HCP_KIEL_Q
+#define HCP_KIEL_Q              0.01f   /* Kalman process noise */
+#endif
+#ifndef HCP_KIEL_R
+#define HCP_KIEL_R              0.1f    /* Kalman measurement noise */
+#endif
+
 /* Hallucination flag bits */
 #define HCP_HALLUC_HIGH_COMPRESS   0x01
 #define HCP_HALLUC_NGRAM_REPEAT    0x02
 #define HCP_HALLUC_VLEN_ANOMALY    0x04
 #define HCP_HALLUC_LOW_LOGPROB     0x08
 #define HCP_HALLUC_SPECTRAL        0x10
+#define HCP_HALLUC_ET_GATE         0x20
+#define HCP_HALLUC_KALMAN          0x40
 
 /* ─── Structures ────────────────────────────────────────────────── */
 
@@ -70,6 +100,9 @@ typedef struct {
     int      speaker_turn;
     int      token_count;
     int      hcp_flagged_count;   /* tokens flagged by HCP in this segment */
+    float    et_rms;              /* E-T Gate: segment audio RMS energy */
+    float    et_speech_frac;      /* E-T Gate: speech-like frame fraction */
+    float    kiel_max_innov;      /* KIEL-CC: max normalized innovation */
     char     text[HCP_MAX_TEXT_LEN];
 } HcpSegment;
 
@@ -90,6 +123,13 @@ typedef struct {
     float *hcp_mag_corrected;     /* per-token corrected magnitude */
     float *hcp_phase_shift;       /* per-token |Δφ| */
     int   *hcp_token_seg_map;     /* flat token → segment index */
+    /* E-T Gate internals */
+    double et_gate_ms;
+    int    et_segments_gated;
+    /* KIEL-CC internals */
+    double kiel_ms;
+    int    kiel_flagged_tokens;
+    float *kiel_innovation;       /* per-token normalized Kalman innovation */
 } HcpResult;
 
 /* ─── API ───────────────────────────────────────────────────────── */
@@ -109,6 +149,11 @@ float hcp_compression_ratio(const char *text);
 
 /* Utility: detect n-gram repetition (returns 1 if repetitive). */
 int hcp_detect_ngram_repeat(const char *text);
+
+/* Full pipeline with audio: includes E-T Gate (audio-text verification).
+ * Call instead of hcp_process() when raw audio samples are available. */
+HcpResult hcp_process_with_audio(struct whisper_context *ctx,
+                                  const float *audio, int n_samples, int sample_rate);
 
 #ifdef __cplusplus
 }
@@ -314,7 +359,82 @@ static int hcp__quant_dt(int64_t dt_ms) {
     if (q >= HCP_DT_BUCKETS) q = HCP_DT_BUCKETS - 1;
     return q;
 }
+/* ── KIEL-CC: Kalman Innovation Error Localization ───────────────── */
 
+static void hcp__kiel_cc(hcp__cpx *z_orig, int N, int *seg_map, int ns,
+                          HcpResult *res) {
+    double t0 = hcp__ms_now();
+    float *innovation = (float *)calloc((size_t)N, sizeof(float));
+    if (!innovation) { res->kiel_ms = hcp__ms_now() - t0; return; }
+
+    /* Adaptive alpha from lag-1 autocorrelation */
+    float alpha = 0.95f;
+    int warmup = N / 10;
+    if (warmup < 20) warmup = 20;
+    if (warmup > N) warmup = N;
+    if (N > 20) {
+        double sum_xy = 0, sum_xx = 0;
+        for (int i = 0; i < warmup - 1; i++) {
+            sum_xy += (double)z_orig[i].re * z_orig[i+1].re
+                    + (double)z_orig[i].im * z_orig[i+1].im;
+            sum_xx += (double)z_orig[i].re * z_orig[i].re
+                    + (double)z_orig[i].im * z_orig[i].im;
+        }
+        if (sum_xx > 1e-8) {
+            float a = (float)(sum_xy / sum_xx);
+            if (a > 0.1f && a < 0.999f) alpha = a;
+        }
+    }
+
+    /* Parallel Kalman filters on real and imaginary channels */
+    float x_re = z_orig[0].re, x_im = z_orig[0].im;
+    float P_re = 1.0f, P_im = 1.0f;
+    float Q = HCP_KIEL_Q, R_kiel = HCP_KIEL_R;
+
+    int n_flagged = 0;
+    float *seg_max = (float *)calloc((size_t)ns, sizeof(float));
+
+    for (int i = 0; i < N; i++) {
+        /* Predict */
+        float pred_re = alpha * x_re;
+        float pred_im = alpha * x_im;
+        float Pp_re = alpha * alpha * P_re + Q;
+        float Pp_im = alpha * alpha * P_im + Q;
+
+        /* Innovation */
+        float inn_re = z_orig[i].re - pred_re;
+        float inn_im = z_orig[i].im - pred_im;
+        float S_re = Pp_re + R_kiel;
+        float S_im = Pp_im + R_kiel;
+
+        /* Normalized innovation magnitude */
+        float norm_inn = sqrtf(inn_re * inn_re / S_re + inn_im * inn_im / S_im);
+        innovation[i] = norm_inn;
+
+        /* Kalman update */
+        float K_re = Pp_re / S_re;
+        float K_im = Pp_im / S_im;
+        x_re = pred_re + K_re * inn_re;
+        x_im = pred_im + K_im * inn_im;
+        P_re = (1.0f - K_re) * Pp_re;
+        P_im = (1.0f - K_im) * Pp_im;
+
+        /* Track per-segment max */
+        if (seg_map && seg_map[i] < ns && norm_inn > seg_max[seg_map[i]])
+            seg_max[seg_map[i]] = norm_inn;
+
+        if (norm_inn > HCP_KIEL_INNOV_THRESH) n_flagged++;
+    }
+
+    for (int s = 0; s < ns; s++)
+        res->segments[s].kiel_max_innov = seg_max[s];
+
+    res->kiel_flagged_tokens = n_flagged;
+    res->kiel_innovation = innovation;
+    res->kiel_ms = hcp__ms_now() - t0;
+
+    free(seg_max);
+}
 /* ── Segment extraction ──────────────────────────────────────────── */
 
 static int hcp__extract_segments(struct whisper_context *ctx, HcpResult *res) {
@@ -557,6 +677,9 @@ static void hcp__spectral_refine(struct whisper_context *ctx, HcpResult *res) {
     memcpy(z_orig, z, (size_t)N2 * sizeof(hcp__cpx));
     for (int i = 0; i < N; i++) mag_o[i] = hcp__cpx_mag(z_orig[i]);
 
+    /* Step 3b: KIEL-CC on complex-lifted signal */
+    hcp__kiel_cc(z_orig, N, seg_map, ns, res);
+
     /* Step 4: FFT */
     hcp__fft(z, N2, 0);
 
@@ -651,20 +774,37 @@ static void hcp__spectral_refine(struct whisper_context *ctx, HcpResult *res) {
         res->segments[s].hcp_flagged_count = per_seg_flagged[s];
     }
 
-    /* Step 8: Enhanced quality */
+    /* Step 8: Enhanced quality (with KIEL-CC integration) */
     for (int s = 0; s < ns; s++) {
         float sum_ratio = 0.0f;
         int cnt = 0;
+        int kiel_flags = 0;
         for (int i = 0; i < N; i++) {
-            if (seg_map[i] == s && mag_o[i] > 1e-8f) {
-                sum_ratio += mag_c[i] / mag_o[i];
-                cnt++;
+            if (seg_map[i] == s) {
+                if (mag_o[i] > 1e-8f) {
+                    sum_ratio += mag_c[i] / mag_o[i];
+                    cnt++;
+                }
+                if (res->kiel_innovation && res->kiel_innovation[i] > HCP_KIEL_INNOV_THRESH)
+                    kiel_flags++;
             }
         }
         float mean_ratio = cnt > 0 ? sum_ratio / (float)cnt : 1.0f;
         if (mean_ratio < 0.5f) mean_ratio = 0.5f;
         if (mean_ratio > 1.5f) mean_ratio = 1.5f;
-        res->segments[s].hcp_quality = res->segments[s].quality * mean_ratio;
+
+        /* KIEL penalty: dampen quality if innovation spikes cluster */
+        float kiel_factor = 1.0f;
+        if (cnt > 0 && kiel_flags > 0) {
+            float kiel_ratio = (float)kiel_flags / (float)cnt;
+            if (kiel_ratio > HCP_REDECODE_THRESH) {
+                res->segments[s].hallucination_flags |= HCP_HALLUC_KALMAN;
+                kiel_factor = 1.0f - 0.5f * kiel_ratio;
+                if (kiel_factor < 0.5f) kiel_factor = 0.5f;
+            }
+        }
+
+        res->segments[s].hcp_quality = res->segments[s].quality * mean_ratio * kiel_factor;
         if (res->segments[s].hcp_quality > 1.0f) res->segments[s].hcp_quality = 1.0f;
     }
 
@@ -683,7 +823,90 @@ static void hcp__spectral_refine(struct whisper_context *ctx, HcpResult *res) {
     free(per_seg_flagged);
     free(per_seg_total);
 }
+/* ── E-T Gate: Energy–Text Cross-Agreement ───────────────────── */
 
+static void hcp__et_gate(const float *audio, int n_samples, int sample_rate,
+                          HcpResult *res) {
+    double t0 = hcp__ms_now();
+    int gated = 0;
+    int hop = HCP_ET_FRAME_SIZE / 2;
+
+    for (int s = 0; s < res->count; s++) {
+        HcpSegment *seg = &res->segments[s];
+
+        /* Map segment timestamps to sample range */
+        int sa = (int)((int64_t)seg->t0_ms * sample_rate / 1000);
+        int sb = (int)((int64_t)seg->t1_ms * sample_rate / 1000);
+        if (sa < 0) sa = 0;
+        if (sb > n_samples) sb = n_samples;
+        int seg_len = sb - sa;
+
+        if (seg_len < HCP_ET_FRAME_SIZE) {
+            seg->et_rms = 0;
+            seg->et_speech_frac = 1.0f;
+            continue;
+        }
+
+        /* Overall RMS */
+        double rms_acc = 0;
+        for (int i = sa; i < sb; i++)
+            rms_acc += (double)audio[i] * audio[i];
+        seg->et_rms = sqrtf((float)(rms_acc / seg_len));
+
+        /* Frame-by-frame: RMS + spectral flatness */
+        int n_frames = 0, speech_frames = 0;
+
+        for (int f = sa; f + HCP_ET_FRAME_SIZE <= sb; f += hop) {
+            n_frames++;
+
+            /* Frame RMS */
+            float sum_sq = 0;
+            for (int i = 0; i < HCP_ET_FRAME_SIZE; i++) {
+                float x = audio[f + i];
+                sum_sq += x * x;
+            }
+            float rms = sqrtf(sum_sq / HCP_ET_FRAME_SIZE);
+
+            if (rms < HCP_ET_RMS_FLOOR) continue; /* silence */
+
+            /* Spectral flatness: geometric_mean(|X|²) / arithmetic_mean(|X|²) */
+            hcp__cpx fft_buf[HCP_ET_FRAME_SIZE];
+            for (int i = 0; i < HCP_ET_FRAME_SIZE; i++) {
+                fft_buf[i].re = audio[f + i];
+                fft_buf[i].im = 0.0f;
+            }
+            hcp__fft(fft_buf, HCP_ET_FRAME_SIZE, 0);
+
+            int half = HCP_ET_FRAME_SIZE / 2;
+            double log_sum = 0, lin_sum = 0;
+            for (int k = 1; k < half; k++) {
+                float S = fft_buf[k].re * fft_buf[k].re + fft_buf[k].im * fft_buf[k].im;
+                if (S < 1e-12f) S = 1e-12f;
+                log_sum += log((double)S);
+                lin_sum += (double)S;
+            }
+            int n_bins = half - 1;
+            float flatness = (float)(exp(log_sum / n_bins) / (lin_sum / n_bins + 1e-30));
+
+            if (flatness < HCP_ET_FLATNESS_THRESH)
+                speech_frames++;
+        }
+
+        seg->et_speech_frac = n_frames > 0 ? (float)speech_frames / n_frames : 1.0f;
+
+        /* Gate: high word density but low speech fraction */
+        float dur_sec = (float)(seg->t1_ms - seg->t0_ms) / 1000.0f;
+        float density = dur_sec > 0 ? (float)seg->token_count / dur_sec : 0;
+
+        if (density > HCP_ET_DENSITY_MIN && seg->et_speech_frac < HCP_ET_SPEECH_MIN) {
+            seg->hallucination_flags |= HCP_HALLUC_ET_GATE;
+            gated++;
+        }
+    }
+
+    res->et_segments_gated = gated;
+    res->et_gate_ms = hcp__ms_now() - t0;
+}
 /* ── Public API ──────────────────────────────────────────────────── */
 
 HcpResult hcp_process(struct whisper_context *ctx) {
@@ -693,12 +916,23 @@ HcpResult hcp_process(struct whisper_context *ctx) {
     return res;
 }
 
+HcpResult hcp_process_with_audio(struct whisper_context *ctx,
+                                  const float *audio, int n_samples, int sample_rate) {
+    HcpResult res = {0};
+    hcp__extract_segments(ctx, &res);
+    hcp__spectral_refine(ctx, &res);
+    if (audio && n_samples > 0)
+        hcp__et_gate(audio, n_samples, sample_rate, &res);
+    return res;
+}
+
 void hcp_free(HcpResult *r) {
     free(r->segments);
     free(r->hcp_mag_original);
     free(r->hcp_mag_corrected);
     free(r->hcp_phase_shift);
     free(r->hcp_token_seg_map);
+    free(r->kiel_innovation);
     memset(r, 0, sizeof(*r));
 }
 

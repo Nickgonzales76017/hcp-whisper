@@ -378,6 +378,200 @@ static void test_quantization(void) {
     ASSERT(hcp__quant_dt(-100) == 0, "negative dt clamps to 0");
 }
 
+/* ─── Test: KIEL-CC Kalman filter ───────────────────────────────── */
+
+static void test_kiel_kalman(void) {
+    printf("  test_kiel_kalman...\n");
+
+    /* Create a smooth signal with one spike (simulated anomaly) */
+    const int N = 64;
+    hcp__cpx z[64];
+    int seg_map[64];
+
+    for (int i = 0; i < N; i++) {
+        z[i].re = 0.5f + 0.1f * sinf((float)i * 0.2f);
+        z[i].im = 0.3f + 0.05f * cosf((float)i * 0.3f);
+        seg_map[i] = i / 16;   /* 4 segments of 16 tokens each */
+    }
+
+    /* Inject anomaly at token 32 */
+    z[32].re = 5.0f;
+    z[32].im = -4.0f;
+
+    HcpResult res = {0};
+    /* Allocate minimal segments */
+    res.segments = (HcpSegment *)calloc(4, sizeof(HcpSegment));
+    res.count = 4;
+    res.cap = 4;
+
+    hcp__kiel_cc(z, N, seg_map, 4, &res);
+
+    ASSERT(res.kiel_innovation != NULL, "KIEL should allocate innovation array");
+    ASSERT(res.kiel_ms >= 0, "KIEL timing should be non-negative");
+
+    /* Innovation at spike should be much higher than smooth regions */
+    float max_smooth = 0;
+    for (int i = 0; i < N; i++) {
+        if (i == 32) continue;
+        if (res.kiel_innovation[i] > max_smooth) max_smooth = res.kiel_innovation[i];
+    }
+    ASSERT(res.kiel_innovation[32] > max_smooth * 2.0f,
+           "innovation at anomaly should spike well above smooth region");
+
+    /* Segment 2 (containing token 32) should have highest max innovation */
+    ASSERT(res.segments[2].kiel_max_innov > res.segments[0].kiel_max_innov,
+           "segment with anomaly should have higher innovation");
+    ASSERT(res.segments[2].kiel_max_innov > res.segments[1].kiel_max_innov,
+           "segment with anomaly should have higher innovation than neighbors");
+
+    free(res.kiel_innovation);
+    free(res.segments);
+}
+
+/* ─── Test: KIEL adaptive alpha ─────────────────────────────────── */
+
+static void test_kiel_adaptive(void) {
+    printf("  test_kiel_adaptive...\n");
+
+    /* Highly autocorrelated signal: alpha should adapt high */
+    const int N = 128;
+    hcp__cpx z[128];
+    int seg_map[128];
+
+    for (int i = 0; i < N; i++) {
+        z[i].re = 0.8f + 0.01f * (float)i;  /* slow drift */
+        z[i].im = 0.4f;
+        seg_map[i] = 0;
+    }
+
+    HcpResult res = {0};
+    res.segments = (HcpSegment *)calloc(1, sizeof(HcpSegment));
+    res.count = 1;
+    res.cap = 1;
+
+    hcp__kiel_cc(z, N, seg_map, 1, &res);
+
+    /* With smooth signal, very few tokens should be flagged */
+    ASSERT(res.kiel_flagged_tokens < N / 4,
+           "smooth signal should have few Kalman-flagged tokens");
+
+    free(res.kiel_innovation);
+    free(res.segments);
+}
+
+/* ─── Test: E-T Gate audio analysis ─────────────────────────────── */
+
+static void test_et_gate_silence(void) {
+    printf("  test_et_gate_silence...\n");
+
+    /* Create a segment spanning 0-2000ms with silence audio */
+    int sample_rate = 16000;
+    int n_samples = sample_rate * 2;  /* 2 seconds */
+    float *audio = (float *)calloc((size_t)n_samples, sizeof(float));
+
+    /* Audio is all zeros (silence) */
+
+    HcpResult res = {0};
+    res.segments = (HcpSegment *)calloc(1, sizeof(HcpSegment));
+    res.count = 1;
+    res.cap = 1;
+    res.segments[0].t0_ms = 0;
+    res.segments[0].t1_ms = 2000;
+    res.segments[0].token_count = 10;   /* ~5 tokens/sec — suspicious over silence */
+
+    hcp__et_gate(audio, n_samples, sample_rate, &res);
+
+    /* RMS should be ~0 */
+    ASSERT_FLOAT_EQ(res.segments[0].et_rms, 0.0f, 0.001f, "silence RMS should be ~0");
+    /* Speech fraction should be 0 (all frames are silence) */
+    ASSERT_FLOAT_EQ(res.segments[0].et_speech_frac, 0.0f, 0.01f,
+                    "silence should have 0% speech frames");
+    /* Should be gated (high density + no speech) */
+    ASSERT(res.segments[0].hallucination_flags & HCP_HALLUC_ET_GATE,
+           "high density over silence should be flagged by E-T Gate");
+    ASSERT(res.et_segments_gated == 1, "should gate 1 segment");
+
+    free(audio);
+    free(res.segments);
+}
+
+static void test_et_gate_speech(void) {
+    printf("  test_et_gate_speech...\n");
+
+    /* Create a segment with speech-like audio (sinusoid with harmonics) */
+    int sample_rate = 16000;
+    int n_samples = sample_rate * 2;  /* 2 seconds */
+    float *audio = (float *)malloc((size_t)n_samples * sizeof(float));
+
+    /* Simulate speech: fundamental 150Hz + harmonics */
+    for (int i = 0; i < n_samples; i++) {
+        float t = (float)i / sample_rate;
+        audio[i] = 0.3f * sinf(2.0f * (float)M_PI * 150.0f * t)
+                 + 0.15f * sinf(2.0f * (float)M_PI * 300.0f * t)
+                 + 0.08f * sinf(2.0f * (float)M_PI * 450.0f * t)
+                 + 0.04f * sinf(2.0f * (float)M_PI * 600.0f * t);
+    }
+
+    HcpResult res = {0};
+    res.segments = (HcpSegment *)calloc(1, sizeof(HcpSegment));
+    res.count = 1;
+    res.cap = 1;
+    res.segments[0].t0_ms = 0;
+    res.segments[0].t1_ms = 2000;
+    res.segments[0].token_count = 10;
+
+    hcp__et_gate(audio, n_samples, sample_rate, &res);
+
+    /* RMS should be significant */
+    ASSERT(res.segments[0].et_rms > 0.1f, "speech-like audio should have high RMS");
+    /* Speech fraction should be high (harmonic = low flatness) */
+    ASSERT(res.segments[0].et_speech_frac > 0.5f,
+           "harmonic audio should be detected as speech-like");
+    /* Should NOT be gated */
+    ASSERT(!(res.segments[0].hallucination_flags & HCP_HALLUC_ET_GATE),
+           "speech-like audio with tokens should NOT be gated");
+    ASSERT(res.et_segments_gated == 0, "should gate 0 segments");
+
+    free(audio);
+    free(res.segments);
+}
+
+static void test_et_gate_noise(void) {
+    printf("  test_et_gate_noise...\n");
+
+    /* Create segment with noise-like audio (LCG pseudo-random) */
+    int sample_rate = 16000;
+    int n_samples = sample_rate * 2;
+    float *audio = (float *)malloc((size_t)n_samples * sizeof(float));
+
+    /* Pseudo-random noise using LCG */
+    uint32_t seed = 42;
+    for (int i = 0; i < n_samples; i++) {
+        seed = seed * 1664525u + 1013904223u;
+        audio[i] = ((float)(seed >> 16) / 32768.0f - 1.0f) * 0.3f;
+    }
+
+    HcpResult res = {0};
+    res.segments = (HcpSegment *)calloc(1, sizeof(HcpSegment));
+    res.count = 1;
+    res.cap = 1;
+    res.segments[0].t0_ms = 0;
+    res.segments[0].t1_ms = 2000;
+    res.segments[0].token_count = 10;    /* high density over noise = suspicious */
+
+    hcp__et_gate(audio, n_samples, sample_rate, &res);
+
+    /* RMS should be significant (noise has energy) */
+    ASSERT(res.segments[0].et_rms > 0.05f, "noise should have measurable RMS");
+    /* E-T Gate should process without crashing; speech_frac depends on noise quality */
+    ASSERT(res.segments[0].et_speech_frac >= 0.0f && res.segments[0].et_speech_frac <= 1.0f,
+           "speech_frac should be in [0, 1]");
+    ASSERT(res.et_gate_ms >= 0, "E-T Gate timing should be non-negative");
+
+    free(audio);
+    free(res.segments);
+}
+
 /* ─── Main ──────────────────────────────────────────────────────── */
 
 int main(void) {
@@ -395,6 +589,11 @@ int main(void) {
     test_ngram_detection();
     test_freq_table();
     test_filter_bounds();
+    test_kiel_kalman();
+    test_kiel_adaptive();
+    test_et_gate_silence();
+    test_et_gate_speech();
+    test_et_gate_noise();
 
     printf("\n=== Results: %d passed, %d failed, %d total ===\n\n",
            tests_passed, tests_failed, tests_run);

@@ -1,6 +1,6 @@
 {
   "algorithm": "Complex-Domain HCP Spectral Refinement",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "license": "MIT",
   "total_segments": 429,
   "hallucinated_segments": 0,
@@ -9,10 +9,18 @@
     "padded_fft_size": 8192,
     "flagged_tokens": 1230,
     "flagged_segments": 151,
-    "elapsed_ms": 7.2,
+    "elapsed_ms": 11.7,
     "quality_base_avg": 0.9282,
     "quality_hcp_avg": 0.9983,
-    "quality_uplift_pct": 7.6
+    "quality_uplift_pct": 7.6,
+    "kiel": {
+      "flagged_tokens": 0,
+      "elapsed_ms": 0.1
+    },
+    "et_gate": {
+      "segments_gated": 0,
+      "elapsed_ms": 905.1
+    }
   },
   "segments": [
     {
@@ -23,6 +31,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1110,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.47,
       "token_count": 20,
       "speaker_turn": false,
       "text": " In this video we're going over 10 rules that if you apply, it will drastically increase"
@@ -35,6 +46,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0779,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.74,
       "token_count": 14,
       "speaker_turn": false,
       "text": " the number of books that you are able to read this year."
@@ -47,6 +61,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1570,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.68,
       "token_count": 12,
       "speaker_turn": false,
       "text": " Alright, so let's start with rule number one."
@@ -59,6 +76,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1187,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.45,
       "token_count": 21,
       "speaker_turn": false,
       "text": " Now what a lot of people do is that they will say something like \"I don't have time"
@@ -71,6 +91,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.0987,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.54,
       "token_count": 22,
       "speaker_turn": false,
       "text": " to read\" and yet if you look at this screen time they will have hours and hours on Instagram,"
@@ -83,6 +106,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0749,
+      "et_speech_frac": 0.88,
+      "kiel_max_innovation": 0.72,
       "token_count": 13,
       "speaker_turn": false,
       "text": " on TikTok, on YouTube, that kind of thing."
@@ -95,6 +121,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1172,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.52,
       "token_count": 18,
       "speaker_turn": false,
       "text": " Now I used to struggle with this but for me the single biggest thing that helped was"
@@ -107,6 +136,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1237,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.52,
       "token_count": 20,
       "speaker_turn": false,
       "text": " what I call rule number one which is the pillow rule, where basically the rule is that you"
@@ -119,6 +151,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1138,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.39,
       "token_count": 19,
       "speaker_turn": false,
       "text": " should always have a Kindle or a book on your bedside table and you should always charge"
@@ -131,6 +166,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0873,
+      "et_speech_frac": 0.89,
+      "kiel_max_innovation": 0.67,
       "token_count": 9,
       "speaker_turn": false,
       "text": " your phone outside of your bedroom."
@@ -143,6 +181,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1225,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.55,
       "token_count": 20,
       "speaker_turn": false,
       "text": " This means that in the evening when it's time to get into bed, the only device that"
@@ -155,6 +196,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1103,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.61,
       "token_count": 12,
       "speaker_turn": false,
       "text": " you have access to is a book or a Kindle."
@@ -167,6 +211,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0841,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.51,
       "token_count": 19,
       "speaker_turn": false,
       "text": " I personally like the Kindle because the light means that I don't need to have a reading"
@@ -179,6 +226,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1158,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.51,
       "token_count": 5,
       "speaker_turn": false,
       "text": " light or whatever."
@@ -191,6 +241,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1323,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.42,
       "token_count": 21,
       "speaker_turn": false,
       "text": " And if your phone is being charged in a different room, it means you just remove all of this"
@@ -203,6 +256,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1173,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.58,
       "token_count": 20,
       "speaker_turn": false,
       "text": " temptation to spend time on Instagram, TikTok, YouTube, Reddit, whatever you're into."
@@ -215,6 +271,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1119,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.63,
       "token_count": 12,
       "speaker_turn": false,
       "text": " And really this rule is all about physical environment design."
@@ -227,6 +286,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0888,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.52,
       "token_count": 17,
       "speaker_turn": false,
       "text": " If you design your environment in a way that nudges you towards the habits that"
@@ -239,6 +301,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0984,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.57,
       "token_count": 20,
       "speaker_turn": false,
       "text": " you actually want to go towards and nudges you away from the stuff you don't want to"
@@ -251,6 +316,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0742,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.71,
       "token_count": 19,
       "speaker_turn": false,
       "text": " do, life becomes a lot easier and you don't need to rely on willpower."
@@ -263,6 +331,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1075,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.59,
       "token_count": 20,
       "speaker_turn": false,
       "text": " For me, this has been the single most meaningful rule that has made the most amount of difference"
@@ -275,6 +346,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0567,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.66,
       "token_count": 13,
       "speaker_turn": false,
       "text": " in terms of how many books I can read every year."
@@ -287,6 +361,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1553,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.56,
       "token_count": 10,
       "speaker_turn": false,
       "text": " Oh, by the way, quick announcement."
@@ -299,6 +376,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1433,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.49,
       "token_count": 19,
       "speaker_turn": false,
       "text": " On Saturday the 4th of April, I'm going to be hosting my usual completely free"
@@ -311,6 +391,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1270,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.69,
       "token_count": 9,
       "speaker_turn": false,
       "text": " quarterly reflection workshop of the spring reset."
@@ -323,6 +406,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1581,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.51,
       "token_count": 20,
       "speaker_turn": false,
       "text": " The idea is that this is a totally free workshop, there's a link down below to register"
@@ -335,6 +421,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1445,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.44,
       "token_count": 6,
       "speaker_turn": false,
       "text": " if you'd like."
@@ -347,6 +436,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1493,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.38,
       "token_count": 18,
       "speaker_turn": false,
       "text": " And I will be hosting it and me and hopefully you and several thousand people from all"
@@ -359,6 +451,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1406,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.58,
       "token_count": 20,
       "speaker_turn": false,
       "text": " around the world, we're going to get together on a Zoom workshop, together we're going"
@@ -371,6 +466,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0991,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.52,
       "token_count": 20,
       "speaker_turn": false,
       "text": " to be reflecting on how 2026 has gone so far and we're going to be setting some"
@@ -383,6 +481,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0996,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.65,
       "token_count": 9,
       "speaker_turn": false,
       "text": " goals for the next 90 days."
@@ -395,6 +496,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1376,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.58,
       "token_count": 26,
       "speaker_turn": false,
       "text": " It's the spring reset, it's going to be fun, it's going to be Vibe, there's more details"
@@ -407,6 +511,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1152,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.49,
       "token_count": 18,
       "speaker_turn": false,
       "text": " linked down below if you would like to join and I will hopefully see you on Saturday"
@@ -419,6 +526,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0550,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.70,
       "token_count": 7,
       "speaker_turn": false,
       "text": " the 4th of April."
@@ -431,6 +541,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1082,
+      "et_speech_frac": 0.82,
+      "kiel_max_innovation": 0.69,
       "token_count": 13,
       "speaker_turn": false,
       "text": " Okay, so let's move on to rule number two."
@@ -443,6 +556,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1324,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.62,
       "token_count": 8,
       "speaker_turn": false,
       "text": " Now, here's the thing."
@@ -455,6 +571,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 7,
+      "et_rms": 0.1059,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.43,
       "token_count": 18,
       "speaker_turn": false,
       "text": " When you pick up your phone, there is a certain amount of muscle memory you have"
@@ -467,6 +586,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1011,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.64,
       "token_count": 18,
       "speaker_turn": false,
       "text": " that will cause your thumb to probably go on the apps that you have logged the most"
@@ -479,6 +601,9 @@
       "hcp_quality": 0.8118,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0798,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.66,
       "token_count": 5,
       "speaker_turn": false,
       "text": " screen time on."
@@ -491,6 +616,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0975,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.44,
       "token_count": 17,
       "speaker_turn": false,
       "text": " If you're only thing like most people, it will probably be something like YouTube"
@@ -503,6 +631,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.0936,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.50,
       "token_count": 9,
       "speaker_turn": false,
       "text": " or Instagram or TikTok or whatever."
@@ -515,6 +646,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.1078,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.52,
       "token_count": 17,
       "speaker_turn": false,
       "text": " And that stuff is so ingrained into us is that it becomes almost habitual like before"
@@ -527,6 +661,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0923,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.50,
       "token_count": 20,
       "speaker_turn": false,
       "text": " you even realize it, you've opened a social media app and you're starting to scroll"
@@ -539,6 +676,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0937,
+      "et_speech_frac": 0.82,
+      "kiel_max_innovation": 0.69,
       "token_count": 4,
       "speaker_turn": false,
       "text": " vertical videos."
@@ -551,6 +691,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1023,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.58,
       "token_count": 19,
       "speaker_turn": false,
       "text": " The best trick I have found for this personally is to remove the social media apps from my"
@@ -563,6 +706,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0703,
+      "et_speech_frac": 0.74,
+      "kiel_max_innovation": 0.70,
       "token_count": 4,
       "speaker_turn": false,
       "text": " home screen."
@@ -575,6 +721,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 7,
+      "et_rms": 0.1023,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.66,
       "token_count": 16,
       "speaker_turn": false,
       "text": " Some people go the full hog and like uninstall them from their phones altogether."
@@ -587,6 +736,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0953,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.49,
       "token_count": 23,
       "speaker_turn": false,
       "text": " I don't personally do that because, various reasons, but what I do do, do do, lol,"
@@ -599,6 +751,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1119,
+      "et_speech_frac": 0.94,
+      "kiel_max_innovation": 0.66,
       "token_count": 19,
       "speaker_turn": false,
       "text": " is that the very first app that I see on my home screen is the Kindle app."
@@ -611,6 +766,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 7,
+      "et_rms": 0.1430,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.58,
       "token_count": 18,
       "speaker_turn": false,
       "text": " On my home screen, I also have Momentum, which is a habit tracker."
@@ -623,6 +781,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1386,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.69,
       "token_count": 14,
       "speaker_turn": false,
       "text": " I've got Day 1, which is a journaling app."
@@ -635,6 +796,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1077,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.66,
       "token_count": 15,
       "speaker_turn": false,
       "text": " I've got the waking up app, which is a meditation app."
@@ -647,6 +811,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.1018,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.67,
       "token_count": 16,
       "speaker_turn": false,
       "text": " I've got voicepal, which is like a ghostwriter app app."
@@ -659,6 +826,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1414,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.43,
       "token_count": 7,
       "speaker_turn": false,
       "text": " I've got my calendar."
@@ -671,6 +841,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0881,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.69,
       "token_count": 10,
       "speaker_turn": false,
       "text": " I've got my to-do list."
@@ -683,6 +856,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1172,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.58,
       "token_count": 23,
       "speaker_turn": false,
       "text": " When I open up my phone when I'm on the toilet, or when I'm on public transport,"
@@ -695,6 +871,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.1036,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.51,
       "token_count": 19,
       "speaker_turn": false,
       "text": " or when I'm like waiting in line for something, the first app that my eyes are"
@@ -707,6 +886,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0646,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.58,
       "token_count": 8,
       "speaker_turn": false,
       "text": " drawn to is the Kindle app."
@@ -719,6 +901,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0854,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.54,
       "token_count": 19,
       "speaker_turn": false,
       "text": " And that means that that is usually the first app that I open when I'm on my"
@@ -731,6 +916,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1182,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.70,
       "token_count": 3,
       "speaker_turn": false,
       "text": " phone."
@@ -743,6 +931,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.1078,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.51,
       "token_count": 19,
       "speaker_turn": false,
       "text": " On one of my other phone screens, I also have the Kindle widget and the Audible"
@@ -755,6 +946,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1031,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.54,
       "token_count": 15,
       "speaker_turn": false,
       "text": " widget that shows like the book that I'm currently reading on Kindle."
@@ -767,6 +961,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1133,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.48,
       "token_count": 19,
       "speaker_turn": false,
       "text": " In this case, the Personal MBA by Josh Kaufman, and the book that I'm currently"
@@ -779,6 +976,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0976,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.63,
       "token_count": 18,
       "speaker_turn": false,
       "text": " listening to on Audible, in this case, Dark Age by P.S."
@@ -791,6 +991,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1271,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.49,
       "token_count": 3,
       "speaker_turn": false,
       "text": " Brown."
@@ -803,6 +1006,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0799,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.73,
       "token_count": 18,
       "speaker_turn": false,
       "text": " So the rule here is to design your digital environment in a way that favors reading."
@@ -815,6 +1021,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0693,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.63,
       "token_count": 15,
       "speaker_turn": false,
       "text": " Make it harder for yourself to access the social media apps that would otherwise"
@@ -827,6 +1036,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0645,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.69,
       "token_count": 9,
       "speaker_turn": false,
       "text": " take your attention away from reading."
@@ -839,6 +1051,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0966,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.58,
       "token_count": 18,
       "speaker_turn": false,
       "text": " And what we're trying to do is to make reading the default thing that we do"
@@ -851,6 +1066,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0682,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.70,
       "token_count": 11,
       "speaker_turn": false,
       "text": " when we open up our phones rather than scrolling."
@@ -863,6 +1081,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1096,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.72,
       "token_count": 13,
       "speaker_turn": false,
       "text": " All right, let's move on to rule number three."
@@ -875,6 +1096,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1252,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.57,
       "token_count": 20,
       "speaker_turn": false,
       "text": " Now, the issue that a lot of people have is that they will say that they don't"
@@ -887,6 +1111,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0546,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.63,
       "token_count": 7,
       "speaker_turn": false,
       "text": " have the time for reading."
@@ -899,6 +1126,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 7,
+      "et_rms": 0.1159,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.61,
       "token_count": 20,
       "speaker_turn": false,
       "text": " And when you say that, you kind of imagine that like in order to have the time for"
@@ -911,6 +1141,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 7,
+      "et_rms": 0.0836,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.51,
       "token_count": 20,
       "speaker_turn": false,
       "text": " reading, you have to be able to sit down on a leather armchair and you have to"
@@ -923,6 +1156,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0856,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.66,
       "token_count": 17,
       "speaker_turn": false,
       "text": " get a book out and you have to have a whole hour of uninterrupted time."
@@ -935,6 +1171,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1038,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.61,
       "token_count": 15,
       "speaker_turn": false,
       "text": " Most of us probably don't have hours of uninterrupted time every day."
@@ -947,6 +1186,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1062,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.52,
       "token_count": 18,
       "speaker_turn": false,
       "text": " So the rule here that I follow to solve this problem is the multitasking rule,"
@@ -959,6 +1201,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0924,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.45,
       "token_count": 16,
       "speaker_turn": false,
       "text": " which is basically that when my hands are busy doing something that is mind"
@@ -971,6 +1216,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 7,
+      "et_rms": 0.0807,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.43,
       "token_count": 20,
       "speaker_turn": false,
       "text": " numbing or like menial, I have my air pods in and I'm usually listening to"
@@ -983,6 +1231,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0514,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.69,
       "token_count": 7,
       "speaker_turn": false,
       "text": " some kind of audio book."
@@ -995,6 +1246,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1093,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.48,
       "token_count": 17,
       "speaker_turn": false,
       "text": " That's not to say that you should always fill your ears with chattering at"
@@ -1007,6 +1261,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0809,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.66,
       "token_count": 4,
       "speaker_turn": false,
       "text": " all times."
@@ -1019,6 +1276,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1222,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.47,
       "token_count": 14,
       "speaker_turn": false,
       "text": " And of course, there is value in like, you know,"
@@ -1031,6 +1291,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 8,
+      "et_rms": 0.0996,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.59,
       "token_count": 15,
       "speaker_turn": false,
       "text": " mindfully washing the dishes or mindfully just being on the toilet without"
@@ -1043,6 +1306,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.0969,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.54,
       "token_count": 16,
       "speaker_turn": false,
       "text": " listening to anything or mindfully taking a walk in the park and all that"
@@ -1055,6 +1321,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0542,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.74,
       "token_count": 5,
       "speaker_turn": false,
       "text": " kind of stuff."
@@ -1067,6 +1336,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1235,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.53,
       "token_count": 19,
       "speaker_turn": false,
       "text": " But if you want to read more books, it's actually very, very helpful to be"
@@ -1079,6 +1351,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1202,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.57,
       "token_count": 18,
       "speaker_turn": false,
       "text": " listening to audio books back in the day when I had a real job and I would"
@@ -1091,6 +1366,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1063,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.66,
       "token_count": 16,
       "speaker_turn": false,
       "text": " commute an hour back and forth from work to the hospital every single day."
@@ -1103,6 +1381,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.0880,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.70,
       "token_count": 22,
       "speaker_turn": false,
       "text": " I'd be listening to audio books, usually at 1.5 to 2.5 X speed,"
@@ -1115,6 +1396,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0662,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.66,
       "token_count": 9,
       "speaker_turn": false,
       "text": " depending on the speed of the narrator."
@@ -1127,6 +1411,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.0975,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.55,
       "token_count": 16,
       "speaker_turn": false,
       "text": " And so through that, there's two hours of commuting every single day."
@@ -1139,6 +1426,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.0978,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.36,
       "token_count": 15,
       "speaker_turn": false,
       "text": " I got through so many books, some of them were business books,"
@@ -1151,6 +1441,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0975,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.24,
       "token_count": 15,
       "speaker_turn": false,
       "text": " some of them were like personal development books, most of them weren't"
@@ -1163,6 +1456,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.0891,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.68,
       "token_count": 9,
       "speaker_turn": false,
       "text": " fantasy fiction books by Brandon Sanderson."
@@ -1175,6 +1471,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1172,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.43,
       "token_count": 14,
       "speaker_turn": false,
       "text": " So if you follow this habit, if you follow this rule,"
@@ -1187,6 +1486,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0903,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.48,
       "token_count": 17,
       "speaker_turn": false,
       "text": " you will create 30 to 60 minutes a day, at least of reading time,"
@@ -1199,6 +1501,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.0812,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.46,
       "token_count": 13,
       "speaker_turn": false,
       "text": " completely out of thin air that was otherwise spent either listening to"
@@ -1211,6 +1516,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 8,
+      "et_rms": 0.1113,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.43,
       "token_count": 16,
       "speaker_turn": false,
       "text": " music or not listening to anything at all, or maybe just like having like"
@@ -1223,6 +1531,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.0916,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.58,
       "token_count": 15,
       "speaker_turn": false,
       "text": " YouTube on the background while you're like doing the dishes or something,"
@@ -1235,6 +1546,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0834,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.48,
       "token_count": 16,
       "speaker_turn": false,
       "text": " you could totally replace all of that time by listening to audio books,"
@@ -1247,6 +1561,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.0821,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.67,
       "token_count": 13,
       "speaker_turn": false,
       "text": " and they would probably have a bigger impact on your life."
@@ -1259,6 +1576,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1498,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.53,
       "token_count": 21,
       "speaker_turn": false,
       "text": " By the way, if you want to read harder books or just level up your reading in general,"
@@ -1271,6 +1591,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.1325,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.52,
       "token_count": 17,
       "speaker_turn": false,
       "text": " or you want to be more discerning about which books you actually spend time on"
@@ -1283,6 +1606,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1254,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.60,
       "token_count": 13,
       "speaker_turn": false,
       "text": " without worrying that you're wasting hours on the wrong book,"
@@ -1295,6 +1621,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1359,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.46,
       "token_count": 16,
       "speaker_turn": false,
       "text": " then one thing that really helps with all of these things is short form,"
@@ -1307,6 +1636,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1059,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.69,
       "token_count": 9,
       "speaker_turn": false,
       "text": " who are very kindly sponsoring this video."
@@ -1319,6 +1651,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1388,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.45,
       "token_count": 13,
       "speaker_turn": false,
       "text": " Now, short form is basically like having your most intelligent friend"
@@ -1331,6 +1666,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1107,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.61,
       "token_count": 8,
       "speaker_turn": false,
       "text": " break down a book for you."
@@ -1343,6 +1681,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1384,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.35,
       "token_count": 17,
       "speaker_turn": false,
       "text": " They don't just give you like a 10 minute AI summary of a book,"
@@ -1355,6 +1696,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1361,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.22,
       "token_count": 15,
       "speaker_turn": false,
       "text": " but they provide proper in-depth guides with chapter by chapter breakdowns"
@@ -1367,6 +1711,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1320,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.50,
       "token_count": 20,
       "speaker_turn": false,
       "text": " and smart analysis, and it connects the stuff in that book to ideas from other authors,"
@@ -1379,6 +1726,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1178,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.61,
       "token_count": 19,
       "speaker_turn": false,
       "text": " and there are even exercises that they include to help you actually apply what you've learned."
@@ -1391,6 +1741,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1311,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.45,
       "token_count": 15,
       "speaker_turn": false,
       "text": " They cover loads of topics that I'm personally into, including productivity,"
@@ -1403,6 +1756,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1371,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.61,
       "token_count": 10,
       "speaker_turn": false,
       "text": " psychology, business, self-improvement."
@@ -1415,6 +1771,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1398,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.21,
       "token_count": 17,
       "speaker_turn": false,
       "text": " They even have a study guide on my own book, Feel Good Productivity,"
@@ -1427,6 +1786,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1137,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.47,
       "token_count": 15,
       "speaker_turn": false,
       "text": " which is interesting, and they are adding new guides every single week,"
@@ -1439,6 +1801,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1149,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.67,
       "token_count": 13,
       "speaker_turn": false,
       "text": " and you can even vote on which books they cover next."
@@ -1451,6 +1816,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1369,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.64,
       "token_count": 12,
       "speaker_turn": false,
       "text": " I recently went back to that guide on the book,"
@@ -1463,6 +1831,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 8,
+      "et_rms": 0.1228,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.66,
       "token_count": 28,
       "speaker_turn": false,
       "text": " \"Waking Up\" by Sam Harris, and I genuinely picked up things that I've completely missed when I first read the book."
@@ -1475,6 +1846,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1431,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.24,
       "token_count": 10,
       "speaker_turn": false,
       "text": " They've also got audio versions of everything,"
@@ -1487,6 +1861,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1218,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.57,
       "token_count": 16,
       "speaker_turn": false,
       "text": " so you can listen on the go, and there is even a browser extension"
@@ -1499,6 +1876,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.1127,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.75,
       "token_count": 18,
       "speaker_turn": false,
       "text": " that summarizes articles and YouTube videos if you want to go down that rabbit hole."
@@ -1511,6 +1891,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1386,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.48,
       "token_count": 18,
       "speaker_turn": false,
       "text": " Now, what I love about short form is that it doesn't actually replace reading."
@@ -1523,6 +1906,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0997,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.68,
       "token_count": 8,
       "speaker_turn": false,
       "text": " It makes me a better reader."
@@ -1535,6 +1921,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1444,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.58,
       "token_count": 21,
       "speaker_turn": false,
       "text": " I'll often use it to revisit books that I've read, or to explore a new book,"
@@ -1547,6 +1936,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1350,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.50,
       "token_count": 17,
       "speaker_turn": false,
       "text": " and I'll read the short form guide, and then that will help me decide"
@@ -1559,6 +1951,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1070,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.75,
       "token_count": 12,
       "speaker_turn": false,
       "text": " if it's actually worth diving deeper into that book."
@@ -1571,6 +1966,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.1317,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.73,
       "token_count": 22,
       "speaker_turn": false,
       "text": " So if you'd like to give it a go, head over to shortform.com/dial,"
@@ -1583,6 +1981,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1214,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.67,
       "token_count": 19,
       "speaker_turn": false,
       "text": " and that will give you a free trial and $50 off the annual plan as well."
@@ -1595,6 +1996,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.1148,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.71,
       "token_count": 22,
       "speaker_turn": false,
       "text": " So thank you again to short form for sponsoring this video, and now let's get back to it."
@@ -1607,6 +2011,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.1227,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.54,
       "token_count": 16,
       "speaker_turn": false,
       "text": " All right, the next rule really helps if you are anything like me,"
@@ -1619,6 +2026,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0747,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.72,
       "token_count": 11,
       "speaker_turn": false,
       "text": " and you sometimes get stuck on a book."
@@ -1631,6 +2041,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1229,
+      "et_speech_frac": 0.94,
+      "kiel_max_innovation": 0.41,
       "token_count": 15,
       "speaker_turn": false,
       "text": " I noticed this a few years ago when Sapiens first came out,"
@@ -1643,6 +2056,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1014,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.35,
       "token_count": 18,
       "speaker_turn": false,
       "text": " and I was like, \"Okay, well, I should probably read Sapiens,"
@@ -1655,6 +2071,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0559,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.22,
       "token_count": 8,
       "speaker_turn": false,
       "text": " because everyone is reading Sapiens.\""
@@ -1667,6 +2086,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.1115,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.38,
       "token_count": 19,
       "speaker_turn": false,
       "text": " And it was kind of boring, and I got stuck on it for like three months,"
@@ -1679,6 +2101,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0898,
+      "et_speech_frac": 0.89,
+      "kiel_max_innovation": 0.60,
       "token_count": 14,
       "speaker_turn": false,
       "text": " because I kept on thinking I had to get through the book."
@@ -1691,6 +2116,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0572,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.62,
       "token_count": 8,
       "speaker_turn": false,
       "text": " I had to finish the book."
@@ -1703,6 +2131,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1423,
+      "et_speech_frac": 0.94,
+      "kiel_max_innovation": 0.60,
       "token_count": 15,
       "speaker_turn": false,
       "text": " But then I got a really good piece of advice from the internet,"
@@ -1715,6 +2146,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0914,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.54,
       "token_count": 11,
       "speaker_turn": false,
       "text": " which was to not be a monogamous reader."
@@ -1727,6 +2161,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0961,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.48,
       "token_count": 16,
       "speaker_turn": false,
       "text": " Instead of thinking that you have to only read one book at a time,"
@@ -1739,6 +2176,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0922,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.47,
       "token_count": 15,
       "speaker_turn": false,
       "text": " it is actually worth having multiple books that you are reading in parallel,"
@@ -1751,6 +2191,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1225,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.52,
       "token_count": 12,
       "speaker_turn": false,
       "text": " because maybe you don't feel like doing the heavy thing"
@@ -1763,6 +2206,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0621,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.06,
       "token_count": 8,
       "speaker_turn": false,
       "text": " like reading Sapiens or whatever,"
@@ -1775,6 +2221,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1433,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.56,
       "token_count": 9,
       "speaker_turn": false,
       "text": " and instead you feel like something like."
@@ -1787,6 +2236,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 9,
+      "et_rms": 0.1147,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.67,
       "token_count": 19,
       "speaker_turn": false,
       "text": " And so you might want to read fourth wing or some romanticy thing or whatever."
@@ -1799,6 +2251,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1113,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.35,
       "token_count": 17,
       "speaker_turn": false,
       "text": " So for me these days, I've got two books active on Audible,"
@@ -1811,6 +2266,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0713,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.62,
       "token_count": 9,
       "speaker_turn": false,
       "text": " a fiction and a nonfiction usually."
@@ -1823,6 +2281,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1054,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.26,
       "token_count": 16,
       "speaker_turn": false,
       "text": " And then also on my Kindle, I usually have some kind of fiction,"
@@ -1835,6 +2296,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.0959,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.29,
       "token_count": 17,
       "speaker_turn": false,
       "text": " some kind of nonfiction, and also some kind of spiritual literature type thing,"
@@ -1847,6 +2311,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1122,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.66,
       "token_count": 13,
       "speaker_turn": false,
       "text": " because reading the spirituality books actually really helps me fall asleep."
@@ -1859,6 +2326,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1122,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.47,
       "token_count": 10,
       "speaker_turn": false,
       "text": " And so if you do something like that,"
@@ -1871,6 +2341,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0839,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.40,
       "token_count": 13,
       "speaker_turn": false,
       "text": " it means you can switch books based on your energy levels,"
@@ -1883,6 +2356,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1064,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.71,
       "token_count": 19,
       "speaker_turn": false,
       "text": " and you don't have to be wedded to just focusing on one at a time."
@@ -1895,6 +2371,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1029,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.54,
       "token_count": 16,
       "speaker_turn": false,
       "text": " Oh, by the way, if you are interested in some book recommendations,"
@@ -1907,6 +2386,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.1054,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.34,
       "token_count": 14,
       "speaker_turn": false,
       "text": " I've actually got a whole list of 100 life-changing books"
@@ -1919,6 +2401,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0892,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.61,
       "token_count": 12,
       "speaker_turn": false,
       "text": " that have been recommended by various guests on the podcast"
@@ -1931,6 +2416,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0781,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.67,
       "token_count": 10,
       "speaker_turn": false,
       "text": " that I used to host called Deep Dive."
@@ -1943,6 +2431,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1207,
+      "et_speech_frac": 0.94,
+      "kiel_max_innovation": 0.57,
       "token_count": 8,
       "speaker_turn": false,
       "text": " It's completely free to download."
@@ -1955,6 +2446,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0748,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.64,
       "token_count": 12,
       "speaker_turn": false,
       "text": " It'll be linked down below if you are interested."
@@ -1967,6 +2461,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0907,
+      "et_speech_frac": 0.85,
+      "kiel_max_innovation": 0.68,
       "token_count": 10,
       "speaker_turn": false,
       "text": " This leads us on to the next rule,"
@@ -1979,6 +2476,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1341,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.46,
       "token_count": 13,
       "speaker_turn": false,
       "text": " which is a habit that school has actually ingrained into us,"
@@ -1991,6 +2491,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0970,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.44,
       "token_count": 11,
       "speaker_turn": false,
       "text": " that really doesn't help when we are adults,"
@@ -2003,6 +2506,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0505,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.59,
       "token_count": 10,
       "speaker_turn": false,
       "text": " and we're trying to read more books."
@@ -2015,6 +2521,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1024,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.68,
       "token_count": 9,
       "speaker_turn": false,
       "text": " That reading is supposed to be work."
@@ -2027,6 +2536,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1053,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.69,
       "token_count": 17,
       "speaker_turn": false,
       "text": " You are some kind of a bad person if you don't finish a book."
@@ -2039,6 +2551,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1111,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.46,
       "token_count": 19,
       "speaker_turn": false,
       "text": " Now that feeling is completely unhelpful if we're actually trying to read more books,"
@@ -2051,6 +2566,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1260,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.57,
       "token_count": 12,
       "speaker_turn": false,
       "text": " because the rule here is that you should give yourself permission"
@@ -2063,6 +2581,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0760,
+      "et_speech_frac": 0.87,
+      "kiel_max_innovation": 0.65,
       "token_count": 11,
       "speaker_turn": false,
       "text": " to abandon a book that you don't like."
@@ -2075,6 +2596,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1053,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.56,
       "token_count": 16,
       "speaker_turn": false,
       "text": " If a book is not gripping your attention, it's not your fault."
@@ -2087,6 +2611,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1485,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.64,
       "token_count": 11,
       "speaker_turn": false,
       "text": " It's not even the author's fault."
@@ -2099,6 +2626,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0955,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.58,
       "token_count": 19,
       "speaker_turn": false,
       "text": " Maybe it's just it's not the right time for you to read that particular book,"
@@ -2111,6 +2641,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0699,
+      "et_speech_frac": 0.81,
+      "kiel_max_innovation": 0.47,
       "token_count": 12,
       "speaker_turn": false,
       "text": " and it's totally okay to move on from that book"
@@ -2123,6 +2656,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0663,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.65,
       "token_count": 9,
       "speaker_turn": false,
       "text": " and not feel guilty about abandoning it."
@@ -2135,6 +2671,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1042,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.52,
       "token_count": 10,
       "speaker_turn": false,
       "text": " Life is generally too short to spend battling through"
@@ -2147,6 +2686,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0936,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.48,
       "token_count": 13,
       "speaker_turn": false,
       "text": " and working through books that you really don't enjoy reading,"
@@ -2159,6 +2701,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.0779,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.48,
       "token_count": 15,
       "speaker_turn": false,
       "text": " and so it's really helpful to get out of this like school mindset"
@@ -2171,6 +2716,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0940,
+      "et_speech_frac": 0.85,
+      "kiel_max_innovation": 0.52,
       "token_count": 12,
       "speaker_turn": false,
       "text": " and to not like pedestalize books that like,"
@@ -2183,6 +2731,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0999,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.49,
       "token_count": 19,
       "speaker_turn": false,
       "text": " \"Oh my God, I'm a terrible person if I didn't finish that book."
@@ -2195,6 +2746,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0711,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.33,
       "token_count": 8,
       "speaker_turn": false,
       "text": " Like maybe I'm an idiot.\""
@@ -2207,6 +2761,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1080,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.45,
       "token_count": 15,
       "speaker_turn": false,
       "text": " And I was like, no, it's totally okay to read stuff"
@@ -2219,6 +2776,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0629,
+      "et_speech_frac": 0.94,
+      "kiel_max_innovation": 0.63,
       "token_count": 7,
       "speaker_turn": false,
       "text": " that is actually gripping you."
@@ -2231,6 +2791,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1038,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.68,
       "token_count": 10,
       "speaker_turn": false,
       "text": " This brings us on to the next rule,"
@@ -2243,6 +2806,9 @@
       "hcp_quality": 0.6843,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1156,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.56,
       "token_count": 14,
       "speaker_turn": false,
       "text": " which is a tip I got from Navarre Robocunt."
@@ -2255,6 +2821,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1093,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.68,
       "token_count": 17,
       "speaker_turn": false,
       "text": " And the rule here is read what you love until you love to read."
@@ -2267,6 +2836,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1133,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.50,
       "token_count": 6,
       "speaker_turn": false,
       "text": " This is amazing advice."
@@ -2279,6 +2851,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1354,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.32,
       "token_count": 11,
       "speaker_turn": false,
       "text": " Like a lot of us really struggle with reading,"
@@ -2291,6 +2866,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.1371,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.47,
       "token_count": 19,
       "speaker_turn": false,
       "text": " and a big part of that is because we sort of feel like we have to read the"
@@ -2303,6 +2881,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0934,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.61,
       "token_count": 10,
       "speaker_turn": false,
       "text": " smart books or like the classics or whatever."
@@ -2315,6 +2896,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1306,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.51,
       "token_count": 9,
       "speaker_turn": false,
       "text": " But the problem with smart books and classics"
@@ -2327,6 +2911,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1109,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.48,
       "token_count": 11,
       "speaker_turn": false,
       "text": " is that they're actually quite hard to read,"
@@ -2339,6 +2926,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.1263,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.45,
       "token_count": 14,
       "speaker_turn": false,
       "text": " and there are so many books that are effortless to read,"
@@ -2351,6 +2941,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1000,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.59,
       "token_count": 16,
       "speaker_turn": false,
       "text": " like the page turners that make you want to actually find out more,"
@@ -2363,6 +2956,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.0858,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.50,
       "token_count": 13,
       "speaker_turn": false,
       "text": " find out what happens next without you having to spend age,"
@@ -2375,6 +2971,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.0917,
+      "et_speech_frac": 0.91,
+      "kiel_max_innovation": 0.52,
       "token_count": 15,
       "speaker_turn": false,
       "text": " just trying to get into it and like trying to sort of feel like"
@@ -2387,6 +2986,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0895,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.71,
       "token_count": 10,
       "speaker_turn": false,
       "text": " you're some sort of highbrow person."
@@ -2399,6 +3001,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1158,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.23,
       "token_count": 12,
       "speaker_turn": false,
       "text": " So Navarre's advice, which I completely agree with"
@@ -2411,6 +3016,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0947,
+      "et_speech_frac": 0.94,
+      "kiel_max_innovation": 0.46,
       "token_count": 15,
       "speaker_turn": false,
       "text": " and which has completely changed my life, is read what you love"
@@ -2423,6 +3031,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0663,
+      "et_speech_frac": 0.91,
+      "kiel_max_innovation": 0.68,
       "token_count": 7,
       "speaker_turn": false,
       "text": " until you love to read."
@@ -2435,6 +3046,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1211,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.62,
       "token_count": 13,
       "speaker_turn": false,
       "text": " I've probably read over a thousand books over the years,"
@@ -2447,6 +3061,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1235,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.63,
       "token_count": 17,
       "speaker_turn": false,
       "text": " and I still have not really read any of what you would consider the classics."
@@ -2459,6 +3076,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1016,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.65,
       "token_count": 12,
       "speaker_turn": false,
       "text": " I've never managed to finish a Charles Dickens book."
@@ -2471,6 +3091,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.1097,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.57,
       "token_count": 15,
       "speaker_turn": false,
       "text": " I tried reading Wuthering Heights, and it was like boring."
@@ -2483,6 +3106,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1213,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.50,
       "token_count": 14,
       "speaker_turn": false,
       "text": " And at some point, I'm going to get into these classics"
@@ -2495,6 +3121,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0884,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.36,
       "token_count": 11,
       "speaker_turn": false,
       "text": " and read these like kind of big history books,"
@@ -2507,6 +3136,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0729,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.68,
       "token_count": 10,
       "speaker_turn": false,
       "text": " and like these big literature classics and stuff."
@@ -2519,6 +3151,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 7,
+      "et_rms": 0.1347,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.39,
       "token_count": 18,
       "speaker_turn": false,
       "text": " But even at this stage of my life where I've read a lot of books,"
@@ -2531,6 +3166,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0838,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.71,
       "token_count": 9,
       "speaker_turn": false,
       "text": " they're still just kind of boring."
@@ -2543,6 +3181,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1309,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.34,
       "token_count": 9,
       "speaker_turn": false,
       "text": " And so if you're approaching reading,"
@@ -2555,6 +3196,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0791,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.49,
       "token_count": 10,
       "speaker_turn": false,
       "text": " thinking that you have to read these classics,"
@@ -2567,6 +3211,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1179,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.64,
       "token_count": 17,
       "speaker_turn": false,
       "text": " that's like, you know, going to the gym for the first time,"
@@ -2579,6 +3226,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0807,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.61,
       "token_count": 12,
       "speaker_turn": false,
       "text": " and trying to bench 100 kg on the bench press."
@@ -2591,6 +3241,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0876,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.71,
       "token_count": 10,
       "speaker_turn": false,
       "text": " Like it's probably not going to happen."
@@ -2603,6 +3256,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1266,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.13,
       "token_count": 9,
       "speaker_turn": false,
       "text": " You would probably just injure yourself,"
@@ -2615,6 +3271,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1191,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.53,
       "token_count": 16,
       "speaker_turn": false,
       "text": " and then you would be like, \"Oh man, the gym sucks."
@@ -2627,6 +3286,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0869,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.54,
       "token_count": 10,
       "speaker_turn": false,
       "text": " I don't want to do this again.\""
@@ -2639,6 +3301,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1170,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.54,
       "token_count": 14,
       "speaker_turn": false,
       "text": " But instead, if you were to pick up something trashy,"
@@ -2651,6 +3316,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0940,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.06,
       "token_count": 8,
       "speaker_turn": false,
       "text": " something like trashy holiday fiction,"
@@ -2663,6 +3331,9 @@
       "hcp_quality": 0.9338,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1046,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.01,
       "token_count": 8,
       "speaker_turn": false,
       "text": " romanticy murder mysteries, drama,"
@@ -2675,6 +3346,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1042,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.58,
       "token_count": 13,
       "speaker_turn": false,
       "text": " like fiction stuff that is engaging and pulls you through it."
@@ -2687,6 +3361,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1648,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.25,
       "token_count": 8,
       "speaker_turn": false,
       "text": " And you read enough of those,"
@@ -2699,6 +3376,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0868,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.61,
       "token_count": 11,
       "speaker_turn": false,
       "text": " then you start to develop the skill of reading."
@@ -2711,6 +3391,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0796,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.63,
       "token_count": 14,
       "speaker_turn": false,
       "text": " You start to be able to train your focus and your attention."
@@ -2723,6 +3406,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0871,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.61,
       "token_count": 11,
       "speaker_turn": false,
       "text": " You start to love the act of reading itself,"
@@ -2735,6 +3421,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0807,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.42,
       "token_count": 12,
       "speaker_turn": false,
       "text": " and ensure you can challenge yourself with the fancier,"
@@ -2747,6 +3436,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0568,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.66,
       "token_count": 9,
       "speaker_turn": false,
       "text": " more intelligent books further down the line."
@@ -2759,6 +3451,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0930,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.68,
       "token_count": 11,
       "speaker_turn": false,
       "text": " So give yourself permission to read trashy books."
@@ -2771,6 +3466,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1196,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.52,
       "token_count": 7,
       "speaker_turn": false,
       "text": " Building the habit of reading,"
@@ -2783,6 +3481,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.0901,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.55,
       "token_count": 14,
       "speaker_turn": false,
       "text": " even trashy books is going to improve your life way more,"
@@ -2795,6 +3496,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0823,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.69,
       "token_count": 8,
       "speaker_turn": false,
       "text": " than only reading prestige books."
@@ -2807,6 +3511,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1364,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.15,
       "token_count": 13,
       "speaker_turn": false,
       "text": " The next rule really helps when reading feels like a slog,"
@@ -2819,6 +3526,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.0949,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.69,
       "token_count": 15,
       "speaker_turn": false,
       "text": " which is to find some kind of way to gamify the process."
@@ -2831,6 +3541,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1076,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.34,
       "token_count": 9,
       "speaker_turn": false,
       "text": " I have an account on Goodreads,"
@@ -2843,6 +3556,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1112,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.38,
       "token_count": 10,
       "speaker_turn": false,
       "text": " it synchronizes with my Amazon Kindle account,"
@@ -2855,6 +3571,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1128,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.34,
       "token_count": 12,
       "speaker_turn": false,
       "text": " and so whenever I start reading a book on Kindle,"
@@ -2867,6 +3586,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0679,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.71,
       "token_count": 11,
       "speaker_turn": false,
       "text": " it automatically syncs to my Goodreads account."
@@ -2879,6 +3601,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1044,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.51,
       "token_count": 8,
       "speaker_turn": false,
       "text": " This means that my Goodreads account"
@@ -2891,6 +3616,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1163,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.46,
       "token_count": 7,
       "speaker_turn": false,
       "text": " is actually a somewhat accurate log"
@@ -2903,6 +3631,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1305,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.64,
       "token_count": 12,
       "speaker_turn": false,
       "text": " of most of the books that I've either started reading"
@@ -2915,6 +3646,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.0847,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.67,
       "token_count": 8,
       "speaker_turn": false,
       "text": " or finished reading on my Kindle."
@@ -2927,6 +3661,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1154,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.76,
       "token_count": 10,
       "speaker_turn": false,
       "text": " And that's kind of cool to see."
@@ -2939,6 +3676,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1128,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.57,
       "token_count": 10,
       "speaker_turn": false,
       "text": " It's nice to see my reading stats."
@@ -2951,6 +3691,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0935,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.44,
       "token_count": 14,
       "speaker_turn": false,
       "text": " It's nice to see how many books I've read on Kindle"
@@ -2963,6 +3706,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1352,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.68,
       "token_count": 6,
       "speaker_turn": false,
       "text": " in a given year."
@@ -2975,6 +3721,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1464,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.45,
       "token_count": 11,
       "speaker_turn": false,
       "text": " It's nice to see my Goodreads ranking,"
@@ -2987,6 +3736,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.1239,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.51,
       "token_count": 18,
       "speaker_turn": false,
       "text": " where I can be like, \"Oh, I'm like the number seven person"
@@ -2999,6 +3751,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1487,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.52,
       "token_count": 11,
       "speaker_turn": false,
       "text": " \"in the UK in terms of Goodreads,"
@@ -3011,6 +3766,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0969,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.16,
       "token_count": 8,
       "speaker_turn": false,
       "text": " \"in terms of like whatever.\""
@@ -3023,6 +3781,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1432,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.64,
       "token_count": 12,
       "speaker_turn": false,
       "text": " And then when you get to the end of the book"
@@ -3035,6 +3796,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1178,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.60,
       "token_count": 10,
       "speaker_turn": false,
       "text": " and it asks you to rate the book,"
@@ -3047,6 +3811,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0851,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.45,
       "token_count": 11,
       "speaker_turn": false,
       "text": " it's kind of nice to rate a book,"
@@ -3059,6 +3826,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1218,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.41,
       "token_count": 9,
       "speaker_turn": false,
       "text": " like to see how much you enjoyed it"
@@ -3071,6 +3841,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0923,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.55,
       "token_count": 10,
       "speaker_turn": false,
       "text": " and maybe leave a little review about it."
@@ -3083,6 +3856,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1298,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.55,
       "token_count": 8,
       "speaker_turn": false,
       "text": " There's something about that process,"
@@ -3095,6 +3871,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1070,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.59,
       "token_count": 9,
       "speaker_turn": false,
       "text": " about logging the books that you read,"
@@ -3107,6 +3886,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0908,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.65,
       "token_count": 11,
       "speaker_turn": false,
       "text": " that starts to feel quite like a gamified."
@@ -3119,6 +3901,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1530,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.36,
       "token_count": 12,
       "speaker_turn": false,
       "text": " And like, you know, it's not really about"
@@ -3131,6 +3916,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1216,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.59,
       "token_count": 8,
       "speaker_turn": false,
       "text": " the quantity of books you read,"
@@ -3143,6 +3931,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1115,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.59,
       "token_count": 13,
       "speaker_turn": false,
       "text": " it's about like how the books you read change you,"
@@ -3155,6 +3946,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0888,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.41,
       "token_count": 13,
       "speaker_turn": false,
       "text": " and entertain you, and inspire you, and educate you."
@@ -3167,6 +3961,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1192,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.36,
       "token_count": 8,
       "speaker_turn": false,
       "text": " But it is still kind of nice"
@@ -3179,6 +3976,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0890,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.75,
       "token_count": 14,
       "speaker_turn": false,
       "text": " to have like a little bit of gamification in that process."
@@ -3191,6 +3991,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1624,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.36,
       "token_count": 15,
       "speaker_turn": false,
       "text": " It's like, you know, when I go for a run,"
@@ -3203,6 +4006,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1172,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.73,
       "token_count": 20,
       "speaker_turn": false,
       "text": " I like to track the runs, 'cause I like to see the lines going up."
@@ -3215,6 +4021,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1448,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.59,
       "token_count": 13,
       "speaker_turn": false,
       "text": " When I go to the gym, I track my workouts,"
@@ -3227,6 +4036,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1031,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.31,
       "token_count": 10,
       "speaker_turn": false,
       "text": " even if I'm not doing progressive overload,"
@@ -3239,6 +4051,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0716,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.74,
       "token_count": 14,
       "speaker_turn": false,
       "text": " 'cause it's just nice to see the number going up."
@@ -3251,6 +4066,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1434,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.33,
       "token_count": 8,
       "speaker_turn": false,
       "text": " Similarly, when you're reading books"
@@ -3263,6 +4081,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1027,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.65,
       "token_count": 13,
       "speaker_turn": false,
       "text": " and you have a way to see the number going up,"
@@ -3275,6 +4096,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0621,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.67,
       "token_count": 14,
       "speaker_turn": false,
       "text": " it feels like you're sort of playing a game with yourself."
@@ -3287,6 +4111,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1698,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.54,
       "token_count": 9,
       "speaker_turn": false,
       "text": " All right, the next rule is that"
@@ -3299,6 +4126,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1643,
+      "et_speech_frac": 0.85,
+      "kiel_max_innovation": 0.42,
       "token_count": 7,
       "speaker_turn": false,
       "text": " when you are reading books,"
@@ -3311,6 +4141,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1369,
+      "et_speech_frac": 0.82,
+      "kiel_max_innovation": 0.50,
       "token_count": 10,
       "speaker_turn": false,
       "text": " or also when you are listening to books,"
@@ -3323,6 +4156,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1227,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.49,
       "token_count": 9,
       "speaker_turn": false,
       "text": " it is actually totally okay to read faster"
@@ -3335,6 +4171,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0527,
+      "et_speech_frac": 0.74,
+      "kiel_max_innovation": 0.73,
       "token_count": 6,
       "speaker_turn": false,
       "text": " or to listen faster."
@@ -3347,6 +4186,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1528,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.41,
       "token_count": 8,
       "speaker_turn": false,
       "text": " I realized this when I was listening"
@@ -3359,6 +4201,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1309,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.68,
       "token_count": 11,
       "speaker_turn": false,
       "text": " to the Wheel of Time series on Audible."
@@ -3371,6 +4216,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1404,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.29,
       "token_count": 11,
       "speaker_turn": false,
       "text": " It's a really long series by Robert Jordan,"
@@ -3383,6 +4231,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1094,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.62,
       "token_count": 13,
       "speaker_turn": false,
       "text": " where the final three books are written by Brandon Sanderson."
@@ -3395,6 +4246,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1838,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.52,
       "token_count": 10,
       "speaker_turn": false,
       "text": " Really long series where in the middle,"
@@ -3407,6 +4261,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1084,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.55,
       "token_count": 8,
       "speaker_turn": false,
       "text": " it got super, super boring."
@@ -3419,6 +4276,9 @@
       "hcp_quality": 0.9957,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1032,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.53,
       "token_count": 13,
       "speaker_turn": false,
       "text": " And that was when, back in like 2018 or something,"
@@ -3431,6 +4291,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0746,
+      "et_speech_frac": 0.87,
+      "kiel_max_innovation": 0.58,
       "token_count": 9,
       "speaker_turn": false,
       "text": " when I was listening to the series,"
@@ -3443,6 +4306,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1033,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.45,
       "token_count": 11,
       "speaker_turn": false,
       "text": " that was when I discovered that you could actually listen"
@@ -3455,6 +4321,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0720,
+      "et_speech_frac": 0.85,
+      "kiel_max_innovation": 0.70,
       "token_count": 14,
       "speaker_turn": false,
       "text": " on Audible at 1.5 XP or 2X speed."
@@ -3467,6 +4336,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.0859,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.55,
       "token_count": 9,
       "speaker_turn": false,
       "text": " And that just like changed my life,"
@@ -3479,6 +4351,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1592,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.55,
       "token_count": 6,
       "speaker_turn": false,
       "text": " because suddenly when the narrator"
@@ -3491,6 +4366,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1115,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.49,
       "token_count": 8,
       "speaker_turn": false,
       "text": " is speaking at twice the speed,"
@@ -3503,6 +4381,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1563,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.48,
       "token_count": 9,
       "speaker_turn": false,
       "text": " it actually makes the book more enjoyable,"
@@ -3515,6 +4396,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1054,
+      "et_speech_frac": 0.94,
+      "kiel_max_innovation": 0.74,
       "token_count": 14,
       "speaker_turn": false,
       "text": " especially if it's a bit of a slog to get through."
@@ -3527,6 +4411,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1188,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.26,
       "token_count": 8,
       "speaker_turn": false,
       "text": " There's like three or four books"
@@ -3539,6 +4426,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0774,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.72,
       "token_count": 14,
       "speaker_turn": false,
       "text": " like in the middle of the series that are a bit slow."
@@ -3551,6 +4441,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1282,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.47,
       "token_count": 10,
       "speaker_turn": false,
       "text": " I'm so glad that I gave myself permission"
@@ -3563,6 +4456,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0828,
+      "et_speech_frac": 0.84,
+      "kiel_max_innovation": 0.49,
       "token_count": 10,
       "speaker_turn": false,
       "text": " to listen to those at like double speed,"
@@ -3575,6 +4471,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1274,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.53,
       "token_count": 10,
       "speaker_turn": false,
       "text": " because then when I got through the slow bit"
@@ -3587,6 +4486,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1175,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.44,
       "token_count": 14,
       "speaker_turn": false,
       "text": " and then the final like four books were like complete bangers,"
@@ -3599,6 +4501,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1512,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.72,
       "token_count": 12,
       "speaker_turn": false,
       "text": " I switched those to like 1.5 XP,"
@@ -3611,6 +4516,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0962,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.46,
       "token_count": 12,
       "speaker_turn": false,
       "text": " 'cause at that point, I was kind of used"
@@ -3623,6 +4531,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0672,
+      "et_speech_frac": 0.91,
+      "kiel_max_innovation": 0.68,
       "token_count": 7,
       "speaker_turn": false,
       "text": " to listening to things fast."
@@ -3635,6 +4546,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1278,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.33,
       "token_count": 10,
       "speaker_turn": false,
       "text": " And over time, you actually do end up"
@@ -3647,6 +4561,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0791,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.18,
       "token_count": 5,
       "speaker_turn": false,
       "text": " training your listening speed"
@@ -3659,6 +4576,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1113,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.64,
       "token_count": 10,
       "speaker_turn": false,
       "text": " to the point that that actually ends up being"
@@ -3671,6 +4591,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1012,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.24,
       "token_count": 7,
       "speaker_turn": false,
       "text": " no difference in your comprehension,"
@@ -3683,6 +4606,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1108,
+      "et_speech_frac": 0.87,
+      "kiel_max_innovation": 0.50,
       "token_count": 10,
       "speaker_turn": false,
       "text": " listening to a book at one time speed,"
@@ -3695,6 +4621,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0886,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.69,
       "token_count": 14,
       "speaker_turn": false,
       "text": " 1.5 or two times speed or even 2.5."
@@ -3707,6 +4636,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1207,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.26,
       "token_count": 8,
       "speaker_turn": false,
       "text": " The more you train your listening speed"
@@ -3719,6 +4651,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.0833,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.34,
       "token_count": 13,
       "speaker_turn": false,
       "text": " and you genuinely absorb it at like a faster speed level,"
@@ -3731,6 +4666,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1146,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.53,
       "token_count": 10,
       "speaker_turn": false,
       "text": " which means in the same amount of time,"
@@ -3743,6 +4681,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0541,
+      "et_speech_frac": 0.82,
+      "kiel_max_innovation": 0.71,
       "token_count": 9,
       "speaker_turn": false,
       "text": " you could just listen to more books."
@@ -3755,6 +4696,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1314,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.46,
       "token_count": 10,
       "speaker_turn": false,
       "text": " Similarly, with reading, there is no law"
@@ -3767,6 +4711,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0909,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.52,
       "token_count": 8,
       "speaker_turn": false,
       "text": " that says that you have to read"
@@ -3779,6 +4726,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0671,
+      "et_speech_frac": 0.85,
+      "kiel_max_innovation": 0.72,
       "token_count": 8,
       "speaker_turn": false,
       "text": " at a particular speed of reading."
@@ -3791,6 +4741,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1308,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.49,
       "token_count": 8,
       "speaker_turn": false,
       "text": " Some readers like to sub vocalize"
@@ -3803,6 +4756,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1027,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.54,
       "token_count": 11,
       "speaker_turn": false,
       "text": " where it's sort of like you hear the words"
@@ -3815,6 +4771,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1026,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.47,
       "token_count": 9,
       "speaker_turn": false,
       "text": " in your head as you're reading."
@@ -3827,6 +4786,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1211,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.67,
       "token_count": 11,
       "speaker_turn": false,
       "text": " That's a fairly slow way of reading."
@@ -3839,6 +4801,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1091,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.30,
       "token_count": 9,
       "speaker_turn": false,
       "text": " If you want, you can train yourself"
@@ -3851,6 +4816,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1028,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.52,
       "token_count": 6,
       "speaker_turn": false,
       "text": " to eliminate sub vocalization"
@@ -3863,6 +4831,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0872,
+      "et_speech_frac": 0.87,
+      "kiel_max_innovation": 0.62,
       "token_count": 11,
       "speaker_turn": false,
       "text": " and then you can read a little bit faster."
@@ -3875,6 +4846,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1097,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.51,
       "token_count": 10,
       "speaker_turn": false,
       "text": " And if you're able to read faster,"
@@ -3887,6 +4861,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0990,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.38,
       "token_count": 8,
       "speaker_turn": false,
       "text": " it actually helps you get through,"
@@ -3899,6 +4876,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0821,
+      "et_speech_frac": 0.85,
+      "kiel_max_innovation": 0.52,
       "token_count": 9,
       "speaker_turn": false,
       "text": " especially the more boring bits of books,"
@@ -3911,6 +4891,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1006,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.46,
       "token_count": 12,
       "speaker_turn": false,
       "text": " just quicker, which is just a nicer way of reading"
@@ -3923,6 +4906,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1111,
+      "et_speech_frac": 0.91,
+      "kiel_max_innovation": 0.72,
       "token_count": 13,
       "speaker_turn": false,
       "text": " and a better way of being able to read more books."
@@ -3935,6 +4921,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1526,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.45,
       "token_count": 11,
       "speaker_turn": false,
       "text": " At this point, some people will be like,"
@@ -3947,6 +4936,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1790,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.49,
       "token_count": 12,
       "speaker_turn": false,
       "text": " \"Well, screw you, this is terrible advice."
@@ -3959,6 +4951,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1190,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.59,
       "token_count": 6,
       "speaker_turn": false,
       "text": " This is toxic productivity."
@@ -3971,6 +4966,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1227,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.51,
       "token_count": 9,
       "speaker_turn": false,
       "text": " You should enjoy the roses and stuff.\""
@@ -3983,6 +4981,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1651,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.38,
       "token_count": 11,
       "speaker_turn": false,
       "text": " To which I would say that it's totally possible"
@@ -3995,6 +4996,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1420,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.63,
       "token_count": 6,
       "speaker_turn": false,
       "text": " to enjoy the roses."
@@ -4007,6 +5011,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1481,
+      "et_speech_frac": 0.94,
+      "kiel_max_innovation": 0.48,
       "token_count": 8,
       "speaker_turn": false,
       "text": " And sometimes the roses are even nicer"
@@ -4019,6 +5026,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1116,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.69,
       "token_count": 12,
       "speaker_turn": false,
       "text": " when you're getting through them a little bit faster."
@@ -4031,6 +5041,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1482,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.46,
       "token_count": 6,
       "speaker_turn": false,
       "text": " There is no additional nobility"
@@ -4043,6 +5056,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0645,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.20,
       "token_count": 11,
       "speaker_turn": false,
       "text": " or prestige in listening or reading a book slowly,"
@@ -4055,6 +5071,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1409,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.27,
       "token_count": 9,
       "speaker_turn": false,
       "text": " just like there's no additional nobility"
@@ -4067,6 +5086,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0765,
+      "et_speech_frac": 0.84,
+      "kiel_max_innovation": 0.64,
       "token_count": 8,
       "speaker_turn": false,
       "text": " or prestige in reading it fast."
@@ -4079,6 +5101,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1172,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.50,
       "token_count": 9,
       "speaker_turn": false,
       "text": " It's just like up to you,"
@@ -4091,6 +5116,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1289,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.53,
       "token_count": 12,
       "speaker_turn": false,
       "text": " just like all of us walk at different paces."
@@ -4103,6 +5131,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1332,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.28,
       "token_count": 9,
       "speaker_turn": false,
       "text": " And there's nothing like good or bad"
@@ -4115,6 +5146,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0970,
+      "et_speech_frac": 0.94,
+      "kiel_max_innovation": 0.68,
       "token_count": 8,
       "speaker_turn": false,
       "text": " about walking slower, walking fast."
@@ -4127,6 +5161,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1235,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.21,
       "token_count": 11,
       "speaker_turn": false,
       "text": " Similarly, all of us read at different paces"
@@ -4139,6 +5176,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0814,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.40,
       "token_count": 8,
       "speaker_turn": false,
       "text": " and you can in fact train yourself"
@@ -4151,6 +5191,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0740,
+      "et_speech_frac": 0.88,
+      "kiel_max_innovation": 0.51,
       "token_count": 9,
       "speaker_turn": false,
       "text": " to read or listen at higher speeds,"
@@ -4163,6 +5206,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0606,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.69,
       "token_count": 10,
       "speaker_turn": false,
       "text": " which just allows you to read more books."
@@ -4175,6 +5221,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1100,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.66,
       "token_count": 11,
       "speaker_turn": false,
       "text": " Next up, we have the impulse buy rule."
@@ -4187,6 +5236,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1276,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.26,
       "token_count": 7,
       "speaker_turn": false,
       "text": " When I first started making money"
@@ -4199,6 +5251,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0817,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.38,
       "token_count": 13,
       "speaker_turn": false,
       "text": " from like my side business when I was in med school,"
@@ -4211,6 +5266,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1102,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.45,
       "token_count": 10,
       "speaker_turn": false,
       "text": " I came across this rule, which is that"
@@ -4223,6 +5281,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1475,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.45,
       "token_count": 8,
       "speaker_turn": false,
       "text": " whenever you see a book recommended,"
@@ -4235,6 +5296,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0697,
+      "et_speech_frac": 0.77,
+      "kiel_max_innovation": 0.61,
       "token_count": 8,
       "speaker_turn": false,
       "text": " you should just buy the book."
@@ -4247,6 +5311,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0745,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.57,
       "token_count": 10,
       "speaker_turn": false,
       "text": " You should treat it like an impulse buy."
@@ -4259,6 +5326,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0506,
+      "et_speech_frac": 0.80,
+      "kiel_max_innovation": 0.56,
       "token_count": 8,
       "speaker_turn": false,
       "text": " You should not think about it."
@@ -4271,6 +5341,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0921,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.30,
       "token_count": 9,
       "speaker_turn": false,
       "text": " Obviously, if you have no money,"
@@ -4283,6 +5356,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0650,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.52,
       "token_count": 10,
       "speaker_turn": false,
       "text": " you have to start thinking about it,"
@@ -4295,6 +5371,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0778,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.38,
       "token_count": 13,
       "speaker_turn": false,
       "text": " but I'm sure you have way ways of acquiring books,"
@@ -4307,6 +5386,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0808,
+      "et_speech_frac": 0.88,
+      "kiel_max_innovation": 0.48,
       "token_count": 8,
       "speaker_turn": false,
       "text": " even if you are completely broke."
@@ -4319,6 +5401,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0684,
+      "et_speech_frac": 0.76,
+      "kiel_max_innovation": 0.67,
       "token_count": 11,
       "speaker_turn": false,
       "text": " Like I was back when I was a teenager."
@@ -4331,6 +5416,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1217,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.21,
       "token_count": 10,
       "speaker_turn": false,
       "text": " And so for me, if anyone recommends me"
@@ -4343,6 +5431,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0792,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.15,
       "token_count": 8,
       "speaker_turn": false,
       "text": " any kind of book at all,"
@@ -4355,6 +5446,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1101,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.36,
       "token_count": 9,
       "speaker_turn": false,
       "text": " I will immediately open up my phone,"
@@ -4367,6 +5461,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1034,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.44,
       "token_count": 15,
       "speaker_turn": false,
       "text": " go to Amazon or code at UK and just buy it on Kindle,"
@@ -4379,6 +5476,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1266,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.37,
       "token_count": 12,
       "speaker_turn": false,
       "text": " or download it on Audible using that Audible Credit"
@@ -4391,6 +5491,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0900,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.56,
       "token_count": 8,
       "speaker_turn": false,
       "text": " or whatever I feel like doing."
@@ -4403,6 +5506,9 @@
       "hcp_quality": 0.8552,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1070,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.58,
       "token_count": 10,
       "speaker_turn": false,
       "text": " And I don't think twice about it."
@@ -4415,6 +5521,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1697,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.28,
       "token_count": 9,
       "speaker_turn": false,
       "text": " And there've been a bunch of books"
@@ -4427,6 +5536,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1441,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.61,
       "token_count": 10,
       "speaker_turn": false,
       "text": " that I've impossible over the years where,"
@@ -4439,6 +5551,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1538,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.49,
       "token_count": 16,
       "speaker_turn": false,
       "text": " you know, I buy the book and then maybe like two years later,"
@@ -4451,6 +5566,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0861,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.56,
       "token_count": 15,
       "speaker_turn": false,
       "text": " I'll discover it on my Kindle and I'll start reading it."
@@ -4463,6 +5581,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.1119,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.39,
       "token_count": 13,
       "speaker_turn": false,
       "text": " And I'll get one like life-changing idea from it"
@@ -4475,6 +5596,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1057,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.42,
       "token_count": 9,
       "speaker_turn": false,
       "text": " that changes my life or changes my perspective"
@@ -4487,6 +5611,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1133,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.69,
       "token_count": 6,
       "speaker_turn": false,
       "text": " or changes my experience."
@@ -4499,6 +5626,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0988,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.52,
       "token_count": 9,
       "speaker_turn": false,
       "text": " And so the return on investment of these"
@@ -4511,6 +5641,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0422,
+      "et_speech_frac": 0.91,
+      "kiel_max_innovation": 0.68,
       "token_count": 6,
       "speaker_turn": false,
       "text": " is absolutely huge."
@@ -4523,6 +5656,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1046,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.50,
       "token_count": 10,
       "speaker_turn": false,
       "text": " So the trick here is if you can,"
@@ -4535,6 +5671,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0737,
+      "et_speech_frac": 0.91,
+      "kiel_max_innovation": 0.68,
       "token_count": 11,
       "speaker_turn": false,
       "text": " don't create friction at the point of acquisition."
@@ -4547,6 +5686,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1156,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.55,
       "token_count": 12,
       "speaker_turn": false,
       "text": " If someone recommends you a book just like buy the book"
@@ -4559,6 +5701,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0979,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.40,
       "token_count": 10,
       "speaker_turn": false,
       "text": " and don't think too hard about it,"
@@ -4571,6 +5716,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0785,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.52,
       "token_count": 9,
       "speaker_turn": false,
       "text": " and feel free to like reduce your expenses"
@@ -4583,6 +5731,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0961,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.20,
       "token_count": 10,
       "speaker_turn": false,
       "text": " in other like less interesting areas of life,"
@@ -4595,6 +5746,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0816,
+      "et_speech_frac": 0.87,
+      "kiel_max_innovation": 0.03,
       "token_count": 10,
       "speaker_turn": false,
       "text": " like takeaways or restaurant meals or whatever,"
@@ -4607,6 +5761,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0973,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.64,
       "token_count": 9,
       "speaker_turn": false,
       "text": " if you need to compensate for the fact"
@@ -4619,6 +5776,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0583,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.72,
       "token_count": 12,
       "speaker_turn": false,
       "text": " that you're spending a bit more money on books."
@@ -4631,6 +5791,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1785,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.13,
       "token_count": 5,
       "speaker_turn": false,
       "text": " The final rule relates"
@@ -4643,6 +5806,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1387,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.48,
       "token_count": 10,
       "speaker_turn": false,
       "text": " to something that James Clear talks about a lot"
@@ -4655,6 +5821,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1035,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.24,
       "token_count": 9,
       "speaker_turn": false,
       "text": " in his book, Atomic Habits,"
@@ -4667,6 +5836,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0948,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.67,
       "token_count": 7,
       "speaker_turn": false,
       "text": " which is the identity shift."
@@ -4679,6 +5851,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1236,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.55,
       "token_count": 13,
       "speaker_turn": false,
       "text": " A lot of us have the identity like we have told ourselves"
@@ -4691,6 +5866,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0935,
+      "et_speech_frac": 0.91,
+      "kiel_max_innovation": 0.67,
       "token_count": 13,
       "speaker_turn": false,
       "text": " that I am not a reader or I struggle to read."
@@ -4703,6 +5881,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1288,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.12,
       "token_count": 9,
       "speaker_turn": false,
       "text": " And these identity statements are very powerful"
@@ -4715,6 +5896,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0984,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.36,
       "token_count": 7,
       "speaker_turn": false,
       "text": " and also very unhelpful"
@@ -4727,6 +5911,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0775,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.70,
       "token_count": 11,
       "speaker_turn": false,
       "text": " if you're actually trying to read more books."
@@ -4739,6 +5926,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1396,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.38,
       "token_count": 11,
       "speaker_turn": false,
       "text": " And so one level up is, you know,"
@@ -4751,6 +5941,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0855,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.52,
       "token_count": 9,
       "speaker_turn": false,
       "text": " I'm trying to read more books."
@@ -4763,6 +5956,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0715,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.63,
       "token_count": 8,
       "speaker_turn": false,
       "text": " I'm actively working on it."
@@ -4775,6 +5971,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1045,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.52,
       "token_count": 10,
       "speaker_turn": false,
       "text": " But even that is sort of implying to yourself"
@@ -4787,6 +5986,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0831,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.62,
       "token_count": 13,
       "speaker_turn": false,
       "text": " that you are not the sort of person who reads stuff."
@@ -4799,6 +6001,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1282,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.33,
       "token_count": 9,
       "speaker_turn": false,
       "text": " Whereas if you can genuinely sigh up yourself"
@@ -4811,6 +6016,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0884,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.45,
       "token_count": 9,
       "speaker_turn": false,
       "text": " into telling yourself that I am a reader"
@@ -4823,6 +6031,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1089,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.43,
       "token_count": 10,
       "speaker_turn": false,
       "text": " and you for example, always have a book"
@@ -4835,6 +6046,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1011,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.49,
       "token_count": 13,
       "speaker_turn": false,
       "text": " that you're reading, you then start to think of yourself"
@@ -4847,6 +6061,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1086,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.63,
       "token_count": 5,
       "speaker_turn": false,
       "text": " as a reader."
@@ -4859,6 +6076,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1857,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.34,
       "token_count": 14,
       "speaker_turn": false,
       "text": " And if you're a reader, then like what do you do"
@@ -4871,6 +6091,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1117,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.31,
       "token_count": 11,
       "speaker_turn": false,
       "text": " when you've got a moment of spare time?"
@@ -4883,6 +6106,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1077,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.62,
       "token_count": 14,
       "speaker_turn": false,
       "text": " You don't pick up your phone and start scrolling TikTok."
@@ -4895,6 +6121,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1345,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.25,
       "token_count": 9,
       "speaker_turn": false,
       "text": " You pick up your phone, hit Kindle"
@@ -4907,6 +6136,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0862,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.51,
       "token_count": 7,
       "speaker_turn": false,
       "text": " and start reading on Kindle."
@@ -4919,6 +6151,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0793,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.69,
       "token_count": 15,
       "speaker_turn": false,
       "text": " Or you pick up a physical book and actually start reading it."
@@ -4931,6 +6166,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1146,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.53,
       "token_count": 11,
       "speaker_turn": false,
       "text": " And so when you have that kind of identity change"
@@ -4943,6 +6181,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0990,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.53,
       "token_count": 10,
       "speaker_turn": false,
       "text": " and when you always have the ability to read"
@@ -4955,6 +6196,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0619,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.23,
       "token_count": 9,
       "speaker_turn": false,
       "text": " in any kind of moment of downtime,"
@@ -4967,6 +6211,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0912,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.48,
       "token_count": 9,
       "speaker_turn": false,
       "text": " that then drastically increases the amount of books"
@@ -4979,6 +6226,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0678,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.73,
       "token_count": 8,
       "speaker_turn": false,
       "text": " that you're able to read."
@@ -4991,6 +6241,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1239,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.45,
       "token_count": 14,
       "speaker_turn": false,
       "text": " Now this whole video has been about how to read more books."
@@ -5003,6 +6256,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1320,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.57,
       "token_count": 12,
       "speaker_turn": false,
       "text": " But obviously reading more books isn't really the point."
@@ -5015,6 +6271,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1244,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.43,
       "token_count": 10,
       "speaker_turn": false,
       "text": " The point is the inspiration, the motivation,"
@@ -5027,6 +6286,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0969,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.46,
       "token_count": 7,
       "speaker_turn": false,
       "text": " the education, the learning,"
@@ -5039,6 +6301,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0780,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.66,
       "token_count": 13,
       "speaker_turn": false,
       "text": " the entertainment that you get from the books that you read."
@@ -5051,6 +6316,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1212,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.33,
       "token_count": 9,
       "speaker_turn": false,
       "text": " And if you are interested in a method"
@@ -5063,6 +6331,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1097,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.56,
       "token_count": 12,
       "speaker_turn": false,
       "text": " for actually remembering more of the stuff that you read,"
@@ -5075,6 +6346,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1686,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.55,
       "token_count": 8,
       "speaker_turn": false,
       "text": " there's a video over here."
@@ -5087,6 +6361,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1171,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.68,
       "token_count": 16,
       "speaker_turn": false,
       "text": " It's a couple of years old, but it's still very relevant."
@@ -5099,6 +6376,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1273,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.23,
       "token_count": 10,
       "speaker_turn": false,
       "text": " This video kind of goes through my own system"
@@ -5111,6 +6391,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0909,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.40,
       "token_count": 11,
       "speaker_turn": false,
       "text": " for how I connect to various different apps together"
@@ -5123,6 +6406,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0725,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.75,
       "token_count": 11,
       "speaker_turn": false,
       "text": " so that I can remember everything that I read."
@@ -5135,6 +6421,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1225,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.55,
       "token_count": 12,
       "speaker_turn": false,
       "text": " So if you're interested in remembering more of the things"
@@ -5147,6 +6436,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0825,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.71,
       "token_count": 13,
       "speaker_turn": false,
       "text": " you read, you should check out that video over there."
@@ -5159,6 +6451,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1055,
+      "et_speech_frac": 0.81,
+      "kiel_max_innovation": 0.56,
       "token_count": 9,
       "speaker_turn": false,
       "text": " Thanks for watching. See you later."

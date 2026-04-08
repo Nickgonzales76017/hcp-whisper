@@ -1,6 +1,6 @@
 {
   "algorithm": "Complex-Domain HCP Spectral Refinement",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "license": "MIT",
   "total_segments": 467,
   "hallucinated_segments": 0,
@@ -9,10 +9,18 @@
     "padded_fft_size": 8192,
     "flagged_tokens": 1114,
     "flagged_segments": 157,
-    "elapsed_ms": 9.2,
+    "elapsed_ms": 7.3,
     "quality_base_avg": 0.9241,
     "quality_hcp_avg": 0.9981,
-    "quality_uplift_pct": 8.0
+    "quality_uplift_pct": 8.0,
+    "kiel": {
+      "flagged_tokens": 0,
+      "elapsed_ms": 0.1
+    },
+    "et_gate": {
+      "segments_gated": 0,
+      "elapsed_ms": 863.6
+    }
   },
   "segments": [
     {
@@ -23,6 +31,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1205,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.57,
       "token_count": 14,
       "speaker_turn": false,
       "text": " This little black book right here is very important to me."
@@ -35,6 +46,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1043,
+      "et_speech_frac": 0.83,
+      "kiel_max_innovation": 0.56,
       "token_count": 10,
       "speaker_turn": false,
       "text": " It has all of the rules of money."
@@ -47,6 +61,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0823,
+      "et_speech_frac": 0.75,
+      "kiel_max_innovation": 0.51,
       "token_count": 13,
       "speaker_turn": false,
       "text": " And they're very simple, not that complicated to learn."
@@ -59,6 +76,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0684,
+      "et_speech_frac": 0.74,
+      "kiel_max_innovation": 0.67,
       "token_count": 14,
       "speaker_turn": false,
       "text": " But once you do, you can actually start to stack cash."
@@ -71,6 +91,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1092,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.37,
       "token_count": 13,
       "speaker_turn": false,
       "text": " I was in my 20s and I really didn't understand"
@@ -83,6 +106,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0680,
+      "et_speech_frac": 0.73,
+      "kiel_max_innovation": 0.67,
       "token_count": 6,
       "speaker_turn": false,
       "text": " how to make money."
@@ -95,6 +121,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1086,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.36,
       "token_count": 11,
       "speaker_turn": false,
       "text": " I was trying hard, I was working hard,"
@@ -107,6 +136,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0883,
+      "et_speech_frac": 0.80,
+      "kiel_max_innovation": 0.61,
       "token_count": 9,
       "speaker_turn": false,
       "text": " but I really wasn't getting anywhere."
@@ -119,6 +151,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1007,
+      "et_speech_frac": 0.77,
+      "kiel_max_innovation": 0.45,
       "token_count": 10,
       "speaker_turn": false,
       "text": " And once I learned the rules of money,"
@@ -131,6 +166,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1088,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.49,
       "token_count": 14,
       "speaker_turn": false,
       "text": " I started to understand, oh, that's what I'm supposed"
@@ -143,6 +181,9 @@
       "hcp_quality": 0.8549,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0536,
+      "et_speech_frac": 0.53,
+      "kiel_max_innovation": 0.68,
       "token_count": 5,
       "speaker_turn": false,
       "text": " to be doing."
@@ -155,6 +196,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1256,
+      "et_speech_frac": 0.88,
+      "kiel_max_innovation": 0.47,
       "token_count": 13,
       "speaker_turn": false,
       "text": " So the next 15 minutes, I'm gonna tell you exactly"
@@ -167,6 +211,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1112,
+      "et_speech_frac": 0.81,
+      "kiel_max_innovation": 0.61,
       "token_count": 9,
       "speaker_turn": false,
       "text": " what these four rules of money are."
@@ -179,6 +226,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.1040,
+      "et_speech_frac": 0.88,
+      "kiel_max_innovation": 0.46,
       "token_count": 14,
       "speaker_turn": false,
       "text": " What I did to go from broke to ended up making my first"
@@ -191,6 +241,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0847,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.24,
       "token_count": 13,
       "speaker_turn": false,
       "text": " million at age 30 and then being worth 30 million dollars"
@@ -203,6 +256,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0976,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.58,
       "token_count": 6,
       "speaker_turn": false,
       "text": " a few years later."
@@ -215,6 +271,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1548,
+      "et_speech_frac": 0.94,
+      "kiel_max_innovation": 0.54,
       "token_count": 7,
       "speaker_turn": false,
       "text": " And I was an idiot."
@@ -227,6 +286,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1059,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.35,
       "token_count": 8,
       "speaker_turn": false,
       "text": " I was running around with a fork"
@@ -239,6 +301,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0772,
+      "et_speech_frac": 0.84,
+      "kiel_max_innovation": 0.69,
       "token_count": 9,
       "speaker_turn": false,
       "text": " and I was sticking into different outlets."
@@ -251,6 +316,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1213,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.52,
       "token_count": 10,
       "speaker_turn": false,
       "text": " I was learning my lessons the hard way."
@@ -263,6 +331,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1175,
+      "et_speech_frac": 0.88,
+      "kiel_max_innovation": 0.34,
       "token_count": 15,
       "speaker_turn": false,
       "text": " And I wanna save you a lot of years and a lot of pain"
@@ -275,6 +346,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1006,
+      "et_speech_frac": 0.81,
+      "kiel_max_innovation": 0.66,
       "token_count": 13,
       "speaker_turn": false,
       "text": " by just telling you what I did and what actually works."
@@ -287,6 +361,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1224,
+      "et_speech_frac": 0.86,
+      "kiel_max_innovation": 0.31,
       "token_count": 13,
       "speaker_turn": false,
       "text": " So if you're somebody who today, you don't love"
@@ -299,6 +376,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1091,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.35,
       "token_count": 12,
       "speaker_turn": false,
       "text": " where you're at financially, maybe you're not financially"
@@ -311,6 +391,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0988,
+      "et_speech_frac": 0.73,
+      "kiel_max_innovation": 0.66,
       "token_count": 11,
       "speaker_turn": false,
       "text": " free and you wanna get to that magic number."
@@ -323,6 +406,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1244,
+      "et_speech_frac": 0.82,
+      "kiel_max_innovation": 0.57,
       "token_count": 13,
       "speaker_turn": false,
       "text": " You wanna get a million dollars liquid in your bank account."
@@ -335,6 +421,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1527,
+      "et_speech_frac": 0.77,
+      "kiel_max_innovation": 0.53,
       "token_count": 10,
       "speaker_turn": false,
       "text": " Well, this is the video for you."
@@ -347,6 +436,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0808,
+      "et_speech_frac": 0.94,
+      "kiel_max_innovation": 0.69,
       "token_count": 12,
       "speaker_turn": false,
       "text": " I'm gonna tell you the four of money rules."
@@ -359,6 +451,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1888,
+      "et_speech_frac": 0.86,
+      "kiel_max_innovation": 0.18,
       "token_count": 7,
       "speaker_turn": false,
       "text": " (upbeat music)"
@@ -371,6 +466,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1435,
+      "et_speech_frac": 0.88,
+      "kiel_max_innovation": 0.64,
       "token_count": 13,
       "speaker_turn": false,
       "text": " Rule number one, you need one money-making skill."
@@ -383,6 +481,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0912,
+      "et_speech_frac": 0.87,
+      "kiel_max_innovation": 0.67,
       "token_count": 12,
       "speaker_turn": false,
       "text": " Money-making skill is a very specific term here."
@@ -395,6 +496,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1258,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.51,
       "token_count": 9,
       "speaker_turn": false,
       "text": " So when it comes to building wealth,"
@@ -407,6 +511,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1005,
+      "et_speech_frac": 0.81,
+      "kiel_max_innovation": 0.67,
       "token_count": 11,
       "speaker_turn": false,
       "text": " there's really only four money-making skills."
@@ -419,6 +526,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0887,
+      "et_speech_frac": 0.78,
+      "kiel_max_innovation": 0.73,
       "token_count": 9,
       "speaker_turn": false,
       "text": " You need to pick one of these."
@@ -431,6 +541,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0913,
+      "et_speech_frac": 0.75,
+      "kiel_max_innovation": 0.51,
       "token_count": 7,
       "speaker_turn": false,
       "text": " The first one is selling."
@@ -443,6 +556,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0414,
+      "et_speech_frac": 0.80,
+      "kiel_max_innovation": 0.69,
       "token_count": 13,
       "speaker_turn": false,
       "text": " So this is persuading people, marketing, closing deals."
@@ -455,6 +571,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0807,
+      "et_speech_frac": 0.85,
+      "kiel_max_innovation": 0.43,
       "token_count": 13,
       "speaker_turn": false,
       "text": " The second one is making, which is products, apps,"
@@ -467,6 +586,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0572,
+      "et_speech_frac": 0.80,
+      "kiel_max_innovation": 0.69,
       "token_count": 7,
       "speaker_turn": false,
       "text": " websites, videos, books."
@@ -479,6 +601,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1026,
+      "et_speech_frac": 0.87,
+      "kiel_max_innovation": 0.61,
       "token_count": 7,
       "speaker_turn": false,
       "text": " The next one is designing."
@@ -491,6 +616,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.0757,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.19,
       "token_count": 9,
       "speaker_turn": false,
       "text": " So having really great taste, understanding form"
@@ -503,6 +631,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0664,
+      "et_speech_frac": 0.70,
+      "kiel_max_innovation": 0.64,
       "token_count": 16,
       "speaker_turn": false,
       "text": " and function like a Steve Jobs type, and the fourth is hunting."
@@ -515,6 +646,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1096,
+      "et_speech_frac": 0.83,
+      "kiel_max_innovation": 0.65,
       "token_count": 10,
       "speaker_turn": false,
       "text": " So selling, making, designing, hunting."
@@ -527,6 +661,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0724,
+      "et_speech_frac": 0.71,
+      "kiel_max_innovation": 0.63,
       "token_count": 6,
       "speaker_turn": false,
       "text": " Hunting is spotting opportunities."
@@ -539,6 +676,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.0621,
+      "et_speech_frac": 0.88,
+      "kiel_max_innovation": 0.33,
       "token_count": 11,
       "speaker_turn": false,
       "text": " It's finding great real estate deals or angel investing"
@@ -551,6 +691,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0497,
+      "et_speech_frac": 0.68,
+      "kiel_max_innovation": 0.72,
       "token_count": 10,
       "speaker_turn": false,
       "text": " or figuring out the right stock to buy."
@@ -563,6 +706,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1038,
+      "et_speech_frac": 0.88,
+      "kiel_max_innovation": 0.65,
       "token_count": 12,
       "speaker_turn": false,
       "text": " You need to pick one of these skills and mastering."
@@ -575,6 +721,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0621,
+      "et_speech_frac": 0.69,
+      "kiel_max_innovation": 0.67,
       "token_count": 12,
       "speaker_turn": false,
       "text": " Pick the one that's of most interest to you."
@@ -587,6 +736,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0924,
+      "et_speech_frac": 0.84,
+      "kiel_max_innovation": 0.57,
       "token_count": 9,
       "speaker_turn": false,
       "text": " Now mastering it is the hard part."
@@ -599,6 +751,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0773,
+      "et_speech_frac": 0.60,
+      "kiel_max_innovation": 0.62,
       "token_count": 12,
       "speaker_turn": false,
       "text": " So you're gonna need to do it every day."
@@ -611,6 +766,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.1160,
+      "et_speech_frac": 0.91,
+      "kiel_max_innovation": 0.56,
       "token_count": 16,
       "speaker_turn": false,
       "text": " And the way to do that is let's say you wanna learn sales."
@@ -623,6 +781,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0689,
+      "et_speech_frac": 0.91,
+      "kiel_max_innovation": 0.46,
       "token_count": 12,
       "speaker_turn": false,
       "text": " Selling is the master skill, the money-making skill"
@@ -635,6 +796,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0548,
+      "et_speech_frac": 0.69,
+      "kiel_max_innovation": 0.69,
       "token_count": 7,
       "speaker_turn": false,
       "text": " you're trying to learn."
@@ -647,6 +811,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1059,
+      "et_speech_frac": 0.82,
+      "kiel_max_innovation": 0.63,
       "token_count": 16,
       "speaker_turn": false,
       "text": " You need to go to a place where selling is what they do."
@@ -659,6 +826,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1143,
+      "et_speech_frac": 0.78,
+      "kiel_max_innovation": 0.68,
       "token_count": 9,
       "speaker_turn": false,
       "text": " It is how they make their money."
@@ -671,6 +841,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1179,
+      "et_speech_frac": 0.77,
+      "kiel_max_innovation": 0.32,
       "token_count": 13,
       "speaker_turn": false,
       "text": " And when you get there, you're gonna get a job"
@@ -683,6 +856,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0969,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.53,
       "token_count": 12,
       "speaker_turn": false,
       "text": " and you might start at the bottom of the totem pole"
@@ -695,6 +871,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1297,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.39,
       "token_count": 13,
       "speaker_turn": false,
       "text": " and what you're gonna do is you're gonna look around"
@@ -707,6 +886,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0848,
+      "et_speech_frac": 0.79,
+      "kiel_max_innovation": 0.58,
       "token_count": 13,
       "speaker_turn": false,
       "text": " and you're gonna ask who's the number one producer?"
@@ -719,6 +901,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0509,
+      "et_speech_frac": 0.63,
+      "kiel_max_innovation": 0.44,
       "token_count": 10,
       "speaker_turn": false,
       "text": " Who is the number one sales person here?"
@@ -731,6 +916,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.1253,
+      "et_speech_frac": 0.74,
+      "kiel_max_innovation": 0.69,
       "token_count": 16,
       "speaker_turn": false,
       "text": " Your job's to go sit next to them and then double their input."
@@ -743,6 +931,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.1167,
+      "et_speech_frac": 0.87,
+      "kiel_max_innovation": 0.67,
       "token_count": 17,
       "speaker_turn": false,
       "text": " So if they're making 100 calls a day, you're gonna make 200."
@@ -755,6 +946,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1234,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.57,
       "token_count": 15,
       "speaker_turn": false,
       "text": " They're not gonna be as good at the calls as they are,"
@@ -767,6 +961,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0801,
+      "et_speech_frac": 0.64,
+      "kiel_max_innovation": 0.65,
       "token_count": 9,
       "speaker_turn": false,
       "text": " but you're gonna double the input."
@@ -779,6 +976,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1045,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.50,
       "token_count": 12,
       "speaker_turn": false,
       "text": " If they knock on 50 doors, you do 100."
@@ -791,6 +991,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0370,
+      "et_speech_frac": 0.41,
+      "kiel_max_innovation": 0.55,
       "token_count": 6,
       "speaker_turn": false,
       "text": " You get the idea."
@@ -803,6 +1006,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1012,
+      "et_speech_frac": 0.94,
+      "kiel_max_innovation": 0.50,
       "token_count": 9,
       "speaker_turn": false,
       "text": " And you're gonna sit next to them"
@@ -815,6 +1021,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0896,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.61,
       "token_count": 10,
       "speaker_turn": false,
       "text": " and you're gonna study what they do."
@@ -827,6 +1036,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0849,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.54,
       "token_count": 12,
       "speaker_turn": false,
       "text": " You're gonna observe the difference between what they're doing"
@@ -839,6 +1051,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0628,
+      "et_speech_frac": 0.44,
+      "kiel_max_innovation": 0.35,
       "token_count": 8,
       "speaker_turn": false,
       "text": " and what you're doing."
@@ -851,6 +1066,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1264,
+      "et_speech_frac": 0.87,
+      "kiel_max_innovation": 0.63,
       "token_count": 12,
       "speaker_turn": false,
       "text": " And then you're gonna double it every single time."
@@ -863,6 +1081,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1394,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.47,
       "token_count": 10,
       "speaker_turn": false,
       "text": " That's what you're doing by day."
@@ -875,6 +1096,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1145,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.33,
       "token_count": 15,
       "speaker_turn": false,
       "text": " And at night, you're reading books, you're watching videos,"
@@ -887,6 +1111,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0786,
+      "et_speech_frac": 0.94,
+      "kiel_max_innovation": 0.70,
       "token_count": 11,
       "speaker_turn": false,
       "text": " you're obsessing over the art of selling."
@@ -899,6 +1126,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0875,
+      "et_speech_frac": 0.74,
+      "kiel_max_innovation": 0.55,
       "token_count": 13,
       "speaker_turn": false,
       "text": " So your nine to five is where you get your practice reps"
@@ -911,6 +1141,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0743,
+      "et_speech_frac": 0.80,
+      "kiel_max_innovation": 0.71,
       "token_count": 19,
       "speaker_turn": false,
       "text": " and then your five to nine, five p.m. to nine p.m."
@@ -923,6 +1156,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0804,
+      "et_speech_frac": 0.86,
+      "kiel_max_innovation": 0.71,
       "token_count": 12,
       "speaker_turn": false,
       "text": " That's where you get ideas on how to improve."
@@ -935,6 +1171,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0771,
+      "et_speech_frac": 0.79,
+      "kiel_max_innovation": 0.66,
       "token_count": 16,
       "speaker_turn": false,
       "text": " I got to be friends with Mr. B so the last few years."
@@ -947,6 +1186,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1263,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.58,
       "token_count": 16,
       "speaker_turn": false,
       "text": " And he's today, the number one YouTuber in the world."
@@ -959,6 +1201,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0790,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.58,
       "token_count": 13,
       "speaker_turn": false,
       "text": " Every video he puts out gets hundreds of millions of views."
@@ -971,6 +1216,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1617,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.34,
       "token_count": 14,
       "speaker_turn": false,
       "text": " And he showed me and he told me he was like dude,"
@@ -983,6 +1231,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1245,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.56,
       "token_count": 11,
       "speaker_turn": false,
       "text": " at the age of 12, I decided my skill"
@@ -995,6 +1246,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0651,
+      "et_speech_frac": 0.83,
+      "kiel_max_innovation": 0.66,
       "token_count": 11,
       "speaker_turn": false,
       "text": " was gonna be making YouTube videos in his case."
@@ -1007,6 +1261,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0921,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.70,
       "token_count": 9,
       "speaker_turn": false,
       "text": " So he wanted to be a maker."
@@ -1019,6 +1276,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0590,
+      "et_speech_frac": 0.80,
+      "kiel_max_innovation": 0.64,
       "token_count": 9,
       "speaker_turn": false,
       "text": " He wanted to make YouTube videos."
@@ -1031,6 +1291,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1083,
+      "et_speech_frac": 0.79,
+      "kiel_max_innovation": 0.24,
       "token_count": 11,
       "speaker_turn": false,
       "text": " And every day, he would open up a dictionary"
@@ -1043,6 +1306,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0942,
+      "et_speech_frac": 0.84,
+      "kiel_max_innovation": 0.61,
       "token_count": 11,
       "speaker_turn": false,
       "text": " and he would flip to a different random word."
@@ -1055,6 +1321,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1132,
+      "et_speech_frac": 0.87,
+      "kiel_max_innovation": 0.44,
       "token_count": 11,
       "speaker_turn": false,
       "text": " Whatever word he got, he had to force himself"
@@ -1067,6 +1336,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0830,
+      "et_speech_frac": 0.81,
+      "kiel_max_innovation": 0.74,
       "token_count": 11,
       "speaker_turn": false,
       "text": " to think of 20 video ideas using that word."
@@ -1079,6 +1351,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1385,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.21,
       "token_count": 8,
       "speaker_turn": false,
       "text": " Not all of them were good,"
@@ -1091,6 +1366,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0821,
+      "et_speech_frac": 0.82,
+      "kiel_max_innovation": 0.53,
       "token_count": 11,
       "speaker_turn": false,
       "text": " but he would force that muscle of idea generation."
@@ -1103,6 +1381,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0823,
+      "et_speech_frac": 0.73,
+      "kiel_max_innovation": 0.48,
       "token_count": 10,
       "speaker_turn": false,
       "text": " 'Cause for YouTube videos, the idea,"
@@ -1115,6 +1396,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0549,
+      "et_speech_frac": 0.71,
+      "kiel_max_innovation": 0.65,
       "token_count": 9,
       "speaker_turn": false,
       "text": " the concept is the number one thing."
@@ -1127,6 +1411,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1431,
+      "et_speech_frac": 0.84,
+      "kiel_max_innovation": 0.51,
       "token_count": 12,
       "speaker_turn": false,
       "text": " And then he would go try to make that video."
@@ -1139,6 +1426,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0861,
+      "et_speech_frac": 0.86,
+      "kiel_max_innovation": 0.40,
       "token_count": 14,
       "speaker_turn": false,
       "text": " And he would suck at it and he'd have a crappy thumbnail"
@@ -1151,6 +1441,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0835,
+      "et_speech_frac": 0.83,
+      "kiel_max_innovation": 0.65,
       "token_count": 9,
       "speaker_turn": false,
       "text": " and a crappy lighting, crappy audio."
@@ -1163,6 +1456,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.0831,
+      "et_speech_frac": 0.79,
+      "kiel_max_innovation": 0.45,
       "token_count": 14,
       "speaker_turn": false,
       "text": " And each day, he would try to make one of those things"
@@ -1175,6 +1471,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0600,
+      "et_speech_frac": 0.64,
+      "kiel_max_innovation": 0.62,
       "token_count": 7,
       "speaker_turn": false,
       "text": " better in between every video."
@@ -1187,6 +1486,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0768,
+      "et_speech_frac": 0.82,
+      "kiel_max_innovation": 0.35,
       "token_count": 11,
       "speaker_turn": false,
       "text": " It took him like, I don't know,"
@@ -1199,6 +1501,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.0955,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.45,
       "token_count": 14,
       "speaker_turn": false,
       "text": " 100 plus videos before he even got to 10,000 subscribers"
@@ -1211,6 +1516,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0690,
+      "et_speech_frac": 0.61,
+      "kiel_max_innovation": 0.63,
       "token_count": 11,
       "speaker_turn": false,
       "text": " before he started making any money off this thing."
@@ -1223,6 +1531,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0745,
+      "et_speech_frac": 0.80,
+      "kiel_max_innovation": 0.68,
       "token_count": 10,
       "speaker_turn": false,
       "text": " But he mastered the art of making videos."
@@ -1235,6 +1546,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1018,
+      "et_speech_frac": 0.79,
+      "kiel_max_innovation": 0.63,
       "token_count": 7,
       "speaker_turn": false,
       "text": " Warren Buffett is another example."
@@ -1247,6 +1561,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1142,
+      "et_speech_frac": 0.68,
+      "kiel_max_innovation": 0.60,
       "token_count": 6,
       "speaker_turn": false,
       "text": " He was a hunter."
@@ -1259,6 +1576,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1151,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.65,
       "token_count": 11,
       "speaker_turn": false,
       "text": " Hunting was the money-making skill he chose."
@@ -1271,6 +1591,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1322,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.33,
       "token_count": 9,
       "speaker_turn": false,
       "text": " And if you ever learn about Buffett,"
@@ -1283,6 +1606,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0839,
+      "et_speech_frac": 0.87,
+      "kiel_max_innovation": 0.51,
       "token_count": 9,
       "speaker_turn": false,
       "text": " you'll learn that Buffett used to take"
@@ -1295,6 +1621,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0769,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.63,
       "token_count": 7,
       "speaker_turn": false,
       "text": " the entire Moody's manual."
@@ -1307,6 +1636,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0765,
+      "et_speech_frac": 0.72,
+      "kiel_max_innovation": 0.52,
       "token_count": 9,
       "speaker_turn": false,
       "text": " So a 4,000 page book."
@@ -1319,6 +1651,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1238,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.56,
       "token_count": 13,
       "speaker_turn": false,
       "text": " And I'm not talking about like a Harry Potter book."
@@ -1331,6 +1666,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 7,
+      "et_rms": 0.1012,
+      "et_speech_frac": 0.88,
+      "kiel_max_innovation": 0.46,
       "token_count": 14,
       "speaker_turn": false,
       "text": " This is a 4,000 pages of just corporate financials,"
@@ -1343,6 +1681,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0977,
+      "et_speech_frac": 0.86,
+      "kiel_max_innovation": 0.63,
       "token_count": 3,
       "speaker_turn": false,
       "text": " essentially."
@@ -1355,6 +1696,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0873,
+      "et_speech_frac": 0.61,
+      "kiel_max_innovation": 0.67,
       "token_count": 11,
       "speaker_turn": false,
       "text": " And he would read it, cover to cover."
@@ -1367,6 +1711,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1125,
+      "et_speech_frac": 0.81,
+      "kiel_max_innovation": 0.28,
       "token_count": 11,
       "speaker_turn": false,
       "text": " And all he was looking for was a single stock"
@@ -1379,6 +1726,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0930,
+      "et_speech_frac": 0.94,
+      "kiel_max_innovation": 0.57,
       "token_count": 8,
       "speaker_turn": false,
       "text": " that he thought was mispriced."
@@ -1391,6 +1741,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0989,
+      "et_speech_frac": 0.89,
+      "kiel_max_innovation": 0.67,
       "token_count": 7,
       "speaker_turn": false,
       "text": " High value, low price."
@@ -1403,6 +1756,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.0982,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.28,
       "token_count": 15,
       "speaker_turn": false,
       "text": " However, his career, he's looked at, you know,"
@@ -1415,6 +1771,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0840,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.65,
       "token_count": 8,
       "speaker_turn": false,
       "text": " literally hundreds of thousands of businesses."
@@ -1427,6 +1786,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1106,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.32,
       "token_count": 9,
       "speaker_turn": false,
       "text": " And in his most recent shareholder letter,"
@@ -1439,6 +1801,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1206,
+      "et_speech_frac": 0.66,
+      "kiel_max_innovation": 0.14,
       "token_count": 9,
       "speaker_turn": false,
       "text": " he said, all of my success,"
@@ -1451,6 +1816,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1039,
+      "et_speech_frac": 0.87,
+      "kiel_max_innovation": 0.56,
       "token_count": 13,
       "speaker_turn": false,
       "text": " I can boil down to making about 12 good investing decisions."
@@ -1463,6 +1831,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1068,
+      "et_speech_frac": 0.80,
+      "kiel_max_innovation": 0.56,
       "token_count": 8,
       "speaker_turn": false,
       "text": " Just that out of hundreds of thousands"
@@ -1475,6 +1846,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0629,
+      "et_speech_frac": 0.80,
+      "kiel_max_innovation": 0.69,
       "token_count": 7,
       "speaker_turn": false,
       "text": " of things he looked at."
@@ -1487,6 +1861,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0519,
+      "et_speech_frac": 0.56,
+      "kiel_max_innovation": 0.70,
       "token_count": 7,
       "speaker_turn": false,
       "text": " He became a master hunter."
@@ -1499,6 +1876,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1279,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.53,
       "token_count": 13,
       "speaker_turn": false,
       "text": " So you want to master one of those four money-making"
@@ -1511,6 +1891,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0762,
+      "et_speech_frac": 0.89,
+      "kiel_max_innovation": 0.76,
       "token_count": 11,
       "speaker_turn": false,
       "text": " skills, and that's a path to millions."
@@ -1523,6 +1906,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0768,
+      "et_speech_frac": 0.78,
+      "kiel_max_innovation": 0.76,
       "token_count": 15,
       "speaker_turn": false,
       "text": " If you master two of them, that's a path to billions."
@@ -1535,6 +1921,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0699,
+      "et_speech_frac": 0.74,
+      "kiel_max_innovation": 0.70,
       "token_count": 15,
       "speaker_turn": false,
       "text": " So if you look at Steve Jobs, he had designing and selling."
@@ -1547,6 +1936,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0719,
+      "et_speech_frac": 0.78,
+      "kiel_max_innovation": 0.52,
       "token_count": 10,
       "speaker_turn": false,
       "text": " He was one of the greatest design minds,"
@@ -1559,6 +1951,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0490,
+      "et_speech_frac": 0.67,
+      "kiel_max_innovation": 0.63,
       "token_count": 7,
       "speaker_turn": false,
       "text": " had great taste in design."
@@ -1571,6 +1966,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0721,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.55,
       "token_count": 14,
       "speaker_turn": false,
       "text": " And then he also had the ability to tell the great stories"
@@ -1583,6 +1981,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0452,
+      "et_speech_frac": 0.88,
+      "kiel_max_innovation": 0.33,
       "token_count": 8,
       "speaker_turn": false,
       "text": " and be extremely persuasive and come up"
@@ -1595,6 +1996,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0345,
+      "et_speech_frac": 0.64,
+      "kiel_max_innovation": 0.68,
       "token_count": 5,
       "speaker_turn": false,
       "text": " with marketing campaigns."
@@ -1607,6 +2011,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1166,
+      "et_speech_frac": 0.91,
+      "kiel_max_innovation": 0.65,
       "token_count": 10,
       "speaker_turn": false,
       "text": " Elon Musk, he has making and selling."
@@ -1619,6 +2026,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 7,
+      "et_rms": 0.0856,
+      "et_speech_frac": 0.78,
+      "kiel_max_innovation": 0.54,
       "token_count": 17,
       "speaker_turn": false,
       "text": " And that combo of sort of like a build-in, I can sell,"
@@ -1631,6 +2041,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0788,
+      "et_speech_frac": 0.94,
+      "kiel_max_innovation": 0.60,
       "token_count": 12,
       "speaker_turn": false,
       "text": " is one of the most overpowered combinations you can have."
@@ -1643,6 +2056,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1210,
+      "et_speech_frac": 0.82,
+      "kiel_max_innovation": 0.68,
       "token_count": 15,
       "speaker_turn": false,
       "text": " Because you don't need to become the top 1% of anything."
@@ -1655,6 +2071,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0864,
+      "et_speech_frac": 0.83,
+      "kiel_max_innovation": 0.74,
       "token_count": 11,
       "speaker_turn": false,
       "text": " That takes a lifetime to become a true master."
@@ -1667,6 +2086,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0846,
+      "et_speech_frac": 0.81,
+      "kiel_max_innovation": 0.51,
       "token_count": 14,
       "speaker_turn": false,
       "text": " What you need to do is become top 20% at two things"
@@ -1679,6 +2101,9 @@
       "hcp_quality": 0.9155,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0956,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.71,
       "token_count": 6,
       "speaker_turn": false,
       "text": " that are not common."
@@ -1691,6 +2116,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0959,
+      "et_speech_frac": 0.70,
+      "kiel_max_innovation": 0.57,
       "token_count": 13,
       "speaker_turn": false,
       "text": " So for example, an engineer who's good at marketing."
@@ -1703,6 +2131,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1088,
+      "et_speech_frac": 0.70,
+      "kiel_max_innovation": 0.28,
       "token_count": 8,
       "speaker_turn": false,
       "text": " You find a lot of engineers,"
@@ -1715,6 +2146,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1504,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.63,
       "token_count": 12,
       "speaker_turn": false,
       "text": " and you don't need to become the best engineer,"
@@ -1727,6 +2161,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0755,
+      "et_speech_frac": 0.74,
+      "kiel_max_innovation": 0.48,
       "token_count": 8,
       "speaker_turn": false,
       "text": " but you need to become an engineer"
@@ -1739,6 +2176,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1513,
+      "et_speech_frac": 0.83,
+      "kiel_max_innovation": 0.27,
       "token_count": 8,
       "speaker_turn": false,
       "text": " who's pretty good at engineering"
@@ -1751,6 +2191,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1103,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.66,
       "token_count": 7,
       "speaker_turn": false,
       "text": " and pretty good at marketing."
@@ -1763,6 +2206,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0583,
+      "et_speech_frac": 0.78,
+      "kiel_max_innovation": 0.67,
       "token_count": 14,
       "speaker_turn": false,
       "text": " That's rare enough, and you are super, super valuable."
@@ -1775,6 +2221,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1230,
+      "et_speech_frac": 0.82,
+      "kiel_max_innovation": 0.55,
       "token_count": 10,
       "speaker_turn": false,
       "text": " So your money-making skills are the foundation"
@@ -1787,6 +2236,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1019,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.52,
       "token_count": 8,
       "speaker_turn": false,
       "text": " of your ability to make money."
@@ -1799,6 +2251,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1049,
+      "et_speech_frac": 0.82,
+      "kiel_max_innovation": 0.53,
       "token_count": 10,
       "speaker_turn": false,
       "text": " Not just once, but anytime you wish."
@@ -1811,6 +2266,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0777,
+      "et_speech_frac": 0.94,
+      "kiel_max_innovation": 0.31,
       "token_count": 8,
       "speaker_turn": false,
       "text": " It's like a money button,"
@@ -1823,6 +2281,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0281,
+      "et_speech_frac": 0.70,
+      "kiel_max_innovation": 0.65,
       "token_count": 10,
       "speaker_turn": false,
       "text": " you can then push at any given time."
@@ -1835,6 +2296,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0916,
+      "et_speech_frac": 0.80,
+      "kiel_max_innovation": 0.66,
       "token_count": 11,
       "speaker_turn": false,
       "text": " So focus on skills before you focus on wealth."
@@ -1847,6 +2311,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1070,
+      "et_speech_frac": 0.88,
+      "kiel_max_innovation": 0.19,
       "token_count": 8,
       "speaker_turn": false,
       "text": " All right, rule number two,"
@@ -1859,6 +2326,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0984,
+      "et_speech_frac": 0.87,
+      "kiel_max_innovation": 0.66,
       "token_count": 11,
       "speaker_turn": false,
       "text": " don't rent out your time, own equity."
@@ -1871,6 +2341,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1217,
+      "et_speech_frac": 0.86,
+      "kiel_max_innovation": 0.51,
       "token_count": 13,
       "speaker_turn": false,
       "text": " What people get wrong is they take the skill they learned,"
@@ -1883,6 +2356,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1032,
+      "et_speech_frac": 0.84,
+      "kiel_max_innovation": 0.61,
       "token_count": 9,
       "speaker_turn": false,
       "text": " and then they get hired for it."
@@ -1895,6 +2371,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1735,
+      "et_speech_frac": 0.79,
+      "kiel_max_innovation": 0.36,
       "token_count": 10,
       "speaker_turn": false,
       "text": " And then if they're good at it,"
@@ -1907,6 +2386,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1059,
+      "et_speech_frac": 0.94,
+      "kiel_max_innovation": 0.58,
       "token_count": 15,
       "speaker_turn": false,
       "text": " they get promoted for it, and they get a raise for it."
@@ -1919,6 +2401,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0936,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.34,
       "token_count": 8,
       "speaker_turn": false,
       "text": " And it sounds like, well,"
@@ -1931,6 +2416,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0674,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.50,
       "token_count": 11,
       "speaker_turn": false,
       "text": " I guess I'm moving in the right direction."
@@ -1943,6 +2431,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0510,
+      "et_speech_frac": 0.52,
+      "kiel_max_innovation": 0.65,
       "token_count": 6,
       "speaker_turn": false,
       "text": " I'm getting rich."
@@ -1955,6 +2446,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1027,
+      "et_speech_frac": 0.79,
+      "kiel_max_innovation": 0.63,
       "token_count": 12,
       "speaker_turn": false,
       "text": " Actually you're moving in the complete wrong direction."
@@ -1967,6 +2461,9 @@
       "hcp_quality": 0.9570,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1056,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.18,
       "token_count": 10,
       "speaker_turn": false,
       "text": " As Naseem tell him, says,"
@@ -1979,6 +2476,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1169,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.57,
       "token_count": 10,
       "speaker_turn": false,
       "text": " \"The two most addictive things in the world"
@@ -1991,6 +2491,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1073,
+      "et_speech_frac": 0.84,
+      "kiel_max_innovation": 0.68,
       "token_count": 8,
       "speaker_turn": false,
       "text": " are heroin and a monthly salary."
@@ -2003,6 +2506,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0853,
+      "et_speech_frac": 0.82,
+      "kiel_max_innovation": 0.50,
       "token_count": 11,
       "speaker_turn": false,
       "text": " You do not want to get hired to provide services"
@@ -2015,6 +2521,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1086,
+      "et_speech_frac": 0.91,
+      "kiel_max_innovation": 0.58,
       "token_count": 11,
       "speaker_turn": false,
       "text": " where you're trading your time for their dollars."
@@ -2027,6 +2536,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0861,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.61,
       "token_count": 14,
       "speaker_turn": false,
       "text": " Renting out your time is not a path to get rich."
@@ -2039,6 +2551,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1037,
+      "et_speech_frac": 0.94,
+      "kiel_max_innovation": 0.56,
       "token_count": 14,
       "speaker_turn": false,
       "text": " Even the people who rent their time out at a high price,"
@@ -2051,6 +2566,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1042,
+      "et_speech_frac": 0.72,
+      "kiel_max_innovation": 0.63,
       "token_count": 17,
       "speaker_turn": false,
       "text": " for at a lawyer, $1,000 an hour, they cap out."
@@ -2063,6 +2581,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1101,
+      "et_speech_frac": 0.88,
+      "kiel_max_innovation": 0.47,
       "token_count": 7,
       "speaker_turn": false,
       "text": " You know the rich lawyers,"
@@ -2075,6 +2596,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1178,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.52,
       "token_count": 9,
       "speaker_turn": false,
       "text": " they're all partners in the firm,"
@@ -2087,6 +2611,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1086,
+      "et_speech_frac": 0.80,
+      "kiel_max_innovation": 0.52,
       "token_count": 9,
       "speaker_turn": false,
       "text": " meaning they own equity in the firm,"
@@ -2099,6 +2626,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1133,
+      "et_speech_frac": 0.70,
+      "kiel_max_innovation": 0.26,
       "token_count": 12,
       "speaker_turn": false,
       "text": " meaning they get a cut of other lawyers' work,"
@@ -2111,6 +2641,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0776,
+      "et_speech_frac": 0.53,
+      "kiel_max_innovation": 0.66,
       "token_count": 5,
       "speaker_turn": false,
       "text": " not their own."
@@ -2123,6 +2656,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1173,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.30,
       "token_count": 8,
       "speaker_turn": false,
       "text": " So how do you own equity?"
@@ -2135,6 +2671,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0916,
+      "et_speech_frac": 0.79,
+      "kiel_max_innovation": 0.50,
       "token_count": 14,
       "speaker_turn": false,
       "text": " Well, two ways, either you're going to invest,"
@@ -2147,6 +2686,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0611,
+      "et_speech_frac": 0.63,
+      "kiel_max_innovation": 0.57,
       "token_count": 13,
       "speaker_turn": false,
       "text": " but you don't have the cash to do that maybe,"
@@ -2159,6 +2701,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1128,
+      "et_speech_frac": 0.59,
+      "kiel_max_innovation": 0.74,
       "token_count": 10,
       "speaker_turn": false,
       "text": " or you're going to start a business."
@@ -2171,6 +2716,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0814,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.44,
       "token_count": 14,
       "speaker_turn": false,
       "text": " So the question comes, what kind of business should you start?"
@@ -2183,6 +2731,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0609,
+      "et_speech_frac": 0.73,
+      "kiel_max_innovation": 0.51,
       "token_count": 10,
       "speaker_turn": false,
       "text": " How do you take that money-making scale"
@@ -2195,6 +2746,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1138,
+      "et_speech_frac": 0.85,
+      "kiel_max_innovation": 0.32,
       "token_count": 8,
       "speaker_turn": false,
       "text": " and turn it into a business?"
@@ -2207,6 +2761,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1199,
+      "et_speech_frac": 0.94,
+      "kiel_max_innovation": 0.63,
       "token_count": 11,
       "speaker_turn": false,
       "text": " There's three things, three words to know."
@@ -2219,6 +2776,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0865,
+      "et_speech_frac": 0.67,
+      "kiel_max_innovation": 0.52,
       "token_count": 9,
       "speaker_turn": false,
       "text": " They all start with the letter C."
@@ -2231,6 +2791,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0870,
+      "et_speech_frac": 0.53,
+      "kiel_max_innovation": 0.63,
       "token_count": 8,
       "speaker_turn": false,
       "text": " Code, content, or capital."
@@ -2243,6 +2806,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1250,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.67,
       "token_count": 12,
       "speaker_turn": false,
       "text": " So code is like making a website or an app."
@@ -2255,6 +2821,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1074,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.58,
       "token_count": 8,
       "speaker_turn": false,
       "text": " I'll give you an example."
@@ -2267,6 +2836,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0968,
+      "et_speech_frac": 0.69,
+      "kiel_max_innovation": 0.63,
       "token_count": 7,
       "speaker_turn": false,
       "text": " My friend was a designer."
@@ -2279,6 +2851,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.0723,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.63,
       "token_count": 18,
       "speaker_turn": false,
       "text": " He used to make $200,000 a year as part of a design agency."
@@ -2291,6 +2866,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0627,
+      "et_speech_frac": 0.66,
+      "kiel_max_innovation": 0.51,
       "token_count": 13,
       "speaker_turn": false,
       "text": " He was an employee, he was making a good living."
@@ -2303,6 +2881,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1103,
+      "et_speech_frac": 0.84,
+      "kiel_max_innovation": 0.67,
       "token_count": 9,
       "speaker_turn": false,
       "text": " And he was designing websites for clients."
@@ -2315,6 +2896,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0929,
+      "et_speech_frac": 0.71,
+      "kiel_max_innovation": 0.69,
       "token_count": 17,
       "speaker_turn": false,
       "text": " Client walks to the door, asked for something, he would design it."
@@ -2327,6 +2911,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1269,
+      "et_speech_frac": 0.88,
+      "kiel_max_innovation": 0.44,
       "token_count": 12,
       "speaker_turn": false,
       "text": " Well, he figured out he needed to turn his skill"
@@ -2339,6 +2926,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0583,
+      "et_speech_frac": 0.64,
+      "kiel_max_innovation": 0.70,
       "token_count": 8,
       "speaker_turn": false,
       "text": " into a product or a business."
@@ -2351,6 +2941,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 8,
+      "et_rms": 0.0840,
+      "et_speech_frac": 0.70,
+      "kiel_max_innovation": 0.70,
       "token_count": 16,
       "speaker_turn": false,
       "text": " And so he quit his job, and he started making Shopify themes."
@@ -2363,6 +2956,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1051,
+      "et_speech_frac": 0.89,
+      "kiel_max_innovation": 0.41,
       "token_count": 16,
       "speaker_turn": false,
       "text": " So he would make a theme, and he could take that same theme,"
@@ -2375,6 +2971,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0799,
+      "et_speech_frac": 0.79,
+      "kiel_max_innovation": 0.73,
       "token_count": 13,
       "speaker_turn": false,
       "text": " and he could sell it to 2,000 different customers."
@@ -2387,6 +2986,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.1003,
+      "et_speech_frac": 0.94,
+      "kiel_max_innovation": 0.69,
       "token_count": 19,
       "speaker_turn": false,
       "text": " And by the way, he didn't have to go and hand sell it to them."
@@ -2399,6 +3001,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0882,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.43,
       "token_count": 15,
       "speaker_turn": false,
       "text": " He would be asleep, and they would be coming to his site,"
@@ -2411,6 +3016,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0908,
+      "et_speech_frac": 0.69,
+      "kiel_max_innovation": 0.71,
       "token_count": 13,
       "speaker_turn": false,
       "text": " finding a library of themes, and they would buy one."
@@ -2423,6 +3031,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0897,
+      "et_speech_frac": 0.86,
+      "kiel_max_innovation": 0.71,
       "token_count": 15,
       "speaker_turn": false,
       "text": " And now he pulls in $2 million a year of cash flow."
@@ -2435,6 +3046,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0839,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.57,
       "token_count": 16,
       "speaker_turn": false,
       "text": " He lives half the year in Bali, half the year in Japan."
@@ -2447,6 +3061,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.0862,
+      "et_speech_frac": 0.79,
+      "kiel_max_innovation": 0.42,
       "token_count": 13,
       "speaker_turn": false,
       "text": " And he is living his dream life, because he understood"
@@ -2459,6 +3076,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1032,
+      "et_speech_frac": 0.79,
+      "kiel_max_innovation": 0.57,
       "token_count": 14,
       "speaker_turn": false,
       "text": " the rules of money, how to first create a money-making"
@@ -2471,6 +3091,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0731,
+      "et_speech_frac": 0.70,
+      "kiel_max_innovation": 0.50,
       "token_count": 15,
       "speaker_turn": false,
       "text": " skill, design, and then how to turn it into a business,"
@@ -2483,6 +3106,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0728,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.46,
       "token_count": 12,
       "speaker_turn": false,
       "text": " because he doesn't want to rent out his time."
@@ -2495,6 +3121,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0256,
+      "et_speech_frac": 0.65,
+      "kiel_max_innovation": 0.71,
       "token_count": 7,
       "speaker_turn": false,
       "text": " He wants to own equity."
@@ -2507,6 +3136,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1024,
+      "et_speech_frac": 0.84,
+      "kiel_max_innovation": 0.66,
       "token_count": 10,
       "speaker_turn": false,
       "text": " I'll give you another example, content."
@@ -2519,6 +3151,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1005,
+      "et_speech_frac": 0.88,
+      "kiel_max_innovation": 0.31,
       "token_count": 11,
       "speaker_turn": false,
       "text": " Let's take someone who's pretty big at content"
@@ -2531,6 +3166,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0615,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.69,
       "token_count": 14,
       "speaker_turn": false,
       "text": " in the business world, a guy named Alex Formozi."
@@ -2543,6 +3181,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0838,
+      "et_speech_frac": 0.91,
+      "kiel_max_innovation": 0.60,
       "token_count": 14,
       "speaker_turn": false,
       "text": " He took his master money-making skill, which is selling."
@@ -2555,6 +3196,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1449,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.32,
       "token_count": 13,
       "speaker_turn": false,
       "text": " And he turned it into videos, YouTube videos, books,"
@@ -2567,6 +3211,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0369,
+      "et_speech_frac": 0.63,
+      "kiel_max_innovation": 0.67,
       "token_count": 4,
       "speaker_turn": false,
       "text": " and courses."
@@ -2579,6 +3226,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1003,
+      "et_speech_frac": 0.81,
+      "kiel_max_innovation": 0.61,
       "token_count": 15,
       "speaker_turn": false,
       "text": " His last book launch, he just did it about a month ago."
@@ -2591,6 +3241,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1205,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.52,
       "token_count": 10,
       "speaker_turn": false,
       "text": " His last book launch sold 3 million copies."
@@ -2603,6 +3256,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1148,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.52,
       "token_count": 14,
       "speaker_turn": false,
       "text": " And with all the add-on courses he added to it,"
@@ -2615,6 +3271,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1372,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.44,
       "token_count": 12,
       "speaker_turn": false,
       "text": " he made $100 million in a single weekend."
@@ -2627,6 +3286,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1452,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.17,
       "token_count": 11,
       "speaker_turn": false,
       "text": " $100 million as one guy, because he understood"
@@ -2639,6 +3301,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1355,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.43,
       "token_count": 13,
       "speaker_turn": false,
       "text": " that he didn't need to sell his time in hourly chunks"
@@ -2651,6 +3316,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0725,
+      "et_speech_frac": 0.88,
+      "kiel_max_innovation": 0.72,
       "token_count": 13,
       "speaker_turn": false,
       "text": " of consulting, he needed to turn it into a business."
@@ -2663,6 +3331,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0919,
+      "et_speech_frac": 0.91,
+      "kiel_max_innovation": 0.61,
       "token_count": 7,
       "speaker_turn": false,
       "text": " The last example is capital."
@@ -2675,6 +3346,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0911,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.20,
       "token_count": 7,
       "speaker_turn": false,
       "text": " So what does capital mean?"
@@ -2687,6 +3361,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0917,
+      "et_speech_frac": 0.85,
+      "kiel_max_innovation": 0.54,
       "token_count": 14,
       "speaker_turn": false,
       "text": " Well, this is really for the skill of hunting, usually."
@@ -2699,6 +3376,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0824,
+      "et_speech_frac": 0.82,
+      "kiel_max_innovation": 0.72,
       "token_count": 11,
       "speaker_turn": false,
       "text": " But it can be used for any of these."
@@ -2711,6 +3391,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0813,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.54,
       "token_count": 14,
       "speaker_turn": false,
       "text": " So this is where you want to take the money-making skill"
@@ -2723,6 +3406,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0602,
+      "et_speech_frac": 0.71,
+      "kiel_max_innovation": 0.67,
       "token_count": 16,
       "speaker_turn": false,
       "text": " you have, and you want to use it in the art of investing."
@@ -2735,6 +3421,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1013,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.59,
       "token_count": 6,
       "speaker_turn": false,
       "text": " My cousin did this."
@@ -2747,6 +3436,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.0637,
+      "et_speech_frac": 0.77,
+      "kiel_max_innovation": 0.65,
       "token_count": 11,
       "speaker_turn": false,
       "text": " So my cousin had a job making six figures."
@@ -2759,6 +3451,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1721,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.66,
       "token_count": 8,
       "speaker_turn": false,
       "text": " But he was sick of it."
@@ -2771,6 +3466,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1886,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.70,
       "token_count": 11,
       "speaker_turn": false,
       "text": " He didn't want to report to the office."
@@ -2783,6 +3481,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1155,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.63,
       "token_count": 9,
       "speaker_turn": false,
       "text": " He didn't like all the politics."
@@ -2795,6 +3496,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0955,
+      "et_speech_frac": 0.94,
+      "kiel_max_innovation": 0.64,
       "token_count": 9,
       "speaker_turn": false,
       "text": " He didn't like the boring meetings."
@@ -2807,6 +3511,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1180,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.35,
       "token_count": 12,
       "speaker_turn": false,
       "text": " So he quit his job, and he decided,"
@@ -2819,6 +3526,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1017,
+      "et_speech_frac": 0.88,
+      "kiel_max_innovation": 0.55,
       "token_count": 10,
       "speaker_turn": false,
       "text": " I'm going to learn the art of hunting"
@@ -2831,6 +3541,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.0903,
+      "et_speech_frac": 0.77,
+      "kiel_max_innovation": 0.69,
       "token_count": 11,
       "speaker_turn": false,
       "text": " multifamily real estate, so like apartment buildings."
@@ -2843,6 +3556,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1454,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.51,
       "token_count": 8,
       "speaker_turn": false,
       "text": " He spent two years mastering that skill"
@@ -2855,6 +3571,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0741,
+      "et_speech_frac": 0.87,
+      "kiel_max_innovation": 0.73,
       "token_count": 13,
       "speaker_turn": false,
       "text": " under somebody else who had been doing that for a decade."
@@ -2867,6 +3586,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0932,
+      "et_speech_frac": 0.89,
+      "kiel_max_innovation": 0.37,
       "token_count": 12,
       "speaker_turn": false,
       "text": " So he went, and he learned, and he identified"
@@ -2879,6 +3601,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0774,
+      "et_speech_frac": 0.62,
+      "kiel_max_innovation": 0.64,
       "token_count": 12,
       "speaker_turn": false,
       "text": " the highest output person, and he doubled their inputs."
@@ -2891,6 +3616,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1290,
+      "et_speech_frac": 0.91,
+      "kiel_max_innovation": 0.67,
       "token_count": 11,
       "speaker_turn": false,
       "text": " And then he left to do his own deals."
@@ -2903,6 +3631,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1115,
+      "et_speech_frac": 0.78,
+      "kiel_max_innovation": 0.15,
       "token_count": 11,
       "speaker_turn": false,
       "text": " And in his first year doing his own deals,"
@@ -2915,6 +3646,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1211,
+      "et_speech_frac": 0.86,
+      "kiel_max_innovation": 0.35,
       "token_count": 10,
       "speaker_turn": false,
       "text": " they bought about $40 million of real estate"
@@ -2927,6 +3661,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0610,
+      "et_speech_frac": 0.86,
+      "kiel_max_innovation": 0.21,
       "token_count": 9,
       "speaker_turn": false,
       "text": " using down payments or equity from other investors"
@@ -2939,6 +3676,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0858,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.50,
       "token_count": 9,
       "speaker_turn": false,
       "text": " who were happy to give him a cut"
@@ -2951,6 +3691,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0963,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.62,
       "token_count": 8,
       "speaker_turn": false,
       "text": " because he was doing the hunting."
@@ -2963,6 +3706,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0894,
+      "et_speech_frac": 0.69,
+      "kiel_max_innovation": 0.48,
       "token_count": 10,
       "speaker_turn": false,
       "text": " He was finding the killer deal, the deal"
@@ -2975,6 +3721,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0714,
+      "et_speech_frac": 0.86,
+      "kiel_max_innovation": 0.47,
       "token_count": 8,
       "speaker_turn": false,
       "text": " that would perform above market,"
@@ -2987,6 +3736,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0672,
+      "et_speech_frac": 0.87,
+      "kiel_max_innovation": 0.69,
       "token_count": 9,
       "speaker_turn": false,
       "text": " that had a good margin of safety."
@@ -2999,6 +3751,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0621,
+      "et_speech_frac": 0.63,
+      "kiel_max_innovation": 0.38,
       "token_count": 11,
       "speaker_turn": false,
       "text": " He became a great hunter, and he translated that"
@@ -3011,6 +3766,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0410,
+      "et_speech_frac": 0.69,
+      "kiel_max_innovation": 0.75,
       "token_count": 10,
       "speaker_turn": false,
       "text": " into a business using this method of capital."
@@ -3023,6 +3781,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1508,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.44,
       "token_count": 15,
       "speaker_turn": false,
       "text": " So take away here is, if you only rent out your time,"
@@ -3035,6 +3796,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0663,
+      "et_speech_frac": 0.68,
+      "kiel_max_innovation": 0.64,
       "token_count": 9,
       "speaker_turn": false,
       "text": " you'll never get off the treadmill."
@@ -3047,6 +3811,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0798,
+      "et_speech_frac": 0.66,
+      "kiel_max_innovation": 0.64,
       "token_count": 6,
       "speaker_turn": false,
       "text": " Equity is the way."
@@ -3059,6 +3826,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1084,
+      "et_speech_frac": 0.75,
+      "kiel_max_innovation": 0.55,
       "token_count": 8,
       "speaker_turn": false,
       "text": " All right, rule number three."
@@ -3071,6 +3841,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1180,
+      "et_speech_frac": 0.85,
+      "kiel_max_innovation": 0.66,
       "token_count": 12,
       "speaker_turn": false,
       "text": " And this is the hardest rule of all of them."
@@ -3083,6 +3856,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0827,
+      "et_speech_frac": 0.35,
+      "kiel_max_innovation": 0.40,
       "token_count": 8,
       "speaker_turn": false,
       "text": " Okay, you ready for it?"
@@ -3095,6 +3871,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1070,
+      "et_speech_frac": 0.38,
+      "kiel_max_innovation": 0.45,
       "token_count": 4,
       "speaker_turn": false,
       "text": " Four letters."
@@ -3107,6 +3886,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1076,
+      "et_speech_frac": 0.77,
+      "kiel_max_innovation": 0.55,
       "token_count": 6,
       "speaker_turn": false,
       "text": " Wait. (laughs)"
@@ -3119,6 +3901,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0882,
+      "et_speech_frac": 0.77,
+      "kiel_max_innovation": 0.46,
       "token_count": 11,
       "speaker_turn": false,
       "text": " You can't plant the seed in the soil,"
@@ -3131,6 +3916,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1176,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.52,
       "token_count": 15,
       "speaker_turn": false,
       "text": " and then the next day come dig it up and scream at it."
@@ -3143,6 +3931,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1140,
+      "et_speech_frac": 0.85,
+      "kiel_max_innovation": 0.30,
       "token_count": 10,
       "speaker_turn": false,
       "text": " Why aren't you growing yet, right?"
@@ -3155,6 +3946,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0741,
+      "et_speech_frac": 0.87,
+      "kiel_max_innovation": 0.67,
       "token_count": 9,
       "speaker_turn": false,
       "text": " That's not how a plant grows."
@@ -3167,6 +3961,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0722,
+      "et_speech_frac": 0.84,
+      "kiel_max_innovation": 0.47,
       "token_count": 16,
       "speaker_turn": false,
       "text": " You need to water it, you need to give it to sunlight,"
@@ -3179,6 +3976,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0627,
+      "et_speech_frac": 0.87,
+      "kiel_max_innovation": 0.59,
       "token_count": 13,
       "speaker_turn": false,
       "text": " and you need to wait, let the thing actually grow."
@@ -3191,6 +3991,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1036,
+      "et_speech_frac": 0.82,
+      "kiel_max_innovation": 0.32,
       "token_count": 13,
       "speaker_turn": false,
       "text": " Because if you're doing what I've said, right,"
@@ -3203,6 +4006,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1076,
+      "et_speech_frac": 0.75,
+      "kiel_max_innovation": 0.61,
       "token_count": 13,
       "speaker_turn": false,
       "text": " you have developed one of the four money-making skills."
@@ -3215,6 +4021,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0907,
+      "et_speech_frac": 0.94,
+      "kiel_max_innovation": 0.38,
       "token_count": 8,
       "speaker_turn": false,
       "text": " You have not just developed it,"
@@ -3227,6 +4036,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1019,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.35,
       "token_count": 11,
       "speaker_turn": false,
       "text": " you've spent two years really grinding and mastering,"
@@ -3239,6 +4051,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1313,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.49,
       "token_count": 9,
       "speaker_turn": false,
       "text": " then you have turned that into a business"
@@ -3251,6 +4066,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0609,
+      "et_speech_frac": 0.66,
+      "kiel_max_innovation": 0.64,
       "token_count": 7,
       "speaker_turn": false,
       "text": " that you own equity in."
@@ -3263,6 +4081,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1426,
+      "et_speech_frac": 0.87,
+      "kiel_max_innovation": 0.23,
       "token_count": 10,
       "speaker_turn": false,
       "text": " Well, now getting rich is actually inevitable,"
@@ -3275,6 +4096,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1051,
+      "et_speech_frac": 0.77,
+      "kiel_max_innovation": 0.66,
       "token_count": 11,
       "speaker_turn": false,
       "text": " but inevitable is not the same thing as instantaneous."
@@ -3287,6 +4111,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1222,
+      "et_speech_frac": 0.83,
+      "kiel_max_innovation": 0.51,
       "token_count": 17,
       "speaker_turn": false,
       "text": " So the bad news is, yes, it's gonna take trial and error,"
@@ -3299,6 +4126,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0840,
+      "et_speech_frac": 0.89,
+      "kiel_max_innovation": 0.38,
       "token_count": 10,
       "speaker_turn": false,
       "text": " it's gonna take a couple years for you"
@@ -3311,6 +4141,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0652,
+      "et_speech_frac": 0.49,
+      "kiel_max_innovation": 0.56,
       "token_count": 8,
       "speaker_turn": false,
       "text": " to get it all figured out."
@@ -3323,6 +4156,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1514,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.51,
       "token_count": 14,
       "speaker_turn": false,
       "text": " But the good news is, you only need to get rich once"
@@ -3335,6 +4171,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0545,
+      "et_speech_frac": 0.72,
+      "kiel_max_innovation": 0.68,
       "token_count": 5,
       "speaker_turn": false,
       "text": " in a lifetime."
@@ -3347,6 +4186,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0875,
+      "et_speech_frac": 0.68,
+      "kiel_max_innovation": 0.30,
       "token_count": 9,
       "speaker_turn": false,
       "text": " And once you get rich once,"
@@ -3359,6 +4201,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0886,
+      "et_speech_frac": 0.75,
+      "kiel_max_innovation": 0.37,
       "token_count": 11,
       "speaker_turn": false,
       "text": " as long as you're not totally an idiot,"
@@ -3371,6 +4216,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1206,
+      "et_speech_frac": 0.69,
+      "kiel_max_innovation": 0.38,
       "token_count": 9,
       "speaker_turn": false,
       "text": " and you're gonna blow it all,"
@@ -3383,6 +4231,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0749,
+      "et_speech_frac": 0.85,
+      "kiel_max_innovation": 0.74,
       "token_count": 10,
       "speaker_turn": false,
       "text": " you can just let that compound from there."
@@ -3395,6 +4246,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0929,
+      "et_speech_frac": 0.70,
+      "kiel_max_innovation": 0.74,
       "token_count": 15,
       "speaker_turn": false,
       "text": " So, the secret here is you have to be willing to wait."
@@ -3407,6 +4261,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1254,
+      "et_speech_frac": 0.81,
+      "kiel_max_innovation": 0.64,
       "token_count": 13,
       "speaker_turn": false,
       "text": " Now, waiting doesn't mean just sitting around doing nothing."
@@ -3419,6 +4276,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0831,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.47,
       "token_count": 9,
       "speaker_turn": false,
       "text": " The phrase I heard that I love best"
@@ -3431,6 +4291,9 @@
       "hcp_quality": 0.8412,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1134,
+      "et_speech_frac": 0.74,
+      "kiel_max_innovation": 0.28,
       "token_count": 9,
       "speaker_turn": false,
       "text": " is comes from Naval, he said,"
@@ -3443,6 +4306,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0854,
+      "et_speech_frac": 0.64,
+      "kiel_max_innovation": 0.27,
       "token_count": 12,
       "speaker_turn": false,
       "text": " \"Be impatient with action, and patient with results.\""
@@ -3455,6 +4321,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1189,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.21,
       "token_count": 8,
       "speaker_turn": false,
       "text": " That combination, impatient with action,"
@@ -3467,6 +4336,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0961,
+      "et_speech_frac": 0.79,
+      "kiel_max_innovation": 0.70,
       "token_count": 13,
       "speaker_turn": false,
       "text": " patient with results, is a killer, unbeatable combination."
@@ -3479,6 +4351,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0930,
+      "et_speech_frac": 0.89,
+      "kiel_max_innovation": 0.22,
       "token_count": 8,
       "speaker_turn": false,
       "text": " I would never wanna compete with somebody"
@@ -3491,6 +4366,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0612,
+      "et_speech_frac": 0.69,
+      "kiel_max_innovation": 0.49,
       "token_count": 12,
       "speaker_turn": false,
       "text": " who was like that, and that's a good test"
@@ -3503,6 +4381,9 @@
       "hcp_quality": 0.9858,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0550,
+      "et_speech_frac": 0.84,
+      "kiel_max_innovation": 0.61,
       "token_count": 8,
       "speaker_turn": false,
       "text": " for if you should be coming."
@@ -3515,6 +4396,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1882,
+      "et_speech_frac": 0.76,
+      "kiel_max_innovation": 0.18,
       "token_count": 6,
       "speaker_turn": false,
       "text": " (upbeat music)"
@@ -3527,6 +4411,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1692,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.63,
       "token_count": 12,
       "speaker_turn": false,
       "text": " PS, before I go to the next one,"
@@ -3539,6 +4426,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1873,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.43,
       "token_count": 10,
       "speaker_turn": false,
       "text": " if you're liking what's in this video"
@@ -3551,6 +4441,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1533,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.51,
       "token_count": 10,
       "speaker_turn": false,
       "text": " and you actually want the notes from this,"
@@ -3563,6 +4456,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1608,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.54,
       "token_count": 8,
       "speaker_turn": false,
       "text": " the team has actually written everything down"
@@ -3575,6 +4471,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1652,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.47,
       "token_count": 14,
       "speaker_turn": false,
       "text": " from this video, so you don't have to write it down"
@@ -3587,6 +4486,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1334,
+      "et_speech_frac": 0.83,
+      "kiel_max_innovation": 0.65,
       "token_count": 15,
       "speaker_turn": false,
       "text": " yourself, you can get it, it's in the description below."
@@ -3599,6 +4501,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1484,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.70,
       "token_count": 9,
       "speaker_turn": false,
       "text": " All right, let me keep going."
@@ -3611,6 +4516,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0877,
+      "et_speech_frac": 0.49,
+      "kiel_max_innovation": 0.68,
       "token_count": 13,
       "speaker_turn": false,
       "text": " The final rule, rule number four, proximity is power."
@@ -3623,6 +4531,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1286,
+      "et_speech_frac": 0.74,
+      "kiel_max_innovation": 0.58,
       "token_count": 9,
       "speaker_turn": false,
       "text": " Even though I told you to wait,"
@@ -3635,6 +4546,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0857,
+      "et_speech_frac": 0.77,
+      "kiel_max_innovation": 0.49,
       "token_count": 9,
       "speaker_turn": false,
       "text": " you know that good things take time,"
@@ -3647,6 +4561,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1356,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.36,
       "token_count": 8,
       "speaker_turn": false,
       "text": " you're still gonna hate waiting,"
@@ -3659,6 +4576,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0810,
+      "et_speech_frac": 0.74,
+      "kiel_max_innovation": 0.66,
       "token_count": 12,
       "speaker_turn": false,
       "text": " I hated it, you're gonna hate it too."
@@ -3671,6 +4591,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1048,
+      "et_speech_frac": 0.81,
+      "kiel_max_innovation": 0.56,
       "token_count": 14,
       "speaker_turn": false,
       "text": " The good news is, you can actually speed up the result."
@@ -3683,6 +4606,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0425,
+      "et_speech_frac": 0.49,
+      "kiel_max_innovation": 0.19,
       "token_count": 3,
       "speaker_turn": false,
       "text": " How?"
@@ -3695,6 +4621,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1131,
+      "et_speech_frac": 0.86,
+      "kiel_max_innovation": 0.50,
       "token_count": 11,
       "speaker_turn": false,
       "text": " You can make the plant grow a little faster,"
@@ -3707,6 +4636,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0889,
+      "et_speech_frac": 0.48,
+      "kiel_max_innovation": 0.48,
       "token_count": 12,
       "speaker_turn": false,
       "text": " and the way you do it is, you move."
@@ -3719,6 +4651,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1026,
+      "et_speech_frac": 0.82,
+      "kiel_max_innovation": 0.36,
       "token_count": 16,
       "speaker_turn": false,
       "text": " Literally, you move, so if you wanna be a tech founder,"
@@ -3731,6 +4666,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0936,
+      "et_speech_frac": 0.59,
+      "kiel_max_innovation": 0.71,
       "token_count": 9,
       "speaker_turn": false,
       "text": " you need to move to San Francisco."
@@ -3743,6 +4681,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1315,
+      "et_speech_frac": 0.91,
+      "kiel_max_innovation": 0.67,
       "token_count": 12,
       "speaker_turn": false,
       "text": " If you wanna make movies, you go to LA."
@@ -3755,6 +4696,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0715,
+      "et_speech_frac": 0.84,
+      "kiel_max_innovation": 0.51,
       "token_count": 13,
       "speaker_turn": false,
       "text": " Now, it's not that you had to do it,"
@@ -3767,6 +4711,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0876,
+      "et_speech_frac": 0.87,
+      "kiel_max_innovation": 0.52,
       "token_count": 9,
       "speaker_turn": false,
       "text": " but if you want to increase your odds"
@@ -3779,6 +4726,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0612,
+      "et_speech_frac": 0.68,
+      "kiel_max_innovation": 0.43,
       "token_count": 14,
       "speaker_turn": false,
       "text": " and you wanna go faster, that's what you would do,"
@@ -3791,6 +4741,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0810,
+      "et_speech_frac": 0.80,
+      "kiel_max_innovation": 0.45,
       "token_count": 8,
       "speaker_turn": false,
       "text": " because proximity is power, meaning,"
@@ -3803,6 +4756,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0732,
+      "et_speech_frac": 0.83,
+      "kiel_max_innovation": 0.38,
       "token_count": 9,
       "speaker_turn": false,
       "text": " you wanna be as close as you can"
@@ -3815,6 +4771,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0701,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.61,
       "token_count": 9,
       "speaker_turn": false,
       "text": " to the White Hot Center of Action,"
@@ -3827,6 +4786,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0906,
+      "et_speech_frac": 0.88,
+      "kiel_max_innovation": 0.54,
       "token_count": 9,
       "speaker_turn": false,
       "text": " you wanna go join the network of people"
@@ -3839,6 +4801,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0924,
+      "et_speech_frac": 0.77,
+      "kiel_max_innovation": 0.29,
       "token_count": 13,
       "speaker_turn": false,
       "text": " who are doing what you do, you wanna be around people"
@@ -3851,6 +4816,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0951,
+      "et_speech_frac": 0.88,
+      "kiel_max_innovation": 0.56,
       "token_count": 16,
       "speaker_turn": false,
       "text": " who have the same dream as you, who are in the same game,"
@@ -3863,6 +4831,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1588,
+      "et_speech_frac": 1.00,
+      "kiel_max_innovation": 0.34,
       "token_count": 10,
       "speaker_turn": false,
       "text": " as you maybe they're a little bit ahead"
@@ -3875,6 +4846,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0859,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.35,
       "token_count": 10,
       "speaker_turn": false,
       "text": " and they can share what's going on,"
@@ -3887,6 +4861,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1348,
+      "et_speech_frac": 0.83,
+      "kiel_max_innovation": 0.37,
       "token_count": 9,
       "speaker_turn": false,
       "text": " maybe they're right where you are,"
@@ -3899,6 +4876,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.1119,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.38,
       "token_count": 14,
       "speaker_turn": false,
       "text": " and you can all grow together and learn from each other's"
@@ -3911,6 +4891,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0646,
+      "et_speech_frac": 0.77,
+      "kiel_max_innovation": 0.48,
       "token_count": 14,
       "speaker_turn": false,
       "text": " mistakes so that you don't have to learn every single mistake,"
@@ -3923,6 +4906,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0429,
+      "et_speech_frac": 0.54,
+      "kiel_max_innovation": 0.66,
       "token_count": 6,
       "speaker_turn": false,
       "text": " the hard way yourself."
@@ -3935,6 +4921,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 7,
+      "et_rms": 0.0890,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.66,
       "token_count": 17,
       "speaker_turn": false,
       "text": " And when I say move, I don't just mean move to the city."
@@ -3947,6 +4936,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1072,
+      "et_speech_frac": 0.73,
+      "kiel_max_innovation": 0.53,
       "token_count": 12,
       "speaker_turn": false,
       "text": " I mean, you move to a house with as many"
@@ -3959,6 +4951,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0807,
+      "et_speech_frac": 0.91,
+      "kiel_max_innovation": 0.62,
       "token_count": 15,
       "speaker_turn": false,
       "text": " like-minded, smart, ambitious, interesting people as you can."
@@ -3971,6 +4966,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0825,
+      "et_speech_frac": 0.72,
+      "kiel_max_innovation": 0.56,
       "token_count": 8,
       "speaker_turn": false,
       "text": " When I moved to San Francisco,"
@@ -3983,6 +4981,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1039,
+      "et_speech_frac": 0.83,
+      "kiel_max_innovation": 0.22,
       "token_count": 11,
       "speaker_turn": false,
       "text": " I moved into a house with six other tech founders"
@@ -3995,6 +4996,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1042,
+      "et_speech_frac": 0.86,
+      "kiel_max_innovation": 0.49,
       "token_count": 16,
       "speaker_turn": false,
       "text": " who I didn't know, and they weren't the best roommates,"
@@ -4007,6 +5011,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1013,
+      "et_speech_frac": 0.83,
+      "kiel_max_innovation": 0.61,
       "token_count": 14,
       "speaker_turn": false,
       "text": " and the bathrooms were stinky, and all that good stuff."
@@ -4019,6 +5026,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0828,
+      "et_speech_frac": 0.89,
+      "kiel_max_innovation": 0.50,
       "token_count": 12,
       "speaker_turn": false,
       "text": " But the more important thing was I was around a group"
@@ -4031,6 +5041,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0927,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.57,
       "token_count": 11,
       "speaker_turn": false,
       "text": " of really smart, ambitious people chasing the same dream"
@@ -4043,6 +5056,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0921,
+      "et_speech_frac": 0.66,
+      "kiel_max_innovation": 0.37,
       "token_count": 10,
       "speaker_turn": false,
       "text": " as me, and those became great friends,"
@@ -4055,6 +5071,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0642,
+      "et_speech_frac": 0.74,
+      "kiel_max_innovation": 0.34,
       "token_count": 12,
       "speaker_turn": false,
       "text": " those became connections, those became, you know,"
@@ -4067,6 +5086,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1041,
+      "et_speech_frac": 0.87,
+      "kiel_max_innovation": 0.47,
       "token_count": 7,
       "speaker_turn": false,
       "text": " warm introductions to investors,"
@@ -4079,6 +5101,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1016,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.47,
       "token_count": 15,
       "speaker_turn": false,
       "text": " you don't know exactly how it's all going to play out,"
@@ -4091,6 +5116,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0600,
+      "et_speech_frac": 0.73,
+      "kiel_max_innovation": 0.64,
       "token_count": 9,
       "speaker_turn": false,
       "text": " but you're creating luck for yourself."
@@ -4103,6 +5131,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.1066,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.53,
       "token_count": 12,
       "speaker_turn": false,
       "text": " You learn faster, it's like osmosis."
@@ -4115,6 +5146,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0951,
+      "et_speech_frac": 0.75,
+      "kiel_max_innovation": 0.36,
       "token_count": 11,
       "speaker_turn": false,
       "text": " Just being around them will make you think a little"
@@ -4127,6 +5161,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0708,
+      "et_speech_frac": 0.75,
+      "kiel_max_innovation": 0.41,
       "token_count": 11,
       "speaker_turn": false,
       "text": " differently, work a little differently, you know."
@@ -4139,6 +5176,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0961,
+      "et_speech_frac": 0.84,
+      "kiel_max_innovation": 0.33,
       "token_count": 13,
       "speaker_turn": false,
       "text": " If you hang out with a bunch of broke complainers,"
@@ -4151,6 +5191,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1016,
+      "et_speech_frac": 0.67,
+      "kiel_max_innovation": 0.63,
       "token_count": 6,
       "speaker_turn": false,
       "text": " you'll become one."
@@ -4163,6 +5206,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1213,
+      "et_speech_frac": 0.77,
+      "kiel_max_innovation": 0.33,
       "token_count": 11,
       "speaker_turn": false,
       "text": " If you hang out with a bunch of killers,"
@@ -4175,6 +5221,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1393,
+      "et_speech_frac": 0.68,
+      "kiel_max_innovation": 0.68,
       "token_count": 7,
       "speaker_turn": false,
       "text": " you will level up too."
@@ -4187,6 +5236,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1162,
+      "et_speech_frac": 0.91,
+      "kiel_max_innovation": 0.46,
       "token_count": 15,
       "speaker_turn": false,
       "text": " There's a cliche that's been around for a long time,"
@@ -4199,6 +5251,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0985,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.53,
       "token_count": 12,
       "speaker_turn": false,
       "text": " you know, you're the average of the five people"
@@ -4211,6 +5266,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0605,
+      "et_speech_frac": 0.44,
+      "kiel_max_innovation": 0.52,
       "token_count": 8,
       "speaker_turn": false,
       "text": " you spend the most time with."
@@ -4223,6 +5281,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1726,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.39,
       "token_count": 14,
       "speaker_turn": false,
       "text": " Well, it's a cliche, but it's true,"
@@ -4235,6 +5296,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0811,
+      "et_speech_frac": 0.86,
+      "kiel_max_innovation": 0.70,
       "token_count": 14,
       "speaker_turn": false,
       "text": " and it's been around for a long time for a reason."
@@ -4247,6 +5311,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1284,
+      "et_speech_frac": 0.72,
+      "kiel_max_innovation": 0.64,
       "token_count": 15,
       "speaker_turn": false,
       "text": " So if you want to change your life, change your zip code."
@@ -4259,6 +5326,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1045,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.54,
       "token_count": 10,
       "speaker_turn": false,
       "text": " I'll tell you a little story."
@@ -4271,6 +5341,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1476,
+      "et_speech_frac": 0.81,
+      "kiel_max_innovation": 0.38,
       "token_count": 13,
       "speaker_turn": false,
       "text": " I was 24 years old, I was living in Australia,"
@@ -4283,6 +5356,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0646,
+      "et_speech_frac": 0.86,
+      "kiel_max_innovation": 0.69,
       "token_count": 7,
       "speaker_turn": false,
       "text": " trying to start a startup."
@@ -4295,6 +5371,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0883,
+      "et_speech_frac": 0.63,
+      "kiel_max_innovation": 0.56,
       "token_count": 8,
       "speaker_turn": false,
       "text": " I wanted to be an entrepreneur."
@@ -4307,6 +5386,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1273,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.64,
       "token_count": 13,
       "speaker_turn": false,
       "text": " And I went to a local meetup for other founders."
@@ -4319,6 +5401,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.0468,
+      "et_speech_frac": 0.75,
+      "kiel_max_innovation": 0.67,
       "token_count": 12,
       "speaker_turn": false,
       "text": " I thought I should get around to some other founders."
@@ -4331,6 +5416,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1170,
+      "et_speech_frac": 0.80,
+      "kiel_max_innovation": 0.54,
       "token_count": 14,
       "speaker_turn": false,
       "text": " And at the meetup, they, when they asked me,"
@@ -4343,6 +5431,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0978,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.57,
       "token_count": 13,
       "speaker_turn": false,
       "text": " they said, hey, will you be the keynote speaker?"
@@ -4355,6 +5446,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0587,
+      "et_speech_frac": 0.60,
+      "kiel_max_innovation": 0.53,
       "token_count": 11,
       "speaker_turn": false,
       "text": " Will you give the talk this week on stage?"
@@ -4367,6 +5461,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1463,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.58,
       "token_count": 12,
       "speaker_turn": false,
       "text": " And I think I was supposed to be flattered,"
@@ -4379,6 +5476,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1113,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.64,
       "token_count": 8,
       "speaker_turn": false,
       "text": " but no, I was horrified."
@@ -4391,6 +5491,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0960,
+      "et_speech_frac": 0.73,
+      "kiel_max_innovation": 0.34,
       "token_count": 7,
       "speaker_turn": false,
       "text": " I was like, me?"
@@ -4403,6 +5506,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1134,
+      "et_speech_frac": 0.72,
+      "kiel_max_innovation": 0.47,
       "token_count": 8,
       "speaker_turn": false,
       "text": " 24 year old dumb shit me."
@@ -4415,6 +5521,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1492,
+      "et_speech_frac": 0.82,
+      "kiel_max_innovation": 0.64,
       "token_count": 7,
       "speaker_turn": false,
       "text": " I haven't done anything."
@@ -4427,6 +5536,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1244,
+      "et_speech_frac": 0.94,
+      "kiel_max_innovation": 0.51,
       "token_count": 11,
       "speaker_turn": false,
       "text": " If I'm the smartest guy in this room,"
@@ -4439,6 +5551,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1537,
+      "et_speech_frac": 0.91,
+      "kiel_max_innovation": 0.63,
       "token_count": 8,
       "speaker_turn": false,
       "text": " I'm in the wrong room."
@@ -4451,6 +5566,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1168,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.57,
       "token_count": 13,
       "speaker_turn": false,
       "text": " So the next week, I literally pack my debt bags."
@@ -4463,6 +5581,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.0846,
+      "et_speech_frac": 0.89,
+      "kiel_max_innovation": 0.67,
       "token_count": 16,
       "speaker_turn": false,
       "text": " I bought a one-way ticket to San Francisco with no plan."
@@ -4475,6 +5596,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0589,
+      "et_speech_frac": 0.70,
+      "kiel_max_innovation": 0.59,
       "token_count": 11,
       "speaker_turn": false,
       "text": " I didn't even have a place to stay."
@@ -4487,6 +5611,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1147,
+      "et_speech_frac": 0.89,
+      "kiel_max_innovation": 0.50,
       "token_count": 11,
       "speaker_turn": false,
       "text": " But I knew that I needed to get around people"
@@ -4499,6 +5626,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0756,
+      "et_speech_frac": 0.78,
+      "kiel_max_innovation": 0.40,
       "token_count": 9,
       "speaker_turn": false,
       "text": " who were smarter and the most ambitious,"
@@ -4511,6 +5641,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0628,
+      "et_speech_frac": 0.83,
+      "kiel_max_innovation": 0.40,
       "token_count": 9,
       "speaker_turn": false,
       "text": " smart group of people that I could,"
@@ -4523,6 +5656,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0600,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.67,
       "token_count": 10,
       "speaker_turn": false,
       "text": " who all had the same dream as me."
@@ -4535,6 +5671,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1343,
+      "et_speech_frac": 0.75,
+      "kiel_max_innovation": 0.61,
       "token_count": 6,
       "speaker_turn": false,
       "text": " So let's recap."
@@ -4547,6 +5686,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1406,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.26,
       "token_count": 9,
       "speaker_turn": false,
       "text": " If you've done these four things,"
@@ -4559,6 +5701,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1206,
+      "et_speech_frac": 0.78,
+      "kiel_max_innovation": 0.57,
       "token_count": 13,
       "speaker_turn": false,
       "text": " you've picked one of the four money-making skills,"
@@ -4571,6 +5716,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1053,
+      "et_speech_frac": 0.72,
+      "kiel_max_innovation": 0.62,
       "token_count": 11,
       "speaker_turn": false,
       "text": " and you've done your two years mastering it."
@@ -4583,6 +5731,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1535,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.20,
       "token_count": 9,
       "speaker_turn": false,
       "text": " You then don't rent out your time"
@@ -4595,6 +5746,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0881,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.48,
       "token_count": 10,
       "speaker_turn": false,
       "text": " and fall down the career trap of getting hired"
@@ -4607,6 +5761,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0476,
+      "et_speech_frac": 0.73,
+      "kiel_max_innovation": 0.65,
       "token_count": 5,
       "speaker_turn": false,
       "text": " and getting raises."
@@ -4619,6 +5776,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1291,
+      "et_speech_frac": 0.88,
+      "kiel_max_innovation": 0.51,
       "token_count": 10,
       "speaker_turn": false,
       "text": " You take that skill and you start a business"
@@ -4631,6 +5791,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0857,
+      "et_speech_frac": 0.61,
+      "kiel_max_innovation": 0.65,
       "token_count": 10,
       "speaker_turn": false,
       "text": " based on code, content, or capital."
@@ -4643,6 +5806,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1210,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.32,
       "token_count": 12,
       "speaker_turn": false,
       "text": " Then you wait and you're impatient with your action,"
@@ -4655,6 +5821,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0715,
+      "et_speech_frac": 0.71,
+      "kiel_max_innovation": 0.61,
       "token_count": 11,
       "speaker_turn": false,
       "text": " but you're very patient with your results."
@@ -4667,6 +5836,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1099,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.66,
       "token_count": 9,
       "speaker_turn": false,
       "text": " And lastly, proximity is power."
@@ -4679,6 +5851,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1102,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.26,
       "token_count": 6,
       "speaker_turn": false,
       "text": " You speed up your development"
@@ -4691,6 +5866,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1008,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.64,
       "token_count": 8,
       "speaker_turn": false,
       "text": " by moving to the White Hot Center"
@@ -4703,6 +5881,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0587,
+      "et_speech_frac": 0.58,
+      "kiel_max_innovation": 0.68,
       "token_count": 9,
       "speaker_turn": false,
       "text": " and getting around like-minded people."
@@ -4715,6 +5896,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0851,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.55,
       "token_count": 5,
       "speaker_turn": false,
       "text": " Well, congratulations."
@@ -4727,6 +5911,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0888,
+      "et_speech_frac": 0.70,
+      "kiel_max_innovation": 0.63,
       "token_count": 7,
       "speaker_turn": false,
       "text": " You have flipped the odds."
@@ -4739,6 +5926,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0957,
+      "et_speech_frac": 0.88,
+      "kiel_max_innovation": 0.64,
       "token_count": 11,
       "speaker_turn": false,
       "text": " The best advice in the world is to take actions"
@@ -4751,6 +5941,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1040,
+      "et_speech_frac": 0.81,
+      "kiel_max_innovation": 0.67,
       "token_count": 12,
       "speaker_turn": false,
       "text": " that would make it absolutely unreasonable for you to fail."
@@ -4763,6 +5956,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1127,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.45,
       "token_count": 7,
       "speaker_turn": false,
       "text": " Let's take another example."
@@ -4775,6 +5971,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0787,
+      "et_speech_frac": 0.84,
+      "kiel_max_innovation": 0.19,
       "token_count": 9,
       "speaker_turn": false,
       "text": " Weight loss, dieting, right?"
@@ -4787,6 +5986,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0623,
+      "et_speech_frac": 0.71,
+      "kiel_max_innovation": 0.66,
       "token_count": 12,
       "speaker_turn": false,
       "text": " I've been a type of person who's tried."
@@ -4799,6 +6001,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0989,
+      "et_speech_frac": 0.77,
+      "kiel_max_innovation": 0.56,
       "token_count": 7,
       "speaker_turn": false,
       "text": " Many diets failed many times."
@@ -4811,6 +6016,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1192,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.71,
       "token_count": 9,
       "speaker_turn": false,
       "text": " And I think that's pretty common."
@@ -4823,6 +6031,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.1196,
+      "et_speech_frac": 0.89,
+      "kiel_max_innovation": 0.49,
       "token_count": 12,
       "speaker_turn": false,
       "text": " I would say that dieting probably has a failure rate"
@@ -4835,6 +6046,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1108,
+      "et_speech_frac": 0.81,
+      "kiel_max_innovation": 0.14,
       "token_count": 6,
       "speaker_turn": false,
       "text": " of 80 or 90%."
@@ -4847,6 +6061,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1234,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.27,
       "token_count": 8,
       "speaker_turn": false,
       "text": " Let's pretend with your diet,"
@@ -4859,6 +6076,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1068,
+      "et_speech_frac": 0.73,
+      "kiel_max_innovation": 0.69,
       "token_count": 10,
       "speaker_turn": false,
       "text": " you just decided to do four things right."
@@ -4871,6 +6091,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1344,
+      "et_speech_frac": 0.66,
+      "kiel_max_innovation": 0.63,
       "token_count": 7,
       "speaker_turn": false,
       "text": " You made four decisions."
@@ -4883,6 +6106,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1449,
+      "et_speech_frac": 0.84,
+      "kiel_max_innovation": 0.24,
       "token_count": 11,
       "speaker_turn": false,
       "text": " So you ate clean whole foods, high protein,"
@@ -4895,6 +6121,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0804,
+      "et_speech_frac": 0.65,
+      "kiel_max_innovation": 0.64,
       "token_count": 9,
       "speaker_turn": false,
       "text": " you exercise daily and you slept well."
@@ -4907,6 +6136,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1476,
+      "et_speech_frac": 0.84,
+      "kiel_max_innovation": 0.24,
       "token_count": 7,
       "speaker_turn": false,
       "text": " If you actually did those things"
@@ -4919,6 +6151,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1216,
+      "et_speech_frac": 0.71,
+      "kiel_max_innovation": 0.49,
       "token_count": 13,
       "speaker_turn": false,
       "text": " and you did the weight process where you let it unfold,"
@@ -4931,6 +6166,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1162,
+      "et_speech_frac": 0.81,
+      "kiel_max_innovation": 0.50,
       "token_count": 12,
       "speaker_turn": false,
       "text": " it is now actually unreasonable for you to not lose weight"
@@ -4943,6 +6181,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1014,
+      "et_speech_frac": 0.75,
+      "kiel_max_innovation": 0.69,
       "token_count": 7,
       "speaker_turn": false,
       "text": " to get into great shape."
@@ -4955,6 +6196,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1181,
+      "et_speech_frac": 0.87,
+      "kiel_max_innovation": 0.54,
       "token_count": 6,
       "speaker_turn": false,
       "text": " You have flipped the odds"
@@ -4967,6 +6211,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 6,
+      "et_rms": 0.0826,
+      "et_speech_frac": 0.71,
+      "kiel_max_innovation": 0.64,
       "token_count": 12,
       "speaker_turn": false,
       "text": " from 90% failure rate to 90% success rate."
@@ -4979,6 +6226,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1286,
+      "et_speech_frac": 0.91,
+      "kiel_max_innovation": 0.55,
       "token_count": 14,
       "speaker_turn": false,
       "text": " And that's what we're gonna do in the world of business"
@@ -4991,6 +6241,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1029,
+      "et_speech_frac": 0.79,
+      "kiel_max_innovation": 0.52,
       "token_count": 14,
       "speaker_turn": false,
       "text": " and getting rich is we've all heard the stats, right?"
@@ -5003,6 +6256,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1046,
+      "et_speech_frac": 0.85,
+      "kiel_max_innovation": 0.68,
       "token_count": 8,
       "speaker_turn": false,
       "text": " 90% of new businesses fail."
@@ -5015,6 +6271,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1079,
+      "et_speech_frac": 0.80,
+      "kiel_max_innovation": 0.67,
       "token_count": 7,
       "speaker_turn": false,
       "text": " Well, that's true."
@@ -5027,6 +6286,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1139,
+      "et_speech_frac": 0.86,
+      "kiel_max_innovation": 0.21,
       "token_count": 11,
       "speaker_turn": false,
       "text": " Startups, individual, business ideas do fail,"
@@ -5039,6 +6301,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1192,
+      "et_speech_frac": 0.76,
+      "kiel_max_innovation": 0.60,
       "token_count": 7,
       "speaker_turn": false,
       "text": " but founders don't."
@@ -5051,6 +6316,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1235,
+      "et_speech_frac": 0.99,
+      "kiel_max_innovation": 0.43,
       "token_count": 13,
       "speaker_turn": false,
       "text": " If you keep going and your rate of learning is high,"
@@ -5063,6 +6331,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1185,
+      "et_speech_frac": 0.74,
+      "kiel_max_innovation": 0.50,
       "token_count": 11,
       "speaker_turn": false,
       "text": " you follow the four rules I just told you,"
@@ -5075,6 +6346,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1150,
+      "et_speech_frac": 0.52,
+      "kiel_max_innovation": 0.60,
       "token_count": 6,
       "speaker_turn": false,
       "text": " you will not fail."
@@ -5087,6 +6361,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1235,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.43,
       "token_count": 10,
       "speaker_turn": false,
       "text": " I'll leave you with the Steve Martin story"
@@ -5099,6 +6376,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0923,
+      "et_speech_frac": 0.89,
+      "kiel_max_innovation": 0.67,
       "token_count": 6,
       "speaker_turn": false,
       "text": " that always inspired me."
@@ -5111,6 +6391,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0858,
+      "et_speech_frac": 0.66,
+      "kiel_max_innovation": 0.55,
       "token_count": 8,
       "speaker_turn": false,
       "text": " Steve Martin, the great comedian,"
@@ -5123,6 +6406,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.0921,
+      "et_speech_frac": 0.65,
+      "kiel_max_innovation": 0.64,
       "token_count": 9,
       "speaker_turn": false,
       "text": " he wanted to learn the banjo."
@@ -5135,6 +6421,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1294,
+      "et_speech_frac": 0.96,
+      "kiel_max_innovation": 0.25,
       "token_count": 7,
       "speaker_turn": false,
       "text": " And when he was young,"
@@ -5147,6 +6436,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1154,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.58,
       "token_count": 7,
       "speaker_turn": false,
       "text": " he started learning the banjo"
@@ -5159,6 +6451,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1025,
+      "et_speech_frac": 0.91,
+      "kiel_max_innovation": 0.52,
       "token_count": 12,
       "speaker_turn": false,
       "text": " and he couldn't tell the difference in his C chord"
@@ -5171,6 +6466,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0884,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.32,
       "token_count": 10,
       "speaker_turn": false,
       "text": " and G chord and his teacher was like,"
@@ -5183,6 +6481,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0948,
+      "et_speech_frac": 0.70,
+      "kiel_max_innovation": 0.52,
       "token_count": 10,
       "speaker_turn": false,
       "text": " \"Yeah, I'm not gonna lie."
@@ -5195,6 +6496,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.1332,
+      "et_speech_frac": 0.94,
+      "kiel_max_innovation": 0.34,
       "token_count": 11,
       "speaker_turn": false,
       "text": " It's not like you have a huge natural talent"
@@ -5207,6 +6511,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0510,
+      "et_speech_frac": 0.41,
+      "kiel_max_innovation": 0.60,
       "token_count": 6,
       "speaker_turn": false,
       "text": " for the banjo.\""
@@ -5219,6 +6526,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1448,
+      "et_speech_frac": 0.93,
+      "kiel_max_innovation": 0.33,
       "token_count": 8,
       "speaker_turn": false,
       "text": " And he was getting frustrated and impatient"
@@ -5231,6 +6541,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0844,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.65,
       "token_count": 10,
       "speaker_turn": false,
       "text": " because he wanted to be great at something."
@@ -5243,6 +6556,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0875,
+      "et_speech_frac": 0.84,
+      "kiel_max_innovation": 0.57,
       "token_count": 12,
       "speaker_turn": false,
       "text": " He wanted the result, but it wasn't happening."
@@ -5255,6 +6571,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0525,
+      "et_speech_frac": 0.58,
+      "kiel_max_innovation": 0.47,
       "token_count": 17,
       "speaker_turn": false,
       "text": " And it didn't seem like he was naturally on track to get there,"
@@ -5267,6 +6586,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1080,
+      "et_speech_frac": 0.84,
+      "kiel_max_innovation": 0.71,
       "token_count": 9,
       "speaker_turn": false,
       "text": " but he made a little mindset shift."
@@ -5279,6 +6601,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0751,
+      "et_speech_frac": 0.44,
+      "kiel_max_innovation": 0.17,
       "token_count": 9,
       "speaker_turn": false,
       "text": " He said, \"You know what?"
@@ -5291,6 +6616,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0729,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.62,
       "token_count": 13,
       "speaker_turn": false,
       "text": " Instead of trying to be great at the banjo today,"
@@ -5303,6 +6631,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0700,
+      "et_speech_frac": 0.91,
+      "kiel_max_innovation": 0.23,
       "token_count": 8,
       "speaker_turn": false,
       "text": " let me just make a decision.\""
@@ -5315,6 +6646,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.0958,
+      "et_speech_frac": 0.77,
+      "kiel_max_innovation": 0.56,
       "token_count": 15,
       "speaker_turn": false,
       "text": " He said, \"I'm gonna play the banjo for 40 years"
@@ -5327,6 +6661,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1568,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.30,
       "token_count": 6,
       "speaker_turn": false,
       "text": " because I can't imagine"
@@ -5339,6 +6676,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1406,
+      "et_speech_frac": 0.92,
+      "kiel_max_innovation": 0.58,
       "token_count": 13,
       "speaker_turn": false,
       "text": " that somebody who's been playing the banjo for 40 years"
@@ -5351,6 +6691,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0841,
+      "et_speech_frac": 0.81,
+      "kiel_max_innovation": 0.37,
       "token_count": 6,
       "speaker_turn": false,
       "text": " still sucks at it.\""
@@ -5363,6 +6706,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 5,
+      "et_rms": 0.0789,
+      "et_speech_frac": 0.86,
+      "kiel_max_innovation": 0.44,
       "token_count": 11,
       "speaker_turn": false,
       "text": " And just by taking that long-term time horizon"
@@ -5375,6 +6721,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0769,
+      "et_speech_frac": 0.83,
+      "kiel_max_innovation": 0.42,
       "token_count": 11,
       "speaker_turn": false,
       "text": " and understanding that he could flip his odds of success"
@@ -5387,6 +6736,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1201,
+      "et_speech_frac": 0.79,
+      "kiel_max_innovation": 0.22,
       "token_count": 9,
       "speaker_turn": false,
       "text": " from probably gonna be one of those guys"
@@ -5399,6 +6751,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0598,
+      "et_speech_frac": 0.65,
+      "kiel_max_innovation": 0.52,
       "token_count": 15,
       "speaker_turn": false,
       "text": " who tries it doesn't happen for him and I give up to."
@@ -5411,6 +6766,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1171,
+      "et_speech_frac": 0.79,
+      "kiel_max_innovation": 0.37,
       "token_count": 15,
       "speaker_turn": false,
       "text": " Well, if I just stuck with this for 20, 40 years,"
@@ -5423,6 +6781,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0933,
+      "et_speech_frac": 0.82,
+      "kiel_max_innovation": 0.64,
       "token_count": 11,
       "speaker_turn": false,
       "text": " I think I'd be great at it."
@@ -5435,6 +6796,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1090,
+      "et_speech_frac": 0.74,
+      "kiel_max_innovation": 0.55,
       "token_count": 12,
       "speaker_turn": false,
       "text": " And by the way, it never took 40 years."
@@ -5447,6 +6811,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0914,
+      "et_speech_frac": 0.88,
+      "kiel_max_innovation": 0.34,
       "token_count": 12,
       "speaker_turn": false,
       "text": " Within a decade, Seymour and actually won multiple Grammys"
@@ -5459,6 +6826,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1246,
+      "et_speech_frac": 0.90,
+      "kiel_max_innovation": 0.67,
       "token_count": 12,
       "speaker_turn": false,
       "text": " for his songs where he's playing the banjo."
@@ -5471,6 +6841,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1163,
+      "et_speech_frac": 0.95,
+      "kiel_max_innovation": 0.54,
       "token_count": 9,
       "speaker_turn": false,
       "text": " He changed his mindset around the banjo"
@@ -5483,6 +6856,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.0748,
+      "et_speech_frac": 0.72,
+      "kiel_max_innovation": 0.68,
       "token_count": 12,
       "speaker_turn": false,
       "text": " and years later is actually winning Grammys for it."
@@ -5495,6 +6871,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
+      "et_rms": 0.1152,
+      "et_speech_frac": 0.78,
+      "kiel_max_innovation": 0.50,
       "token_count": 8,
       "speaker_turn": false,
       "text": " And so this is the formula."
@@ -5507,6 +6886,9 @@
       "hcp_quality": 0.9934,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1302,
+      "et_speech_frac": 0.73,
+      "kiel_max_innovation": 0.48,
       "token_count": 6,
       "speaker_turn": false,
       "text": " This is the way."
@@ -5519,6 +6901,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1166,
+      "et_speech_frac": 0.86,
+      "kiel_max_innovation": 0.63,
       "token_count": 7,
       "speaker_turn": false,
       "text": " I hope you take this."
@@ -5531,6 +6916,9 @@
       "hcp_quality": 0.8558,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0766,
+      "et_speech_frac": 0.75,
+      "kiel_max_innovation": 0.71,
       "token_count": 9,
       "speaker_turn": false,
       "text": " I hope you be successful with this."
@@ -5543,6 +6931,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.1131,
+      "et_speech_frac": 0.91,
+      "kiel_max_innovation": 0.59,
       "token_count": 9,
       "speaker_turn": false,
       "text": " I have nothing but love for you."
@@ -5555,6 +6946,9 @@
       "hcp_quality": 0.7143,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.0731,
+      "et_speech_frac": 0.72,
+      "kiel_max_innovation": 0.56,
       "token_count": 7,
       "speaker_turn": false,
       "text": " I really root for you."
@@ -5567,6 +6961,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 16,
       "hcp_flagged_tokens": 4,
+      "et_rms": 0.1123,
+      "et_speech_frac": 0.73,
+      "kiel_max_innovation": 0.48,
       "token_count": 14,
       "speaker_turn": false,
       "text": " And so if this was helpful, leave me a comment below."
@@ -5579,6 +6976,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 3,
+      "et_rms": 0.1172,
+      "et_speech_frac": 0.97,
+      "kiel_max_innovation": 0.61,
       "token_count": 12,
       "speaker_turn": false,
       "text": " And maybe I'll do a follow-up video."
@@ -5591,6 +6991,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 0,
+      "et_rms": 0.0725,
+      "et_speech_frac": 0.98,
+      "kiel_max_innovation": 0.30,
       "token_count": 8,
       "speaker_turn": false,
       "text": " It's a little more detailed,"
@@ -5603,6 +7006,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1115,
+      "et_speech_frac": 0.86,
+      "kiel_max_innovation": 0.68,
       "token_count": 14,
       "speaker_turn": false,
       "text": " but these are the high level, the four-money rules."
@@ -5615,6 +7021,9 @@
       "hcp_quality": 1.0000,
       "hallucination_flags": 0,
       "hcp_flagged_tokens": 1,
+      "et_rms": 0.1601,
+      "et_speech_frac": 0.86,
+      "kiel_max_innovation": 0.18,
       "token_count": 6,
       "speaker_turn": false,
       "text": " (upbeat music)"
