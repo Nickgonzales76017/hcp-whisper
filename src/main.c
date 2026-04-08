@@ -158,7 +158,7 @@ static void write_json(const char *path, HcpResult *res) {
 
     fprintf(fp, "{\n");
     fprintf(fp, "  \"algorithm\": \"Complex-Domain HCP Spectral Refinement\",\n");
-    fprintf(fp, "  \"version\": \"3.1.0\",\n");
+    fprintf(fp, "  \"version\": \"3.2.0\",\n");
     fprintf(fp, "  \"license\": \"MIT\",\n");
     fprintf(fp, "  \"total_segments\": %d,\n", res->count);
     fprintf(fp, "  \"hallucinated_segments\": %d,\n", res->segments_hallucinated);

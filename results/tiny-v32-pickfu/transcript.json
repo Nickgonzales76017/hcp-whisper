@@ -9,30 +9,31 @@
     "padded_fft_size": 4096,
     "flagged_tokens": 580,
     "flagged_segments": 78,
-    "elapsed_ms": 14.1,
+    "elapsed_ms": 0.8,
     "quality_base_avg": 0.9148,
     "quality_hcp_avg": 0.9978,
     "quality_uplift_pct": 9.1,
     "kiel": {
       "flagged_tokens": 0,
-      "elapsed_ms": 0.2
+      "elapsed_ms": 0.0
     },
     "et_gate": {
       "segments_gated": 1,
-      "elapsed_ms": 3154.1
+      "elapsed_ms": 241.1
     },
     "semantic": {
       "low_coherence_segments": 0,
       "elapsed_ms": 0.0
     },
     "redecode": {
-      "attempted": 79,
+      "attempted": 0,
       "improved": 0,
-      "elapsed_ms": 1912.1
+      "logit_biased": 0,
+      "elapsed_ms": 0.0
     },
     "formant": {
       "segments_flagged": 0,
-      "elapsed_ms": 3500.4
+      "elapsed_ms": 329.7
     }
   },
   "segments": [

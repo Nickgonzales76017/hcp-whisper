@@ -9,30 +9,31 @@
     "padded_fft_size": 4096,
     "flagged_tokens": 931,
     "flagged_segments": 57,
-    "elapsed_ms": 5.0,
-    "quality_base_avg": 0.9012,
-    "quality_hcp_avg": 0.9971,
+    "elapsed_ms": 1.0,
+    "quality_base_avg": 0.9022,
+    "quality_hcp_avg": 0.9975,
     "quality_uplift_pct": 10.6,
     "kiel": {
       "flagged_tokens": 0,
-      "elapsed_ms": 0.1
+      "elapsed_ms": 0.0
     },
     "et_gate": {
       "segments_gated": 0,
-      "elapsed_ms": 1295.7
+      "elapsed_ms": 330.2
     },
     "semantic": {
       "low_coherence_segments": 0,
       "elapsed_ms": 0.0
     },
     "redecode": {
-      "attempted": 57,
-      "improved": 0,
-      "elapsed_ms": 1154.8
+      "attempted": 1,
+      "improved": 1,
+      "logit_biased": 23676,
+      "elapsed_ms": 158.0
     },
     "formant": {
       "segments_flagged": 1,
-      "elapsed_ms": 1806.6
+      "elapsed_ms": 401.4
     }
   },
   "segments": [
@@ -260,10 +261,10 @@
     {
       "t0_ms": 58840,
       "t1_ms": 61320,
-      "confidence": 0.2522,
-      "quality": 0.2522,
-      "hcp_quality": 0.3782,
-      "hallucination_flags": 272,
+      "confidence": 0.4679,
+      "quality": 0.4679,
+      "hcp_quality": 0.4679,
+      "hallucination_flags": 0,
       "hcp_flagged_tokens": 2,
       "et_rms": 0.1772,
       "et_speech_frac": 1.00,
@@ -272,7 +273,7 @@
       "formant_ratio": 0.147,
       "token_count": 4,
       "speaker_turn": false,
-      "text": " [Music]"
+      "text": " It's rule number one, you need..."
     },
     {
       "t0_ms": 61320,
