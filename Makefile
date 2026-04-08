@@ -21,7 +21,7 @@ LDFLAGS  = -L$(WHISPER_LIB) -lwhisper -lggml -lz -lm
 
 all: $(TARGET)
 
-$(TARGET): $(SRC) src/hcp.h src/hcp_subword_freq.h
+$(TARGET): $(SRC) src/hcp.h src/hcp_subword_freq.h src/hcp_bigram.h
 	$(CC) $(CFLAGS) $(INCLUDES) -o $(TARGET) $(SRC) $(LDFLAGS)
 
 # Run test on sample audio (requires WAV file)

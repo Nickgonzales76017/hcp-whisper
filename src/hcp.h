@@ -75,6 +75,22 @@ extern "C" {
 #define HCP_KIEL_R              0.1f    /* Kalman measurement noise */
 #endif
 
+/* Re-decode configuration (v2.1) */
+#ifndef HCP_REDECODE_BEAM
+#define HCP_REDECODE_BEAM          10      /* wider beam for re-decode */
+#endif
+#ifndef HCP_REDECODE_MIN_SAMPLES
+#define HCP_REDECODE_MIN_SAMPLES   3200    /* 200ms minimum slice @ 16kHz */
+#endif
+
+/* Semantic channel configuration (v3.0) */
+#ifndef HCP_SEMANTIC_WEIGHT
+#define HCP_SEMANTIC_WEIGHT        0.3f    /* semantic channel influence [0,1] */
+#endif
+#ifndef HCP_SEMANTIC_LOW_THRESH
+#define HCP_SEMANTIC_LOW_THRESH    0.02f   /* flag if bigram score < this */
+#endif
+
 /* Hallucination flag bits */
 #define HCP_HALLUC_HIGH_COMPRESS   0x01
 #define HCP_HALLUC_NGRAM_REPEAT    0x02
@@ -83,6 +99,7 @@ extern "C" {
 #define HCP_HALLUC_SPECTRAL        0x10
 #define HCP_HALLUC_ET_GATE         0x20
 #define HCP_HALLUC_KALMAN          0x40
+#define HCP_HALLUC_SEMANTIC        0x80
 
 /* ─── Structures ────────────────────────────────────────────────── */
 
@@ -103,6 +120,7 @@ typedef struct {
     float    et_rms;              /* E-T Gate: segment audio RMS energy */
     float    et_speech_frac;      /* E-T Gate: speech-like frame fraction */
     float    kiel_max_innov;      /* KIEL-CC: max normalized innovation */
+    float    semantic_score;       /* semantic channel: mean bigram coherence */
     char     text[HCP_MAX_TEXT_LEN];
 } HcpSegment;
 
@@ -130,7 +148,31 @@ typedef struct {
     double kiel_ms;
     int    kiel_flagged_tokens;
     float *kiel_innovation;       /* per-token normalized Kalman innovation */
+    /* Re-decode internals (v2.1) */
+    int    redecode_count;
+    int    redecode_improved;
+    double redecode_ms;
+    /* Semantic channel internals (v3.0) */
+    double semantic_ms;
+    int    semantic_low_count;
 } HcpResult;
+
+/* Model-agnostic token input (v4.0) — for any ASR engine */
+typedef struct {
+    const char *text;
+    float confidence;      /* [0.0, 1.0] */
+    float logprob;         /* log probability (use -logf(1-conf) if unavailable) */
+    float duration_ms;     /* token duration in ms (0 if unknown) */
+} HcpUniversalToken;
+
+typedef struct {
+    HcpUniversalToken *tokens;
+    int    token_count;
+    int64_t start_ms;
+    int64_t end_ms;
+    const char *text;      /* full segment text */
+    float no_speech_prob;  /* 0.0 if unavailable */
+} HcpUniversalSegment;
 
 /* ─── API ───────────────────────────────────────────────────────── */
 
@@ -155,6 +197,21 @@ int hcp_detect_ngram_repeat(const char *text);
 HcpResult hcp_process_with_audio(struct whisper_context *ctx,
                                   const float *audio, int n_samples, int sample_rate);
 
+/* Re-decode segments flagged as hallucinated (v2.1).
+ * Uses wider beam search on the audio slice. Call after hcp_process_with_audio().
+ * Returns number of segments improved. */
+int hcp_redecode(struct whisper_context *ctx,
+                 const float *audio, int n_samples, int sample_rate,
+                 struct whisper_full_params base_params,
+                 HcpResult *res);
+
+/* Model-agnostic HCP processing (v4.0).
+ * Accepts pre-segmented tokens from any ASR engine (Deepgram, Google, Apple, etc.)
+ * and applies HCP spectral refinement + hallucination detection.
+ * If audio is NULL, E-T Gate is skipped. */
+HcpResult hcp_process_universal(HcpUniversalSegment *segments, int n_segments,
+                                 const float *audio, int n_samples, int sample_rate);
+
 #ifdef __cplusplus
 }
 #endif
@@ -170,6 +227,7 @@ HcpResult hcp_process_with_audio(struct whisper_context *ctx,
 #include <zlib.h>
 
 #include "hcp_subword_freq.h"
+#include "hcp_bigram.h"
 
 /* ── Internal types ──────────────────────────────────────────────── */
 
@@ -359,6 +417,16 @@ static int hcp__quant_dt(int64_t dt_ms) {
     if (q >= HCP_DT_BUCKETS) q = HCP_DT_BUCKETS - 1;
     return q;
 }
+/* ── Bigram semantic scoring (v3.0) ─────────────────────────────── */
+
+static float hcp__bigram_score(whisper_token prev, whisper_token cur) {
+    uint8_t key[8];
+    uint32_t p = (uint32_t)prev, c = (uint32_t)cur;
+    memcpy(key, &p, 4);
+    memcpy(key + 4, &c, 4);
+    uint32_t slot = (uint32_t)(hcp__fnv1a(key, 8) % HCP_BIGRAM_SLOTS);
+    return (float)hcp_bigram_table[slot] / 255.0f;
+}
 /* ── KIEL-CC: Kalman Innovation Error Localization ───────────────── */
 
 static void hcp__kiel_cc(hcp__cpx *z_orig, int N, int *seg_map, int ns,
@@ -521,49 +589,10 @@ static int hcp__extract_segments(struct whisper_context *ctx, HcpResult *res) {
     return 0;
 }
 
-/* ── Core HCP spectral refinement ────────────────────────────────── */
+/* ── Core HCP spectral processing (shared by Whisper + universal paths) ─── */
 
-static void hcp__spectral_refine(struct whisper_context *ctx, HcpResult *res) {
+static void hcp__spectral_process(hcp__token *flat, int N, int ns, HcpResult *res) {
     double t0 = hcp__ms_now();
-    int ns = res->count;
-
-    /* Flatten tokens */
-    int total = 0;
-    for (int s = 0; s < ns; s++) {
-        total += whisper_full_n_tokens(ctx, s);
-    }
-    if (total < 4) { res->hcp_ms = hcp__ms_now() - t0; return; }
-
-    hcp__token *flat = (hcp__token *)calloc((size_t)total, sizeof(hcp__token));
-    if (!flat) { res->hcp_ms = hcp__ms_now() - t0; return; }
-
-    int idx = 0;
-    for (int s = 0; s < ns; s++) {
-        int nt = whisper_full_n_tokens(ctx, s);
-        float nsp = whisper_full_get_segment_no_speech_prob(ctx, s);
-        int sturn = whisper_full_get_segment_speaker_turn_next(ctx, s) ? 1 : 0;
-        float cratio = res->segments[s].compression_ratio;
-        for (int t = 0; t < nt && idx < total; t++) {
-            whisper_token_data td = whisper_full_get_token_data(ctx, s, t);
-            const char *txt = whisper_full_get_token_text(ctx, s, t);
-            if (td.id >= 50257 || !txt || txt[0] == '\0') continue;
-            flat[idx] = (hcp__token){
-                .id = td.id,
-                .p  = td.p > 0.0f ? td.p : 1e-8f,
-                .plog = td.plog,
-                .vlen = td.vlen,
-                .t_dtw = td.t_dtw,
-                .seg_idx = s,
-                .no_speech_prob = nsp,
-                .comp_ratio = cratio,
-                .speaker_turn = sturn,
-                .text = txt,
-            };
-            idx++;
-        }
-    }
-    int N = idx;
-    if (N < 4) { free(flat); res->hcp_ms = hcp__ms_now() - t0; return; }
 
     res->hcp_tokens = N;
     int N2 = hcp__next_pow2(N);
@@ -577,11 +606,16 @@ static void hcp__spectral_refine(struct whisper_context *ctx, HcpResult *res) {
     float *ph_shift = (float *)calloc((size_t)N2, sizeof(float));
     int   *seg_map  = (int *)calloc((size_t)N2, sizeof(int));
     if (!z || !z_orig || !mag_o || !mag_c || !ph_shift || !seg_map) {
-        free(flat); free(z); free(z_orig); free(mag_o); free(mag_c);
+        free(z); free(z_orig); free(mag_o); free(mag_c);
         free(ph_shift); free(seg_map);
         res->hcp_ms = hcp__ms_now() - t0;
         return;
     }
+
+    /* Per-segment semantic accumulators */
+    float *seg_sem_sum = (float *)calloc((size_t)ns, sizeof(float));
+    int   *seg_sem_cnt = (int *)calloc((size_t)ns, sizeof(int));
+    int   *seg_sem_low = (int *)calloc((size_t)ns, sizeof(int));
 
     /* Step 2: Complex lifting */
     for (int i = 0; i < N; i++) {
@@ -616,8 +650,25 @@ static void hcp__spectral_refine(struct whisper_context *ctx, HcpResult *res) {
         float phi_morph = hcp__fnv_to_phase(hcp__fnv1a(txt, tlen));
         hcp__cpx z_morph = hcp__cpx_from_polar(mag_morph, phi_morph);
 
-        /* Coupled signal */
-        hcp__cpx coupled = hcp__cpx_mul(z_acou, z_morph);
+        /* Semantic channel (v3.0): token bigram coherence */
+        float sem_score = 0.5f;
+        if (i > 0) {
+            sem_score = hcp__bigram_score(flat[i-1].id, tk->id);
+            if (sem_score < 0.01f) sem_score = 0.01f;
+        }
+        float sem_mag = powf(0.5f + 0.5f * sem_score, HCP_SEMANTIC_WEIGHT);
+        hcp__cpx z_sem = hcp__cpx_from_polar(sem_mag, phi_morph * HCP_SEMANTIC_WEIGHT);
+
+        /* Track per-segment semantic stats */
+        if (seg_sem_cnt && tk->seg_idx < ns) {
+            seg_sem_sum[tk->seg_idx] += sem_score;
+            seg_sem_cnt[tk->seg_idx]++;
+            if (sem_score < HCP_SEMANTIC_LOW_THRESH)
+                seg_sem_low[tk->seg_idx]++;
+        }
+
+        /* Coupled signal: acoustic × morphological × semantic */
+        hcp__cpx coupled = hcp__cpx_mul(hcp__cpx_mul(z_acou, z_morph), z_sem);
 
         /* Step 3: Free signal integration */
 
@@ -672,6 +723,22 @@ static void hcp__spectral_refine(struct whisper_context *ctx, HcpResult *res) {
 
         z[i] = coupled;
     }
+
+    /* Store per-segment semantic scores */
+    int sem_low_total = 0;
+    if (seg_sem_cnt) {
+        for (int s = 0; s < ns; s++) {
+            res->segments[s].semantic_score = seg_sem_cnt[s] > 0
+                ? seg_sem_sum[s] / (float)seg_sem_cnt[s] : 0.5f;
+            if (seg_sem_cnt[s] > 0 &&
+                (float)seg_sem_low[s] / (float)seg_sem_cnt[s] > 0.8f) {
+                res->segments[s].hallucination_flags |= HCP_HALLUC_SEMANTIC;
+                sem_low_total++;
+            }
+        }
+    }
+    res->semantic_low_count = sem_low_total;
+    free(seg_sem_sum); free(seg_sem_cnt); free(seg_sem_low);
 
     /* Save original */
     memcpy(z_orig, z, (size_t)N2 * sizeof(hcp__cpx));
@@ -817,11 +884,56 @@ static void hcp__spectral_refine(struct whisper_context *ctx, HcpResult *res) {
     res->hcp_token_seg_map = seg_map;
     res->hcp_ms = hcp__ms_now() - t0;
 
-    free(flat);
     free(z);
     free(z_orig);
     free(per_seg_flagged);
     free(per_seg_total);
+}
+
+/* ── Whisper-specific token extraction + delegation ──────────────── */
+
+static void hcp__spectral_refine(struct whisper_context *ctx, HcpResult *res) {
+    int ns = res->count;
+
+    /* Flatten tokens from whisper context */
+    int total = 0;
+    for (int s = 0; s < ns; s++)
+        total += whisper_full_n_tokens(ctx, s);
+    if (total < 4) return;
+
+    hcp__token *flat = (hcp__token *)calloc((size_t)total, sizeof(hcp__token));
+    if (!flat) return;
+
+    int idx = 0;
+    for (int s = 0; s < ns; s++) {
+        int nt = whisper_full_n_tokens(ctx, s);
+        float nsp = whisper_full_get_segment_no_speech_prob(ctx, s);
+        int sturn = whisper_full_get_segment_speaker_turn_next(ctx, s) ? 1 : 0;
+        float cratio = res->segments[s].compression_ratio;
+        for (int t = 0; t < nt && idx < total; t++) {
+            whisper_token_data td = whisper_full_get_token_data(ctx, s, t);
+            const char *txt = whisper_full_get_token_text(ctx, s, t);
+            if (td.id >= 50257 || !txt || txt[0] == '\0') continue;
+            flat[idx] = (hcp__token){
+                .id = td.id,
+                .p  = td.p > 0.0f ? td.p : 1e-8f,
+                .plog = td.plog,
+                .vlen = td.vlen,
+                .t_dtw = td.t_dtw,
+                .seg_idx = s,
+                .no_speech_prob = nsp,
+                .comp_ratio = cratio,
+                .speaker_turn = sturn,
+                .text = txt,
+            };
+            idx++;
+        }
+    }
+    int N = idx;
+    if (N < 4) { free(flat); return; }
+
+    hcp__spectral_process(flat, N, ns, res);
+    free(flat);
 }
 /* ── E-T Gate: Energy–Text Cross-Agreement ───────────────────── */
 
@@ -907,6 +1019,221 @@ static void hcp__et_gate(const float *audio, int n_samples, int sample_rate,
     res->et_segments_gated = gated;
     res->et_gate_ms = hcp__ms_now() - t0;
 }
+
+/* ── Constrained Re-decode (v2.1) ────────────────────────────────── */
+
+static int hcp__popcount8(uint8_t x) {
+    int c = 0;
+    while (x) { c += x & 1; x >>= 1; }
+    return c;
+}
+
+int hcp_redecode(struct whisper_context *ctx,
+                 const float *audio, int n_samples, int sample_rate,
+                 struct whisper_full_params base_params,
+                 HcpResult *res) {
+    if (!ctx || !audio || !res) return 0;
+    double t0 = hcp__ms_now();
+    int improved = 0, attempted = 0;
+
+    /* Configure re-decode params: wider beam, no printing */
+    struct whisper_full_params rp = base_params;
+    rp.beam_search.beam_size = HCP_REDECODE_BEAM;
+    rp.no_speech_thold = 0.3f;
+    rp.print_progress = 0;
+    rp.print_timestamps = 0;
+    rp.print_special = 0;
+
+    for (int s = 0; s < res->count; s++) {
+        HcpSegment *seg = &res->segments[s];
+        if (!seg->hallucination_flags) continue;
+
+        /* Slice audio to segment time range */
+        int sa = (int)((int64_t)seg->t0_ms * sample_rate / 1000);
+        int sb = (int)((int64_t)seg->t1_ms * sample_rate / 1000);
+        if (sa < 0) sa = 0;
+        if (sb > n_samples) sb = n_samples;
+        int slice_len = sb - sa;
+        if (slice_len < HCP_REDECODE_MIN_SAMPLES) continue;
+
+        attempted++;
+
+        /* Re-decode the slice with wider beam */
+        int ret = whisper_full(ctx, rp, audio + sa, slice_len);
+        if (ret != 0) continue;
+
+        /* Extract re-decoded text and confidence */
+        int ns_new = whisper_full_n_segments(ctx);
+        if (ns_new == 0) continue;
+
+        char new_text[HCP_MAX_TEXT_LEN] = {0};
+        double log_conf_sum = 0;
+        int valid = 0;
+
+        for (int si = 0; si < ns_new; si++) {
+            const char *txt = whisper_full_get_segment_text(ctx, si);
+            if (txt) {
+                size_t cur = strlen(new_text);
+                strncat(new_text, txt, sizeof(new_text) - cur - 1);
+            }
+            int nt = whisper_full_n_tokens(ctx, si);
+            for (int t = 0; t < nt; t++) {
+                whisper_token_data td = whisper_full_get_token_data(ctx, si, t);
+                if (td.id < 50257 && td.p > 0.0f) {
+                    log_conf_sum += log((double)td.p);
+                    valid++;
+                }
+            }
+        }
+
+        float new_conf = valid > 0 ? expf((float)(log_conf_sum / valid)) : 0.0f;
+        float new_cr = hcp_compression_ratio(new_text);
+        int new_ngram = hcp_detect_ngram_repeat(new_text);
+        float new_logprob = valid > 0 ? (float)(log_conf_sum / valid) : -10.0f;
+
+        /* Re-check hallucination signals */
+        uint8_t new_flags = 0;
+        if (new_cr > 2.4f) new_flags |= HCP_HALLUC_HIGH_COMPRESS;
+        if (new_ngram) new_flags |= HCP_HALLUC_NGRAM_REPEAT;
+        if (new_logprob < -2.0f) new_flags |= HCP_HALLUC_LOW_LOGPROB;
+
+        /* Compute new quality */
+        float nsp_f = 1.0f - seg->no_speech_prob;
+        if (nsp_f < 0.0f) nsp_f = 0.0f;
+        float cr_f = new_cr > 0.0f ? fminf(1.0f, 2.4f / new_cr) : 1.0f;
+        float new_quality = new_conf * nsp_f * cr_f;
+
+        /* Accept if: better quality or fewer hallucination flags */
+        int fewer_flags = hcp__popcount8(new_flags) < hcp__popcount8(seg->hallucination_flags);
+        if (new_quality > seg->hcp_quality ||
+            (fewer_flags && new_quality >= seg->hcp_quality * 0.9f)) {
+            strncpy(seg->text, new_text, sizeof(seg->text) - 1);
+            seg->text[sizeof(seg->text) - 1] = '\0';
+            seg->confidence = new_conf;
+            seg->logprob = new_logprob;
+            seg->compression_ratio = new_cr;
+            seg->quality = new_quality;
+            seg->hcp_quality = new_quality;
+            seg->hallucination_flags = new_flags;
+            improved++;
+        }
+    }
+
+    res->redecode_count = attempted;
+    res->redecode_improved = improved;
+    res->redecode_ms = hcp__ms_now() - t0;
+    return improved;
+}
+
+/* ── Universal segment extraction (v4.0) ─────────────────────────── */
+
+static int hcp__extract_universal(HcpUniversalSegment *segments, int n_seg,
+                                   HcpResult *res) {
+    for (int s = 0; s < n_seg; s++) {
+        if (res->count >= res->cap) {
+            int newcap = res->cap ? res->cap * 2 : 256;
+            HcpSegment *tmp = (HcpSegment *)realloc(res->segments,
+                              (size_t)newcap * sizeof(HcpSegment));
+            if (!tmp) return -1;
+            res->segments = tmp;
+            res->cap = newcap;
+        }
+        HcpUniversalSegment *useg = &segments[s];
+        HcpSegment *seg = &res->segments[res->count];
+        memset(seg, 0, sizeof(*seg));
+
+        seg->t0_ms = useg->start_ms;
+        seg->t1_ms = useg->end_ms;
+        seg->no_speech_prob = useg->no_speech_prob;
+        seg->token_count = useg->token_count;
+
+        if (useg->text) {
+            strncpy(seg->text, useg->text, sizeof(seg->text) - 1);
+            seg->text[sizeof(seg->text) - 1] = '\0';
+        }
+
+        /* Geometric mean confidence from tokens */
+        double log_conf_sum = 0;
+        int valid = 0;
+        for (int t = 0; t < useg->token_count; t++) {
+            float p = useg->tokens[t].confidence;
+            if (p > 0.0f) { log_conf_sum += log((double)p); valid++; }
+        }
+        seg->confidence = valid > 0 ? expf((float)(log_conf_sum / valid)) : 0.0f;
+        seg->logprob = valid > 0 ? (float)(log_conf_sum / valid) : -10.0f;
+
+        seg->compression_ratio = hcp_compression_ratio(seg->text);
+
+        /* Hallucination layers 1-4 */
+        if (seg->compression_ratio > 2.4f)
+            seg->hallucination_flags |= HCP_HALLUC_HIGH_COMPRESS;
+        if (hcp_detect_ngram_repeat(seg->text))
+            seg->hallucination_flags |= HCP_HALLUC_NGRAM_REPEAT;
+        if (seg->logprob < -2.0f)
+            seg->hallucination_flags |= HCP_HALLUC_LOW_LOGPROB;
+
+        float nsp_f = 1.0f - seg->no_speech_prob;
+        if (nsp_f < 0.0f) nsp_f = 0.0f;
+        float cr_f = seg->compression_ratio > 0.0f
+                     ? fminf(1.0f, 2.4f / seg->compression_ratio) : 1.0f;
+        seg->quality = seg->confidence * nsp_f * cr_f;
+        seg->hcp_quality = seg->quality;
+
+        if (seg->hallucination_flags)
+            res->segments_hallucinated++;
+
+        res->count++;
+    }
+    return 0;
+}
+
+static void hcp__universal_refine(HcpUniversalSegment *segments, int n_seg,
+                                   HcpResult *res) {
+    int ns = res->count;
+
+    /* Flatten universal tokens into internal format */
+    int total = 0;
+    for (int s = 0; s < n_seg; s++)
+        total += segments[s].token_count;
+    if (total < 4) return;
+
+    hcp__token *flat = (hcp__token *)calloc((size_t)total, sizeof(hcp__token));
+    if (!flat) return;
+
+    int idx = 0;
+    for (int s = 0; s < n_seg; s++) {
+        HcpUniversalSegment *useg = &segments[s];
+        for (int t = 0; t < useg->token_count && idx < total; t++) {
+            HcpUniversalToken *ut = &useg->tokens[t];
+            size_t tlen = ut->text ? strlen(ut->text) : 0;
+            uint32_t pseudo_id = (uint32_t)(hcp__fnv1a(ut->text, tlen) & 0xFFFF);
+
+            int64_t t_ms = useg->start_ms;
+            if (useg->token_count > 1)
+                t_ms += (int64_t)t * (useg->end_ms - useg->start_ms) / useg->token_count;
+
+            flat[idx] = (hcp__token){
+                .id = (whisper_token)pseudo_id,
+                .p  = ut->confidence > 0 ? ut->confidence : 1e-8f,
+                .plog = ut->logprob,
+                .vlen = ut->duration_ms > 0 ? ut->duration_ms / 100.0f : 0.5f,
+                .t_dtw = t_ms,
+                .seg_idx = s,
+                .no_speech_prob = useg->no_speech_prob,
+                .comp_ratio = res->segments[s].compression_ratio,
+                .speaker_turn = 0,
+                .text = ut->text,
+            };
+            idx++;
+        }
+    }
+    int N = idx;
+    if (N < 4) { free(flat); return; }
+
+    hcp__spectral_process(flat, N, ns, res);
+    free(flat);
+}
+
 /* ── Public API ──────────────────────────────────────────────────── */
 
 HcpResult hcp_process(struct whisper_context *ctx) {
@@ -923,6 +1250,17 @@ HcpResult hcp_process_with_audio(struct whisper_context *ctx,
     hcp__spectral_refine(ctx, &res);
     if (audio && n_samples > 0)
         hcp__et_gate(audio, n_samples, sample_rate, &res);
+    return res;
+}
+
+HcpResult hcp_process_universal(HcpUniversalSegment *segments, int n_segments,
+                                 const float *audio, int n_samples, int sample_rate) {
+    HcpResult res = {0};
+    if (!segments || n_segments <= 0) return res;
+    hcp__extract_universal(segments, n_segments, &res);
+    hcp__universal_refine(segments, n_segments, &res);
+    if (audio && n_samples > 0)
+        hcp__et_gate(audio, n_samples, sample_rate > 0 ? sample_rate : 16000, &res);
     return res;
 }
 

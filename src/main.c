@@ -158,7 +158,7 @@ static void write_json(const char *path, HcpResult *res) {
 
     fprintf(fp, "{\n");
     fprintf(fp, "  \"algorithm\": \"Complex-Domain HCP Spectral Refinement\",\n");
-    fprintf(fp, "  \"version\": \"2.0.0\",\n");
+    fprintf(fp, "  \"version\": \"3.0.0\",\n");
     fprintf(fp, "  \"license\": \"MIT\",\n");
     fprintf(fp, "  \"total_segments\": %d,\n", res->count);
     fprintf(fp, "  \"hallucinated_segments\": %d,\n", res->segments_hallucinated);
@@ -179,6 +179,15 @@ static void write_json(const char *path, HcpResult *res) {
     fprintf(fp, "    \"et_gate\": {\n");
     fprintf(fp, "      \"segments_gated\": %d,\n", res->et_segments_gated);
     fprintf(fp, "      \"elapsed_ms\": %.1f\n", res->et_gate_ms);
+    fprintf(fp, "    },\n");
+    fprintf(fp, "    \"semantic\": {\n");
+    fprintf(fp, "      \"low_coherence_segments\": %d,\n", res->semantic_low_count);
+    fprintf(fp, "      \"elapsed_ms\": %.1f\n", res->semantic_ms);
+    fprintf(fp, "    },\n");
+    fprintf(fp, "    \"redecode\": {\n");
+    fprintf(fp, "      \"attempted\": %d,\n", res->redecode_count);
+    fprintf(fp, "      \"improved\": %d,\n", res->redecode_improved);
+    fprintf(fp, "      \"elapsed_ms\": %.1f\n", res->redecode_ms);
     fprintf(fp, "    }\n");
     fprintf(fp, "  },\n");
     fprintf(fp, "  \"segments\": [\n");
@@ -196,6 +205,7 @@ static void write_json(const char *path, HcpResult *res) {
         fprintf(fp, "      \"et_rms\": %.4f,\n", s->et_rms);
         fprintf(fp, "      \"et_speech_frac\": %.2f,\n", s->et_speech_frac);
         fprintf(fp, "      \"kiel_max_innovation\": %.2f,\n", s->kiel_max_innov);
+        fprintf(fp, "      \"semantic_score\": %.3f,\n", s->semantic_score);
         fprintf(fp, "      \"token_count\": %d,\n", s->token_count);
         fprintf(fp, "      \"speaker_turn\": %s,\n", s->speaker_turn ? "true" : "false");
         /* JSON-safe text */
@@ -439,6 +449,15 @@ int main(int argc, char **argv) {
     HcpResult result = hcp_process_with_audio(ctx, audio, audio_len, 16000);
     result.decode_ms = decode_ms;
 
+    /* Re-decode hallucinated segments (v2.1) */
+    if (use_hcp) {
+        int redecoded = hcp_redecode(ctx, audio, audio_len, 16000, wparams, &result);
+        if (redecoded > 0) {
+            fprintf(stderr, "[hcp-whisper] re-decode: %d/%d improved, %.1f ms\n",
+                    result.redecode_improved, result.redecode_count, result.redecode_ms);
+        }
+    }
+
     free(audio);
 
     if (use_hcp) {
@@ -452,6 +471,8 @@ int main(int argc, char **argv) {
                 result.kiel_flagged_tokens, result.kiel_ms);
         fprintf(stderr, "[hcp-whisper] E-T Gate: %d segments gated, %.1f ms\n",
                 result.et_segments_gated, result.et_gate_ms);
+        fprintf(stderr, "[hcp-whisper] Semantic: %d low-coherence segments, %.1f ms\n",
+                result.semantic_low_count, result.semantic_ms);
 
         /* Print quality summary */
         float q_base = 0, q_hcp = 0;

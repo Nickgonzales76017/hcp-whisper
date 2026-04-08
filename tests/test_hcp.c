@@ -572,6 +572,151 @@ static void test_et_gate_noise(void) {
     free(res.segments);
 }
 
+/* ─── Test: Bigram scoring (v3.0) ───────────────────────────────── */
+
+static void test_bigram_score(void) {
+    printf("  test_bigram_score...\n");
+
+    /* Same pair should always return the same score */
+    float s1 = hcp__bigram_score(100, 200);
+    float s2 = hcp__bigram_score(100, 200);
+    ASSERT_FLOAT_EQ(s1, s2, 1e-6f, "bigram score must be deterministic");
+
+    /* Score should be in [0, 1] */
+    ASSERT(s1 >= 0.0f && s1 <= 1.0f, "bigram score must be in [0, 1]");
+
+    /* Different pairs should (likely) have different scores */
+    float s3 = hcp__bigram_score(1, 2);
+    float s4 = hcp__bigram_score(50000, 50001);
+    /* Not strictly guaranteed but highly likely with a populated table */
+    ASSERT(s3 >= 0.0f && s3 <= 1.0f, "bigram score (1,2) in range");
+    ASSERT(s4 >= 0.0f && s4 <= 1.0f, "bigram score (50000,50001) in range");
+}
+
+/* ─── Test: Semantic channel integration ────────────────────────── */
+
+static void test_semantic_channel(void) {
+    printf("  test_semantic_channel...\n");
+
+    /* Verify semantic weight config is sane */
+    ASSERT(HCP_SEMANTIC_WEIGHT > 0.0f && HCP_SEMANTIC_WEIGHT <= 1.0f,
+           "semantic weight must be in (0, 1]");
+    ASSERT(HCP_SEMANTIC_LOW_THRESH >= 0.0f && HCP_SEMANTIC_LOW_THRESH < 1.0f,
+           "semantic low threshold must be in [0, 1)");
+
+    /* powf with weight should produce valid magnitudes */
+    float sem_score = 0.8f;
+    float sem_mag = powf(0.5f + 0.5f * sem_score, HCP_SEMANTIC_WEIGHT);
+    ASSERT(sem_mag > 0.0f && sem_mag <= 1.5f,
+           "semantic magnitude should be positive and bounded");
+
+    /* Edge case: zero score */
+    float zero_mag = powf(0.5f + 0.5f * 0.01f, HCP_SEMANTIC_WEIGHT);
+    ASSERT(zero_mag > 0.0f, "minimum semantic score still produces positive magnitude");
+}
+
+/* ─── Test: Popcount utility (v2.1) ─────────────────────────────── */
+
+static void test_popcount(void) {
+    printf("  test_popcount...\n");
+
+    ASSERT(hcp__popcount8(0x00) == 0, "popcount(0x00) = 0");
+    ASSERT(hcp__popcount8(0x01) == 1, "popcount(0x01) = 1");
+    ASSERT(hcp__popcount8(0xFF) == 8, "popcount(0xFF) = 8");
+    ASSERT(hcp__popcount8(0x55) == 4, "popcount(0x55) = 4");
+    ASSERT(hcp__popcount8(HCP_HALLUC_HIGH_COMPRESS | HCP_HALLUC_SPECTRAL) == 2,
+           "popcount of two flags = 2");
+}
+
+/* ─── Test: Universal API (v4.0) ────────────────────────────────── */
+
+static void test_universal_api(void) {
+    printf("  test_universal_api...\n");
+
+    /* Create synthetic tokens */
+    HcpUniversalToken tokens[] = {
+        { .text = " The",   .confidence = 0.95f, .logprob = -0.05f, .duration_ms = 200 },
+        { .text = " quick", .confidence = 0.88f, .logprob = -0.13f, .duration_ms = 250 },
+        { .text = " brown", .confidence = 0.91f, .logprob = -0.09f, .duration_ms = 220 },
+        { .text = " fox",   .confidence = 0.85f, .logprob = -0.16f, .duration_ms = 180 },
+        { .text = " jumps", .confidence = 0.82f, .logprob = -0.20f, .duration_ms = 260 },
+        { .text = " over",  .confidence = 0.90f, .logprob = -0.10f, .duration_ms = 200 },
+        { .text = " the",   .confidence = 0.96f, .logprob = -0.04f, .duration_ms = 150 },
+        { .text = " lazy",  .confidence = 0.78f, .logprob = -0.25f, .duration_ms = 230 },
+        { .text = " dog",   .confidence = 0.92f, .logprob = -0.08f, .duration_ms = 190 },
+    };
+
+    HcpUniversalSegment seg = {
+        .tokens = tokens,
+        .token_count = 9,
+        .start_ms = 0,
+        .end_ms = 2000,
+        .text = " The quick brown fox jumps over the lazy dog",
+        .no_speech_prob = 0.01f,
+    };
+
+    HcpResult result = hcp_process_universal(&seg, 1, NULL, 0, 0);
+
+    /* Should produce one segment */
+    ASSERT(result.count == 1, "universal API should produce 1 segment");
+    ASSERT(result.segments != NULL, "universal API should allocate segments");
+
+    /* Quality should be computed */
+    ASSERT(result.segments[0].quality > 0.0f, "quality should be positive");
+    ASSERT(result.segments[0].hcp_quality > 0.0f, "hcp_quality should be positive");
+    ASSERT(result.segments[0].confidence > 0.0f, "confidence should be positive");
+
+    /* HCP should have run */
+    ASSERT(result.hcp_tokens == 9, "should have 9 tokens");
+    ASSERT(result.hcp_ms >= 0, "HCP timing should be non-negative");
+
+    /* Semantic score should be populated */
+    ASSERT(result.segments[0].semantic_score >= 0.0f &&
+           result.segments[0].semantic_score <= 1.0f,
+           "semantic score should be in [0, 1]");
+
+    /* No E-T Gate since we passed NULL audio */
+    ASSERT(result.et_gate_ms == 0, "E-T Gate should not run without audio");
+
+    hcp_free(&result);
+}
+
+/* ─── Test: Universal API with hallucination ────────────────────── */
+
+static void test_universal_hallucination(void) {
+    printf("  test_universal_hallucination...\n");
+
+    /* Create a repetitive segment that should trigger hallucination detection */
+    HcpUniversalToken tokens[20];
+    for (int i = 0; i < 20; i++) {
+        tokens[i] = (HcpUniversalToken){
+            .text = " word",
+            .confidence = 0.3f,
+            .logprob = -1.2f,
+            .duration_ms = 100,
+        };
+    }
+
+    HcpUniversalSegment seg = {
+        .tokens = tokens,
+        .token_count = 20,
+        .start_ms = 0,
+        .end_ms = 2000,
+        .text = " word word word word word word word word word word"
+                " word word word word word word word word word word",
+        .no_speech_prob = 0.0f,
+    };
+
+    HcpResult result = hcp_process_universal(&seg, 1, NULL, 0, 0);
+
+    ASSERT(result.count == 1, "should have 1 segment");
+    /* Low confidence + repetition should trigger some hallucination flags */
+    ASSERT(result.segments[0].hallucination_flags != 0,
+           "repetitive low-confidence text should trigger hallucination flags");
+
+    hcp_free(&result);
+}
+
 /* ─── Main ──────────────────────────────────────────────────────── */
 
 int main(void) {
@@ -594,6 +739,11 @@ int main(void) {
     test_et_gate_silence();
     test_et_gate_speech();
     test_et_gate_noise();
+    test_bigram_score();
+    test_semantic_channel();
+    test_popcount();
+    test_universal_api();
+    test_universal_hallucination();
 
     printf("\n=== Results: %d passed, %d failed, %d total ===\n\n",
            tests_passed, tests_failed, tests_run);
