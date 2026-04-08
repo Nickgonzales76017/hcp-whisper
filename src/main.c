@@ -345,7 +345,10 @@ static const char *find_model_by_size_quant(const char *size, const char *quant)
 }
 
 static const char *find_model(void) {
-    /* Default: try base.en first */
+    /* Default: try tiny first (smallest footprint), then base */
+    const char *tiny = find_model_by_size("tiny");
+    if (tiny) return tiny;
+
     const char *base = find_model_by_size("base");
     if (base) return base;
 
