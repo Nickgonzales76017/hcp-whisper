@@ -615,17 +615,68 @@ static void test_semantic_channel(void) {
     ASSERT(zero_mag > 0.0f, "minimum semantic score still produces positive magnitude");
 }
 
-/* ─── Test: Popcount utility (v2.1) ─────────────────────────────── */
+/* ─── Test: Popcount utility (v3.1) ─────────────────────────────── */
 
 static void test_popcount(void) {
     printf("  test_popcount...\n");
 
-    ASSERT(hcp__popcount8(0x00) == 0, "popcount(0x00) = 0");
-    ASSERT(hcp__popcount8(0x01) == 1, "popcount(0x01) = 1");
-    ASSERT(hcp__popcount8(0xFF) == 8, "popcount(0xFF) = 8");
-    ASSERT(hcp__popcount8(0x55) == 4, "popcount(0x55) = 4");
-    ASSERT(hcp__popcount8(HCP_HALLUC_HIGH_COMPRESS | HCP_HALLUC_SPECTRAL) == 2,
+    ASSERT(hcp__popcount16(0x00) == 0, "popcount(0x00) = 0");
+    ASSERT(hcp__popcount16(0x01) == 1, "popcount(0x01) = 1");
+    ASSERT(hcp__popcount16(0xFF) == 8, "popcount(0xFF) = 8");
+    ASSERT(hcp__popcount16(0x55) == 4, "popcount(0x55) = 4");
+    ASSERT(hcp__popcount16(HCP_HALLUC_HIGH_COMPRESS | HCP_HALLUC_SPECTRAL) == 2,
            "popcount of two flags = 2");
+    ASSERT(hcp__popcount16(0x1FF) == 9, "popcount(0x1FF) = 9 (all 9 layers)");
+    ASSERT(hcp__popcount16(HCP_HALLUC_FORMANT) == 1, "popcount(formant) = 1");
+}
+
+/* ─── Test: Trigram scoring (v3.1) ──────────────────────────────── */
+
+static void test_trigram_score(void) {
+    printf("  test_trigram_score...\n");
+
+    /* Trigram score should return [0, 1] */
+    float score = hcp__trigram_score(1234, 5678, 91011);
+    ASSERT(score >= 0.0f && score <= 1.0f, "trigram score should be in [0, 1]");
+
+    /* Same trigram twice should give same score (deterministic hash) */
+    float s1 = hcp__trigram_score(100, 200, 300);
+    float s2 = hcp__trigram_score(100, 200, 300);
+    ASSERT_FLOAT_EQ(s1, s2, 1e-8f, "trigram score should be deterministic");
+
+    /* Combined score should blend bi+tri */
+    float combined = hcp__semantic_combined(100, 200, 300, 1);
+    ASSERT(combined >= 0.0f && combined <= 1.0f, "combined score should be in [0, 1]");
+
+    /* Without bigram-only fallback */
+    float bi_only = hcp__semantic_combined(0, 200, 300, 0);
+    float bi_score = hcp__bigram_score(200, 300);
+    ASSERT_FLOAT_EQ(bi_only, bi_score, 1e-6f, "no-trigram fallback should equal bigram score");
+
+    /* Trigram weight config sanity */
+    ASSERT(HCP_TRIGRAM_WEIGHT >= 0.0f && HCP_TRIGRAM_WEIGHT <= 1.0f,
+           "trigram weight should be in [0, 1]");
+}
+
+/* ─── Test: Formant anchoring config (v3.1) ─────────────────────── */
+
+static void test_formant_config(void) {
+    printf("  test_formant_config...\n");
+
+    ASSERT(HCP_FORMANT_FRAME_SIZE >= 256, "formant frame size should be >= 256");
+    ASSERT(HCP_FORMANT_F1_LO < HCP_FORMANT_F1_HI, "F1 band should be valid range");
+    ASSERT(HCP_FORMANT_F2_LO < HCP_FORMANT_F2_HI, "F2 band should be valid range");
+    ASSERT(HCP_FORMANT_F1_HI <= HCP_FORMANT_F2_LO, "F1 and F2 bands should not overlap");
+    ASSERT(HCP_FORMANT_SPEECH_THRESH > 0.0f && HCP_FORMANT_SPEECH_THRESH < 1.0f,
+           "formant speech threshold should be in (0, 1)");
+
+    /* 9 hallucination layers check */
+    uint16_t all_flags = HCP_HALLUC_HIGH_COMPRESS | HCP_HALLUC_NGRAM_REPEAT |
+                         HCP_HALLUC_VLEN_ANOMALY | HCP_HALLUC_LOW_LOGPROB |
+                         HCP_HALLUC_SPECTRAL | HCP_HALLUC_ET_GATE |
+                         HCP_HALLUC_KALMAN | HCP_HALLUC_SEMANTIC |
+                         HCP_HALLUC_FORMANT;
+    ASSERT(hcp__popcount16(all_flags) == 9, "should have exactly 9 hallucination layers");
 }
 
 /* ─── Test: Universal API (v4.0) ────────────────────────────────── */
@@ -742,6 +793,8 @@ int main(void) {
     test_bigram_score();
     test_semantic_channel();
     test_popcount();
+    test_trigram_score();
+    test_formant_config();
     test_universal_api();
     test_universal_hallucination();
 

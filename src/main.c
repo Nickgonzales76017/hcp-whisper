@@ -158,7 +158,7 @@ static void write_json(const char *path, HcpResult *res) {
 
     fprintf(fp, "{\n");
     fprintf(fp, "  \"algorithm\": \"Complex-Domain HCP Spectral Refinement\",\n");
-    fprintf(fp, "  \"version\": \"3.0.0\",\n");
+    fprintf(fp, "  \"version\": \"3.1.0\",\n");
     fprintf(fp, "  \"license\": \"MIT\",\n");
     fprintf(fp, "  \"total_segments\": %d,\n", res->count);
     fprintf(fp, "  \"hallucinated_segments\": %d,\n", res->segments_hallucinated);
@@ -188,6 +188,10 @@ static void write_json(const char *path, HcpResult *res) {
     fprintf(fp, "      \"attempted\": %d,\n", res->redecode_count);
     fprintf(fp, "      \"improved\": %d,\n", res->redecode_improved);
     fprintf(fp, "      \"elapsed_ms\": %.1f\n", res->redecode_ms);
+    fprintf(fp, "    },\n");
+    fprintf(fp, "    \"formant\": {\n");
+    fprintf(fp, "      \"segments_flagged\": %d,\n", res->formant_flagged);
+    fprintf(fp, "      \"elapsed_ms\": %.1f\n", res->formant_ms);
     fprintf(fp, "    }\n");
     fprintf(fp, "  },\n");
     fprintf(fp, "  \"segments\": [\n");
@@ -206,6 +210,7 @@ static void write_json(const char *path, HcpResult *res) {
         fprintf(fp, "      \"et_speech_frac\": %.2f,\n", s->et_speech_frac);
         fprintf(fp, "      \"kiel_max_innovation\": %.2f,\n", s->kiel_max_innov);
         fprintf(fp, "      \"semantic_score\": %.3f,\n", s->semantic_score);
+        fprintf(fp, "      \"formant_ratio\": %.3f,\n", s->formant_ratio);
         fprintf(fp, "      \"token_count\": %d,\n", s->token_count);
         fprintf(fp, "      \"speaker_turn\": %s,\n", s->speaker_turn ? "true" : "false");
         /* JSON-safe text */
@@ -270,30 +275,66 @@ static void write_vtt(const char *path, HcpResult *res) {
 
 /* ─── Model auto-detection ──────────────────────────────────────── */
 
-static const char *find_model(void) {
+/* Detect DTW alignment heads preset from model path */
+static int detect_dtw_preset(const char *model_path) {
+    if (!model_path) return WHISPER_AHEADS_BASE_EN;
+    const char *fname = strrchr(model_path, '/');
+    fname = fname ? fname + 1 : model_path;
+
+    if (strstr(fname, "tiny.en") || strstr(fname, "tiny-"))
+        return WHISPER_AHEADS_TINY_EN;
+    if (strstr(fname, "tiny"))
+        return WHISPER_AHEADS_TINY;
+    if (strstr(fname, "small.en") || strstr(fname, "small-"))
+        return WHISPER_AHEADS_SMALL_EN;
+    if (strstr(fname, "small"))
+        return WHISPER_AHEADS_SMALL;
+    if (strstr(fname, "medium.en") || strstr(fname, "medium-"))
+        return WHISPER_AHEADS_MEDIUM_EN;
+    if (strstr(fname, "medium"))
+        return WHISPER_AHEADS_MEDIUM;
+    if (strstr(fname, "large-v3"))
+        return WHISPER_AHEADS_LARGE_V3;
+    if (strstr(fname, "large-v2"))
+        return WHISPER_AHEADS_LARGE_V2;
+    if (strstr(fname, "large-v1") || strstr(fname, "large."))
+        return WHISPER_AHEADS_LARGE_V1;
+    if (strstr(fname, "base.en") || strstr(fname, "base-"))
+        return WHISPER_AHEADS_BASE_EN;
+    if (strstr(fname, "base"))
+        return WHISPER_AHEADS_BASE;
+
+    return WHISPER_AHEADS_BASE_EN; /* fallback */
+}
+
+static const char *find_model_by_size(const char *size) {
     static char path[PATH_MAX];
-    const char *candidates[] = {
-        NULL, /* will be filled with $HOME/.local/share/whisper/ggml-base.en-q5_0.bin */
-        NULL, /* $HOME/.local/share/whisper/ggml-base.en.bin */
-        "/opt/homebrew/share/whisper/ggml-base.en.bin",
-        NULL
-    };
-
     const char *home = getenv("HOME");
-    char p0[PATH_MAX], p1[PATH_MAX];
-    if (home) {
-        snprintf(p0, sizeof(p0), "%s/.local/share/whisper/ggml-base.en-q5_0.bin", home);
-        snprintf(p1, sizeof(p1), "%s/.local/share/whisper/ggml-base.en.bin", home);
-        candidates[0] = p0;
-        candidates[1] = p1;
-    }
+    if (!home) return NULL;
 
-    for (int i = 0; candidates[i]; i++) {
-        if (access(candidates[i], R_OK) == 0) {
-            strncpy(path, candidates[i], sizeof(path) - 1);
-            return path;
+    /* Try quantized first, then float16 */
+    const char *suffixes[] = { "-q5_0.bin", ".bin", NULL };
+    const char *variants[] = { ".en", "", NULL };
+
+    for (int s = 0; suffixes[s]; s++) {
+        for (int v = 0; variants[v]; v++) {
+            snprintf(path, sizeof(path), "%s/.local/share/whisper/ggml-%s%s%s",
+                     home, size, variants[v], suffixes[s]);
+            if (access(path, R_OK) == 0) return path;
         }
     }
+    return NULL;
+}
+
+static const char *find_model(void) {
+    /* Default: try base.en first */
+    const char *base = find_model_by_size("base");
+    if (base) return base;
+
+    static char path[PATH_MAX];
+    snprintf(path, sizeof(path), "/opt/homebrew/share/whisper/ggml-base.en.bin");
+    if (access(path, R_OK) == 0) return path;
+
     return NULL;
 }
 
@@ -306,18 +347,19 @@ static void usage(const char *prog) {
         "Usage: %s <audio.wav> [output-dir] [options]\n"
         "\n"
         "Options:\n"
-        "  --model <path>     Path to whisper GGML model\n"
-        "  --language <lang>  Language code (default: en)\n"
-        "  --beam-size <n>    Beam search width (default: 5)\n"
-        "  --threads <n>      CPU threads (default: 4)\n"
-        "  --no-hcp           Disable HCP refinement\n"
-        "  --no-gpu           Disable GPU acceleration\n"
-        "  --json             Output JSON only\n"
-        "  --txt              Output text only\n"
-        "  --srt              Output SRT only\n"
-        "  --vtt              Output VTT only\n"
-        "  --all              Output all formats (default)\n"
-        "  -h, --help         Show this help\n"
+        "  --model <path>       Path to whisper GGML model\n"
+        "  --model-size <size>  Model size: tiny, base, small, medium, large (default: base)\n"
+        "  --language <lang>    Language code (default: en)\n"
+        "  --beam-size <n>      Beam search width (default: 5)\n"
+        "  --threads <n>        CPU threads (default: 4)\n"
+        "  --no-hcp             Disable HCP refinement\n"
+        "  --no-gpu             Disable GPU acceleration\n"
+        "  --json               Output JSON only\n"
+        "  --txt                Output text only\n"
+        "  --srt                Output SRT only\n"
+        "  --vtt                Output VTT only\n"
+        "  --all                Output all formats (default)\n"
+        "  -h, --help           Show this help\n"
         "\n"
         "MIT License — https://github.com/Nickgonzales76017/hcp-whisper\n",
         prog);
@@ -332,6 +374,7 @@ int main(int argc, char **argv) {
     const char *audio_path = NULL;
     const char *output_dir = NULL;
     const char *model_path = NULL;
+    const char *model_size = NULL;
     const char *language = "en";
     int beam_size = 5;
     int threads = 4;
@@ -344,6 +387,8 @@ int main(int argc, char **argv) {
             usage(argv[0]); return 0;
         } else if (strcmp(argv[i], "--model") == 0 && i + 1 < argc) {
             model_path = argv[++i];
+        } else if (strcmp(argv[i], "--model-size") == 0 && i + 1 < argc) {
+            model_size = argv[++i];
         } else if (strcmp(argv[i], "--language") == 0 && i + 1 < argc) {
             language = argv[++i];
         } else if (strcmp(argv[i], "--beam-size") == 0 && i + 1 < argc) {
@@ -375,10 +420,21 @@ int main(int argc, char **argv) {
     if (!output_dir) output_dir = ".";
 
     /* Auto-detect model */
+    if (!model_path && model_size) {
+        model_path = find_model_by_size(model_size);
+        if (!model_path) {
+            fprintf(stderr, "error: no whisper model found for size '%s'\n"
+                            "  Download: curl -L -o ~/.local/share/whisper/ggml-%s.en.bin \\\n"
+                            "    https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-%s.en.bin\n",
+                    model_size, model_size, model_size);
+            return 1;
+        }
+    }
     if (!model_path) model_path = find_model();
     if (!model_path) {
-        fprintf(stderr, "error: no whisper model found. Use --model <path>\n"
-                        "  Download: whisper-cli --download-model base.en\n");
+        fprintf(stderr, "error: no whisper model found. Use --model <path> or --model-size <size>\n"
+                        "  Download: curl -L -o ~/.local/share/whisper/ggml-base.en.bin \\\n"
+                        "    https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-base.en.bin\n");
         return 1;
     }
 
@@ -410,7 +466,7 @@ int main(int argc, char **argv) {
     cparams.use_gpu = use_gpu;
     cparams.flash_attn = use_gpu;
     cparams.dtw_token_timestamps = 1;
-    cparams.dtw_aheads_preset = WHISPER_AHEADS_BASE_EN;
+    cparams.dtw_aheads_preset = detect_dtw_preset(model_path);
 
     struct whisper_context *ctx = whisper_init_from_file_with_params(model_path, cparams);
     if (!ctx) { fprintf(stderr, "error: failed to load model\n"); free(audio); return 1; }
@@ -473,6 +529,8 @@ int main(int argc, char **argv) {
                 result.et_segments_gated, result.et_gate_ms);
         fprintf(stderr, "[hcp-whisper] Semantic: %d low-coherence segments, %.1f ms\n",
                 result.semantic_low_count, result.semantic_ms);
+        fprintf(stderr, "[hcp-whisper] Formant: %d segments flagged, %.1f ms\n",
+                result.formant_flagged, result.formant_ms);
 
         /* Print quality summary */
         float q_base = 0, q_hcp = 0;

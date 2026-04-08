@@ -91,15 +91,46 @@ extern "C" {
 #define HCP_SEMANTIC_LOW_THRESH    0.02f   /* flag if bigram score < this */
 #endif
 
-/* Hallucination flag bits */
-#define HCP_HALLUC_HIGH_COMPRESS   0x01
-#define HCP_HALLUC_NGRAM_REPEAT    0x02
-#define HCP_HALLUC_VLEN_ANOMALY    0x04
-#define HCP_HALLUC_LOW_LOGPROB     0x08
-#define HCP_HALLUC_SPECTRAL        0x10
-#define HCP_HALLUC_ET_GATE         0x20
-#define HCP_HALLUC_KALMAN          0x40
-#define HCP_HALLUC_SEMANTIC        0x80
+/* Formant anchoring configuration (v3.1) */
+#ifndef HCP_FORMANT_FRAME_SIZE
+#define HCP_FORMANT_FRAME_SIZE     512     /* FFT frame for formant analysis */
+#endif
+#ifndef HCP_FORMANT_F1_LO
+#define HCP_FORMANT_F1_LO          200     /* F1 band lower bound (Hz) */
+#endif
+#ifndef HCP_FORMANT_F1_HI
+#define HCP_FORMANT_F1_HI          1000    /* F1 band upper bound */
+#endif
+#ifndef HCP_FORMANT_F2_LO
+#define HCP_FORMANT_F2_LO          1000    /* F2 band lower bound */
+#endif
+#ifndef HCP_FORMANT_F2_HI
+#define HCP_FORMANT_F2_HI          3000    /* F2 band upper bound */
+#endif
+#ifndef HCP_FORMANT_SPEECH_THRESH
+#define HCP_FORMANT_SPEECH_THRESH  0.15f   /* min F1+F2 energy ratio for speech */
+#endif
+
+/* Trigram configuration (v3.1) */
+#ifndef HCP_TRIGRAM_WEIGHT
+#define HCP_TRIGRAM_WEIGHT         0.2f    /* trigram influence on semantic [0,1] */
+#endif
+
+/* Context-seeded re-decode (v3.1) */
+#ifndef HCP_REDECODE_CONTEXT_TOKENS
+#define HCP_REDECODE_CONTEXT_TOKENS  32    /* max tokens from surrounding segments for context */
+#endif
+
+/* Hallucination flag bits (9 layers in v3.1) */
+#define HCP_HALLUC_HIGH_COMPRESS   0x001
+#define HCP_HALLUC_NGRAM_REPEAT    0x002
+#define HCP_HALLUC_VLEN_ANOMALY    0x004
+#define HCP_HALLUC_LOW_LOGPROB     0x008
+#define HCP_HALLUC_SPECTRAL        0x010
+#define HCP_HALLUC_ET_GATE         0x020
+#define HCP_HALLUC_KALMAN          0x040
+#define HCP_HALLUC_SEMANTIC        0x080
+#define HCP_HALLUC_FORMANT         0x100
 
 /* ─── Structures ────────────────────────────────────────────────── */
 
@@ -113,7 +144,7 @@ typedef struct {
     float    compression_ratio;
     float    quality;             /* base composite quality */
     float    hcp_quality;         /* HCP-enhanced quality */
-    uint8_t  hallucination_flags; /* bitfield of HCP_HALLUC_* */
+    uint16_t hallucination_flags; /* bitfield of HCP_HALLUC_* (9 layers) */
     int      speaker_turn;
     int      token_count;
     int      hcp_flagged_count;   /* tokens flagged by HCP in this segment */
@@ -121,6 +152,7 @@ typedef struct {
     float    et_speech_frac;      /* E-T Gate: speech-like frame fraction */
     float    kiel_max_innov;      /* KIEL-CC: max normalized innovation */
     float    semantic_score;       /* semantic channel: mean bigram coherence */
+    float    formant_ratio;        /* formant anchoring: F1+F2 energy / total energy */
     char     text[HCP_MAX_TEXT_LEN];
 } HcpSegment;
 
@@ -155,6 +187,9 @@ typedef struct {
     /* Semantic channel internals (v3.0) */
     double semantic_ms;
     int    semantic_low_count;
+    /* Formant anchoring internals (v3.1) */
+    double formant_ms;
+    int    formant_flagged;
 } HcpResult;
 
 /* Model-agnostic token input (v4.0) — for any ASR engine */
@@ -228,6 +263,7 @@ HcpResult hcp_process_universal(HcpUniversalSegment *segments, int n_segments,
 
 #include "hcp_subword_freq.h"
 #include "hcp_bigram.h"
+#include "hcp_trigram.h"
 
 /* ── Internal types ──────────────────────────────────────────────── */
 
@@ -426,6 +462,28 @@ static float hcp__bigram_score(whisper_token prev, whisper_token cur) {
     memcpy(key + 4, &c, 4);
     uint32_t slot = (uint32_t)(hcp__fnv1a(key, 8) % HCP_BIGRAM_SLOTS);
     return (float)hcp_bigram_table[slot] / 255.0f;
+}
+
+/* ── Trigram semantic scoring (v3.1) ────────────────────────────── */
+
+static float hcp__trigram_score(whisper_token pp, whisper_token prev, whisper_token cur) {
+    uint8_t key[12];
+    uint32_t a = (uint32_t)pp, b = (uint32_t)prev, c = (uint32_t)cur;
+    memcpy(key, &a, 4);
+    memcpy(key + 4, &b, 4);
+    memcpy(key + 8, &c, 4);
+    uint32_t slot = (uint32_t)(hcp__fnv1a(key, 12) % HCP_TRIGRAM_SLOTS);
+    return (float)hcp_trigram_table[slot] / 255.0f;
+}
+
+/* ── Combined semantic score (bigram + trigram) ──────────────────── */
+
+static float hcp__semantic_combined(whisper_token pp, whisper_token prev,
+                                     whisper_token cur, int has_pp) {
+    float bi = hcp__bigram_score(prev, cur);
+    if (!has_pp) return bi;
+    float tri = hcp__trigram_score(pp, prev, cur);
+    return (1.0f - HCP_TRIGRAM_WEIGHT) * bi + HCP_TRIGRAM_WEIGHT * tri;
 }
 /* ── KIEL-CC: Kalman Innovation Error Localization ───────────────── */
 
@@ -650,10 +708,12 @@ static void hcp__spectral_process(hcp__token *flat, int N, int ns, HcpResult *re
         float phi_morph = hcp__fnv_to_phase(hcp__fnv1a(txt, tlen));
         hcp__cpx z_morph = hcp__cpx_from_polar(mag_morph, phi_morph);
 
-        /* Semantic channel (v3.0): token bigram coherence */
+        /* Semantic channel (v3.1): token bigram+trigram coherence */
         float sem_score = 0.5f;
         if (i > 0) {
-            sem_score = hcp__bigram_score(flat[i-1].id, tk->id);
+            int has_pp = (i > 1);
+            whisper_token pp = has_pp ? flat[i-2].id : 0;
+            sem_score = hcp__semantic_combined(pp, flat[i-1].id, tk->id, has_pp);
             if (sem_score < 0.01f) sem_score = 0.01f;
         }
         float sem_mag = powf(0.5f + 0.5f * sem_score, HCP_SEMANTIC_WEIGHT);
@@ -935,6 +995,89 @@ static void hcp__spectral_refine(struct whisper_context *ctx, HcpResult *res) {
     hcp__spectral_process(flat, N, ns, res);
     free(flat);
 }
+/* ── Formant Anchoring (v3.1): mel-spectrogram speech verification ── */
+
+static void hcp__formant_anchor(const float *audio, int n_samples, int sample_rate,
+                                 HcpResult *res) {
+    double t0 = hcp__ms_now();
+    int flagged = 0;
+    int frame_size = HCP_FORMANT_FRAME_SIZE;
+    int hop = frame_size / 2;
+
+    /* Bin indices for F1 and F2 bands */
+    float bin_hz = (float)sample_rate / (float)frame_size;
+    int f1_lo = (int)(HCP_FORMANT_F1_LO / bin_hz);
+    int f1_hi = (int)(HCP_FORMANT_F1_HI / bin_hz);
+    int f2_lo = (int)(HCP_FORMANT_F2_LO / bin_hz);
+    int f2_hi = (int)(HCP_FORMANT_F2_HI / bin_hz);
+    int half = frame_size / 2;
+    if (f1_lo < 1) f1_lo = 1;
+    if (f1_hi > half) f1_hi = half;
+    if (f2_lo < 1) f2_lo = 1;
+    if (f2_hi > half) f2_hi = half;
+
+    for (int s = 0; s < res->count; s++) {
+        HcpSegment *seg = &res->segments[s];
+
+        /* Only check segments that have text (claim speech) */
+        if (seg->token_count < 2) {
+            seg->formant_ratio = 1.0f;
+            continue;
+        }
+
+        int sa = (int)((int64_t)seg->t0_ms * sample_rate / 1000);
+        int sb = (int)((int64_t)seg->t1_ms * sample_rate / 1000);
+        if (sa < 0) sa = 0;
+        if (sb > n_samples) sb = n_samples;
+        int seg_len = sb - sa;
+
+        if (seg_len < frame_size) {
+            seg->formant_ratio = 1.0f;
+            continue;
+        }
+
+        /* Accumulate F1+F2 energy and total energy across frames */
+        double formant_energy = 0, total_energy = 0;
+
+        for (int f = sa; f + frame_size <= sb; f += hop) {
+            /* FFT frame */
+            hcp__cpx fft_buf[HCP_FORMANT_FRAME_SIZE];
+            for (int i = 0; i < frame_size; i++) {
+                /* Hann window */
+                float w = 0.5f * (1.0f - cosf(2.0f * (float)M_PI * i / (frame_size - 1)));
+                fft_buf[i].re = audio[f + i] * w;
+                fft_buf[i].im = 0.0f;
+            }
+            hcp__fft(fft_buf, frame_size, 0);
+
+            double f_e = 0, t_e = 0;
+            for (int k = 1; k < half; k++) {
+                float S = fft_buf[k].re * fft_buf[k].re + fft_buf[k].im * fft_buf[k].im;
+                t_e += S;
+                if ((k >= f1_lo && k <= f1_hi) || (k >= f2_lo && k <= f2_hi))
+                    f_e += S;
+            }
+            formant_energy += f_e;
+            total_energy += t_e;
+        }
+
+        float ratio = total_energy > 1e-12 ? (float)(formant_energy / total_energy) : 0.0f;
+        seg->formant_ratio = ratio;
+
+        /* Flag: segment claims speech but audio lacks speech-band energy */
+        float dur_sec = (float)(seg->t1_ms - seg->t0_ms) / 1000.0f;
+        float density = dur_sec > 0 ? (float)seg->token_count / dur_sec : 0;
+
+        if (density > HCP_ET_DENSITY_MIN && ratio < HCP_FORMANT_SPEECH_THRESH) {
+            seg->hallucination_flags |= HCP_HALLUC_FORMANT;
+            flagged++;
+        }
+    }
+
+    res->formant_flagged = flagged;
+    res->formant_ms = hcp__ms_now() - t0;
+}
+
 /* ── E-T Gate: Energy–Text Cross-Agreement ───────────────────── */
 
 static void hcp__et_gate(const float *audio, int n_samples, int sample_rate,
@@ -1022,7 +1165,7 @@ static void hcp__et_gate(const float *audio, int n_samples, int sample_rate,
 
 /* ── Constrained Re-decode (v2.1) ────────────────────────────────── */
 
-static int hcp__popcount8(uint8_t x) {
+static int hcp__popcount16(uint16_t x) {
     int c = 0;
     while (x) { c += x & 1; x >>= 1; }
     return c;
@@ -1048,21 +1191,43 @@ int hcp_redecode(struct whisper_context *ctx,
         HcpSegment *seg = &res->segments[s];
         if (!seg->hallucination_flags) continue;
 
-        /* Slice audio to segment time range */
+        /* Context-seeded re-decode (v3.1): include audio from surrounding good segments.
+         * Expand the audio slice to include 1-2 seconds of context on either side
+         * from non-hallucinated segments, giving Whisper better BPE context. */
         int sa = (int)((int64_t)seg->t0_ms * sample_rate / 1000);
         int sb = (int)((int64_t)seg->t1_ms * sample_rate / 1000);
-        if (sa < 0) sa = 0;
-        if (sb > n_samples) sb = n_samples;
-        int slice_len = sb - sa;
+
+        /* Find preceding clean segment for left context */
+        int context_samples = sample_rate * 2; /* up to 2 seconds of context */
+        int sa_ctx = sa;
+        if (s > 0 && !res->segments[s-1].hallucination_flags) {
+            int ctx_start = (int)((int64_t)res->segments[s-1].t0_ms * sample_rate / 1000);
+            sa_ctx = sa - context_samples;
+            if (sa_ctx < ctx_start) sa_ctx = ctx_start;
+            if (sa_ctx < 0) sa_ctx = 0;
+        }
+
+        /* Find following clean segment for right context */
+        int sb_ctx = sb;
+        if (s + 1 < res->count && !res->segments[s+1].hallucination_flags) {
+            int ctx_end = (int)((int64_t)res->segments[s+1].t1_ms * sample_rate / 1000);
+            sb_ctx = sb + context_samples;
+            if (sb_ctx > ctx_end) sb_ctx = ctx_end;
+            if (sb_ctx > n_samples) sb_ctx = n_samples;
+        }
+
+        if (sa_ctx < 0) sa_ctx = 0;
+        if (sb_ctx > n_samples) sb_ctx = n_samples;
+        int slice_len = sb_ctx - sa_ctx;
         if (slice_len < HCP_REDECODE_MIN_SAMPLES) continue;
 
         attempted++;
 
-        /* Re-decode the slice with wider beam */
-        int ret = whisper_full(ctx, rp, audio + sa, slice_len);
+        /* Re-decode the context-seeded slice with wider beam */
+        int ret = whisper_full(ctx, rp, audio + sa_ctx, slice_len);
         if (ret != 0) continue;
 
-        /* Extract re-decoded text and confidence */
+        /* Extract re-decoded text — only keep text from the target segment's time range */
         int ns_new = whisper_full_n_segments(ctx);
         if (ns_new == 0) continue;
 
@@ -1070,7 +1235,18 @@ int hcp_redecode(struct whisper_context *ctx,
         double log_conf_sum = 0;
         int valid = 0;
 
+        /* Target time range within the slice (relative to slice start) */
+        int64_t tgt_lo_ms = seg->t0_ms - (int64_t)sa_ctx * 1000 / sample_rate;
+        int64_t tgt_hi_ms = seg->t1_ms - (int64_t)sa_ctx * 1000 / sample_rate;
+        if (tgt_lo_ms < 0) tgt_lo_ms = 0;
+
         for (int si = 0; si < ns_new; si++) {
+            int64_t st0 = whisper_full_get_segment_t0(ctx, si) * 10;
+            int64_t st1 = whisper_full_get_segment_t1(ctx, si) * 10;
+
+            /* Only include segments that overlap with the original target range */
+            if (st1 < tgt_lo_ms - 500 || st0 > tgt_hi_ms + 500) continue;
+
             const char *txt = whisper_full_get_segment_text(ctx, si);
             if (txt) {
                 size_t cur = strlen(new_text);
@@ -1092,7 +1268,7 @@ int hcp_redecode(struct whisper_context *ctx,
         float new_logprob = valid > 0 ? (float)(log_conf_sum / valid) : -10.0f;
 
         /* Re-check hallucination signals */
-        uint8_t new_flags = 0;
+        uint16_t new_flags = 0;
         if (new_cr > 2.4f) new_flags |= HCP_HALLUC_HIGH_COMPRESS;
         if (new_ngram) new_flags |= HCP_HALLUC_NGRAM_REPEAT;
         if (new_logprob < -2.0f) new_flags |= HCP_HALLUC_LOW_LOGPROB;
@@ -1104,7 +1280,7 @@ int hcp_redecode(struct whisper_context *ctx,
         float new_quality = new_conf * nsp_f * cr_f;
 
         /* Accept if: better quality or fewer hallucination flags */
-        int fewer_flags = hcp__popcount8(new_flags) < hcp__popcount8(seg->hallucination_flags);
+        int fewer_flags = hcp__popcount16(new_flags) < hcp__popcount16(seg->hallucination_flags);
         if (new_quality > seg->hcp_quality ||
             (fewer_flags && new_quality >= seg->hcp_quality * 0.9f)) {
             strncpy(seg->text, new_text, sizeof(seg->text) - 1);
@@ -1248,8 +1424,10 @@ HcpResult hcp_process_with_audio(struct whisper_context *ctx,
     HcpResult res = {0};
     hcp__extract_segments(ctx, &res);
     hcp__spectral_refine(ctx, &res);
-    if (audio && n_samples > 0)
+    if (audio && n_samples > 0) {
         hcp__et_gate(audio, n_samples, sample_rate, &res);
+        hcp__formant_anchor(audio, n_samples, sample_rate, &res);
+    }
     return res;
 }
 
@@ -1259,8 +1437,10 @@ HcpResult hcp_process_universal(HcpUniversalSegment *segments, int n_segments,
     if (!segments || n_segments <= 0) return res;
     hcp__extract_universal(segments, n_segments, &res);
     hcp__universal_refine(segments, n_segments, &res);
-    if (audio && n_samples > 0)
+    if (audio && n_samples > 0) {
         hcp__et_gate(audio, n_samples, sample_rate > 0 ? sample_rate : 16000, &res);
+        hcp__formant_anchor(audio, n_samples, sample_rate > 0 ? sample_rate : 16000, &res);
+    }
     return res;
 }
 
