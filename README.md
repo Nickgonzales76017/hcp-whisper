@@ -2,13 +2,24 @@
 
 **Complex-Domain Hierarchical Constraint Propagation for Whisper ASR**
 
-A post-decode refinement pipeline that lifts Whisper token sequences into a quad-channel complex domain (acoustic, morphological, bigram semantic, trigram semantic), applies adaptive spectral filtering with Dirichlet anomaly detection, Kalman innovation error localization (KIEL-CC), audio-transcript cross-verification (E-T Gate), formant anchoring, morphological logit bias, and context-seeded constrained re-decode — boosting transcript quality by **+8–13%** with **zero hallucinations** on diverse creator audio.
+A post-decode refinement pipeline that lifts Whisper token sequences into a quad-channel complex domain (acoustic, morphological, bigram semantic, trigram semantic), applies adaptive spectral filtering with Dirichlet anomaly detection, Kalman innovation error localization (KIEL-CC), audio-transcript cross-verification (E-T Gate), formant anchoring, morphological logit bias, and context-seeded constrained re-decode — investigated on a small set of creator-audio samples. The reported quality proxies are experiment-specific; some model runs in the table below contain hallucinations, so this is **not** a zero-hallucination guarantee.
 
-**v3.2** — 9 hallucination layers, 165 unit tests, morphological logit bias (active decoder constraint), quantized model support (24–44 MB), re-decode gating.
+**v3.2 research snapshot** — nine proposed hallucination checks, morphological logit bias, quantized model experiments (24–44 MB) and re-decode gating. Rerun `make test` and `make smoke` for current test counts and measured behavior.
+
+## Aurekai / Bonfÿre: role and maturity
+
+| | This component |
+|---|---|
+| **Business outcome** | More useful, source-linked transcription and creator workflows without buying a separate hosted ASR service for every project |
+| **Technical scope** | Experimental Whisper post-decode spectral, lexical and audio-verification passes |
+| **Maturity** | Standalone research source and selected Apple M3 experiments; not a verified general ASR improvement or deployed Aurekai service |
+| **Evidence** | Build and run the tests below, then compare against human-reviewed reference transcripts on the target workload |
+
+[Aurekai's business model and Bonfÿre's technical responsibility](https://github.com/Nickgonzales76017/bonfyre/blob/main/docs/aurekai-bonfyre-model.md).
 
 ## Results
 
-Tested on real creator audio (YouTube long-form), Apple M3.
+The figures below are from selected long-form creator-audio experiments on Apple M3. The reported "quality" values are **proxy scores**, not independently established word error rates (WER). This README does not include a broad unbiased ASR benchmark, and the hallucination column documents nonzero counts for some variants.
 
 ### Full Quantization Comparison (v3.2)
 
@@ -28,10 +39,10 @@ Tested on real creator audio (YouTube long-form), Apple M3.
 | **tiny q4_0 + HCP** | **24 MB** | **0.995** | **−0.003** | **68%** |
 
 **Key findings:**
-- **44 MB model hits 1.0000 on 2/3 sources** — a 3× smaller model outperforms fp16 on quality
-- **29 MB tiny q5_0 matches 74 MB fp16** to within 0.0005 (2.5× smaller, near-identical quality)
-- **24 MB tiny q4_0 maintains 0.995 quality** with zero hallucinations across all sources
-- HCP's spectral filter compensates for quantization loss: even heavily compressed models produce near-perfect transcripts
+- **44 MB model scores 1.0000 on 2/3 selected samples** — a higher proxy score on these clips is not general superiority over fp16
+- **29 MB tiny q5_0 approaches 74 MB fp16** on the selected proxy scores; general transcript quality needs external evaluation
+- **24 MB tiny q4_0 reports 0.995 proxy quality** and zero flagged hallucinations in these three sampled sources; not a general guarantee
+- The sampled proxy scores suggest possible compensation for quantization loss; validate with WER, independent labels and a wider audio distribution before claiming accuracy gains
 
 ### Overhead Breakdown (base.en, Ali Abdaal)
 
@@ -47,13 +58,9 @@ Tested on real creator audio (YouTube long-form), Apple M3.
 
 E-T Gate and Formant Anchoring are audio-domain (frame-by-frame FFT) and dominate overhead. The spectral/Kalman/semantic pass is <10ms for any transcript length.
 
-### vs Cloud ASR
+### Cloud ASR comparison boundary
 
-| Provider | Quality (WER proxy) | Cost/min | Latency | Hallucination Rate |
-|---|---|---|---|---|
-| Deepgram Nova-2 | ~0.85 | $0.0043 | streaming | ~2% |
-| OpenAI Whisper API | ~0.90 | $0.006 | batch | ~1% |
-| **hcp-whisper (local)** | **0.998** | **$0.00** | **real-time** | **<0.1%** |
+No controlled, same-audio cloud-provider benchmark with independent ground-truth transcripts is established here. Previous illustrative provider quality, hallucination-rate, pricing and latency comparisons are **not current independent measurements**. Local inference can avoid per-request API charges but still incurs hardware, electricity and operational costs. Run a reproducible benchmark on the intended task before comparing providers.
 
 ## How It Works
 
